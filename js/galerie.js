@@ -1,11 +1,21 @@
 /* =========================================================
    PROJET P3V – Galerie dynamique
+   Lit depuis localStorage (Netlify/local) ou API (Genspark)
    ========================================================= */
 
 (function() {
   'use strict';
 
-  // Données de démonstration (seront remplacées par les données DB)
+  /* ── Détection environnement (identique à admin.js) ── */
+  const IS_GENSPARK = (
+    window.location.hostname.endsWith('genspark.ai') ||
+    window.location.hostname.endsWith('genspark.site') ||
+    window.location.hostname.includes('.genspark.')
+  );
+  const USE_API = IS_GENSPARK;
+  const LS_KEY  = 'p3v_galerie_media'; // même clé qu'admin.js
+
+  /* ── Données de démonstration ── */
   const DEMO_MEDIA = [
     { id:'1', titre:'Vaccination bovins – Région de Thiès', categorie:'terrain', type:'photo', pays:'Sénégal', date:'Mars 2024', img:'images/hero-ppv-vaccination.jpg', desc:'Séance de vaccination contre la péripneumonie contagieuse bovine dans la région de Thiès, conduite par une PPV certifiée.' },
     { id:'2', titre:'Session de formation – EISMV Dakar', categorie:'formation', type:'photo', pays:'Sénégal', date:'Février 2024', img:'images/hero-formation-ppv.jpg', desc:'Formation pratique des para-professionnels vétérinaires au sein de l\'EISMV de Dakar, axée sur les techniques de diagnostic clinique.' },
@@ -15,6 +25,21 @@
     { id:'6', titre:'Atelier plaidoyer – Lomé', categorie:'evenement', type:'photo', pays:'Togo', date:'Octobre 2023', img:'images/reunion-communautaire.jpg', desc:'Atelier de plaidoyer pour la reconnaissance légale des PPV, réunissant élus, ministères et acteurs de la société civile à Lomé.' },
   ];
 
+  /* ── Normalise un enregistrement (API ou LS) vers format interne ── */
+  function normalize(d) {
+    return {
+      id:        d.id,
+      titre:     d.titre       || 'Sans titre',
+      categorie: (d.categorie  || 'autre').toLowerCase(),
+      type:      d.type_media  || d.type || 'photo',
+      pays:      d.pays        || '',
+      date:      d.date_prise  || d.date_ajout ||
+                 (d.created_at ? new Date(d.created_at).toLocaleDateString('fr-FR',{month:'long',year:'numeric'}) : ''),
+      img:       d.url_media   || d.url || d.url_miniature || d.vignette || 'images/hero-ppv-vaccination.jpg',
+      desc:      d.description || '',
+    };
+  }
+
   let allMedia = [...DEMO_MEDIA];
   let filteredMedia = [...allMedia];
   let currentFilter = 'all';
@@ -22,35 +47,47 @@
   const PAGE_SIZE = 9;
   let lightboxIndex = 0;
 
-  const grid = document.getElementById('galerieGridFull');
+  const grid       = document.getElementById('galerieGridFull');
   const emptyState = document.getElementById('emptyState');
-  const countEl = document.getElementById('galerieCount');
+  const countEl    = document.getElementById('galerieCount');
   const searchInput = document.getElementById('searchInput');
   const paginationEl = document.getElementById('pagination');
 
-  // Charger depuis DB
+  /* ── Chargement des données ── */
   async function loadFromDB() {
-    try {
-      const res = await fetch('tables/galerie_media?limit=100');
-      const data = await res.json();
-      if (data.data && data.data.length > 0) {
-        allMedia = data.data.map(d => ({
-          id: d.id,
-          titre: d.titre || 'Sans titre',
-          categorie: d.categorie || 'autre',
-          type: d.type_media || 'photo',
-          pays: d.pays || '',
-          date: d.date_prise || (d.created_at ? new Date(d.created_at).toLocaleDateString('fr-FR') : ''),
-          img: d.url_media || d.url_miniature || 'images/hero-ppv-vaccination.jpg',
-          desc: d.description || '',
-        }));
+    let loaded = [];
+
+    if (USE_API) {
+      /* ── Genspark : API REST ── */
+      try {
+        const res  = await fetch('tables/galerie_media?limit=200');
+        const data = await res.json();
+        if (data.data && data.data.length > 0) loaded = data.data.map(normalize);
+      } catch(e) {
+        console.warn('[P3V Galerie] API indisponible, fallback démo', e);
       }
-    } catch(e) {
-      // Utilise données démo
+    } else {
+      /* ── Netlify / local : localStorage ── */
+      try {
+        const raw = localStorage.getItem(LS_KEY);
+        if (raw) {
+          const items = JSON.parse(raw);
+          if (Array.isArray(items) && items.length > 0) loaded = items.map(normalize);
+        }
+      } catch(e) {
+        console.warn('[P3V Galerie] Erreur lecture localStorage', e);
+      }
     }
+
+    if (loaded.length > 0) allMedia = loaded;
     filteredMedia = [...allMedia];
     render();
   }
+
+  /* ── Écoute les changements localStorage depuis l'admin ── */
+  window.addEventListener('storage', (e) => {
+    if (e.key === LS_KEY) loadFromDB();
+  });
 
   // Filtres
   document.querySelectorAll('.gf-btn').forEach(btn => {

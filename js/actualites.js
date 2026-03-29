@@ -1,9 +1,35 @@
 /* =========================================================
    PROJET P3V – Actualités dynamiques
+   Lit depuis localStorage (Netlify/local) ou API (Genspark)
    ========================================================= */
 
-(function() {
+(function () {
   'use strict';
+
+  /* ── Détection environnement (identique à admin.js) ── */
+  const IS_GENSPARK = (
+    window.location.hostname.endsWith('genspark.ai') ||
+    window.location.hostname.endsWith('genspark.site') ||
+    window.location.hostname.includes('.genspark.')
+  );
+  const USE_API = IS_GENSPARK;
+  const LS_KEY = 'p3v_actualites'; // même clé qu'admin.js
+
+  /* ── Normalise un enregistrement vers format interne ── */
+  function normalize(d) {
+    return {
+      id: d.id,
+      titre: d.titre || 'Sans titre',
+      contenu: d.contenu || d.resume || '',
+      categorie: d.categorie || 'Actualité',
+      date_publication: d.date_publication ||
+        (d.created_at ? new Date(d.created_at).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }) : ''),
+      pays: d.pays || '',
+      image_url: d.image_url || 'images/hero-ppv-vaccination.jpg',
+      auteur: d.auteur || 'Équipe P3V',
+      resume: d.resume || '',
+    };
+  }
 
   const DEMO_ACTUS = [
     {
@@ -56,27 +82,41 @@
   const grid = document.getElementById('actuListGrid');
   const loading = document.getElementById('actuLoading');
 
-  // Charger depuis DB
+  /* ── Chargement des actualités ── */
   async function loadActus() {
-    try {
-      const res = await fetch('tables/actualites?limit=50');
-      const data = await res.json();
-      if (data.data && data.data.length > 0) {
-        allActus = data.data.map(d => ({
-          id: d.id,
-          titre: d.titre || 'Sans titre',
-          contenu: d.contenu || d.resume || '',
-          categorie: d.categorie || 'Actualité',
-          date_publication: d.date_publication || new Date(d.created_at).toLocaleDateString('fr-FR'),
-          pays: d.pays || '',
-          image_url: d.image_url || 'images/hero-ppv-vaccination.jpg',
-          auteur: d.auteur || 'Équipe P3V'
-        }));
+    let loaded = [];
+
+    if (USE_API) {
+      /* ── Genspark : API REST ── */
+      try {
+        const res = await fetch('tables/actualites?limit=100');
+        const data = await res.json();
+        if (data.data && data.data.length > 0) loaded = data.data.map(normalize);
+      } catch (e) {
+        console.warn('[P3V Actus] API indisponible, fallback démo', e);
       }
-    } catch(e) {}
-    loading.style.display = 'none';
+    } else {
+      /* ── Netlify / local : localStorage ── */
+      try {
+        const raw = localStorage.getItem(LS_KEY);
+        if (raw) {
+          const items = JSON.parse(raw);
+          if (Array.isArray(items) && items.length > 0) loaded = items.map(normalize);
+        }
+      } catch (e) {
+        console.warn('[P3V Actus] Erreur lecture localStorage', e);
+      }
+    }
+
+    if (loaded.length > 0) allActus = loaded;
+    if (loading) loading.style.display = 'none';
     renderActus();
   }
+
+  /* ── Écoute les changements localStorage depuis l'admin ── */
+  window.addEventListener('storage', (e) => {
+    if (e.key === LS_KEY) loadActus();
+  });
 
   // Filtres
   document.querySelectorAll('.af-btn').forEach(btn => {
@@ -117,7 +157,7 @@
       const color = CAT_COLORS[a.categorie] || CAT_COLORS.default;
       const text = (a.contenu || '').substring(0, 160);
       return `
-        <div class="actu-card" data-reveal="up" style="transition-delay:${i*60}ms">
+        <div class="actu-card" data-reveal="up" style="transition-delay:${i * 60}ms">
           <img src="${a.image_url}" alt="${a.titre}" class="actu-img" onerror="this.src='images/hero-ppv-vaccination.jpg'"/>
           <div class="actu-body">
             <div class="actu-meta">
@@ -141,7 +181,7 @@
   }
 
   // Modal article complet
-  window.openActuModal = function(id) {
+  window.openActuModal = function (id) {
     const actu = allActus.find(a => a.id === id);
     if (!actu) return;
     // Créer modal si besoin
@@ -167,7 +207,7 @@
         </div>`;
       document.body.appendChild(modal);
       modal.addEventListener('click', e => {
-        if (e.target === modal) { modal.classList.remove('open'); document.body.style.overflow=''; }
+        if (e.target === modal) { modal.classList.remove('open'); document.body.style.overflow = ''; }
       });
     }
     document.getElementById('actuModalImg').src = actu.image_url;
@@ -182,14 +222,14 @@
   };
 
   // Newsletter
-  window.subscribeNewsletter = function() {
+  window.subscribeNewsletter = function () {
     const email = document.getElementById('newsletterEmail')?.value?.trim();
     const msg = document.getElementById('newsletterMsg');
     if (!email || !email.includes('@')) {
-      if (msg) { msg.textContent = '⚠️ Veuillez entrer une adresse email valide.'; msg.style.display='block'; msg.style.color='rgba(255,200,100,0.9)'; }
+      if (msg) { msg.textContent = '⚠️ Veuillez entrer une adresse email valide.'; msg.style.display = 'block'; msg.style.color = 'rgba(255,200,100,0.9)'; }
       return;
     }
-    if (msg) { msg.textContent = '✅ Merci ! Vous recevrez nos actualités par email.'; msg.style.display='block'; msg.style.color='rgba(255,255,255,0.9)'; }
+    if (msg) { msg.textContent = '✅ Merci ! Vous recevrez nos actualités par email.'; msg.style.display = 'block'; msg.style.color = 'rgba(255,255,255,0.9)'; }
     if (document.getElementById('newsletterEmail')) document.getElementById('newsletterEmail').value = '';
   };
 

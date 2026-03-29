@@ -108,22 +108,38 @@ images/
 
 ---
 
-## 🗄️ Base de données
+## 🗄️ Stockage des données – Architecture double mode
 
-### Table `galerie_media`
-Stocke les médias uploadés via l'interface admin.
+Le site détecte automatiquement son environnement d'exécution et adapte son mode de stockage :
 
-### Table `actualites`
-Stocke les articles et actualités du projet.
+| Environnement | Mode détecté | Stockage utilisé |
+|---------------|-------------|-----------------|
+| Genspark (plateforme native) | `IS_GENSPARK = true` | API REST `tables/` |
+| Netlify, GitHub Pages… | `IS_GENSPARK = false` | `localStorage` du navigateur |
+| Fichier local (`file://`) | `IS_GENSPARK = false` | `localStorage` du navigateur |
 
-### API RESTful utilisée
+### Clés localStorage
+| Table | Clé localStorage | Utilisée par |
+|-------|-----------------|-------------|
+| Médias galerie | `p3v_galerie_media` | `admin.js` → `galerie.js` |
+| Actualités | `p3v_actualites` | `admin.js` → `actualites.js` |
+
+### Flux de données (hors Genspark)
+1. L'administrateur saisit un média/actualité dans `admin.html`
+2. `admin.js` enregistre dans `localStorage` (clé `p3v_galerie_media` ou `p3v_actualites`)
+3. `galerie.js` / `actualites.js` lisent ces mêmes clés au chargement des pages publiques
+4. L'événement `storage` permet la synchronisation **en temps réel** entre onglets
+
+### API RESTful (Genspark uniquement)
 ```javascript
-GET  tables/actualites?limit=3      // Dernières actualités
-GET  tables/galerie_media?limit=100 // Tous les médias
+GET  tables/actualites?limit=100    // Toutes les actualités
+GET  tables/galerie_media?limit=200 // Tous les médias
 POST tables/galerie_media           // Ajouter un média
 PUT  tables/actualites/{id}         // Modifier un article
 DEL  tables/galerie_media/{id}      // Supprimer un média
 ```
+
+> ⚠️ **Limitation localStorage** : Les données sont liées au navigateur et à l'appareil de l'administrateur. Pour une vraie persistance multi-utilisateurs en production, utiliser la plateforme Genspark.
 
 ---
 
@@ -163,4 +179,3 @@ Pour mettre le site en ligne, utiliser l'onglet **Publish** de la plateforme.
 
 *Site développé pour le Projet P3V – OMSA/WOAH × AFD × EISMV × Réseau FAR × CILSS*  
 *Mise à jour : Mars 2026*
-# ppp-website
