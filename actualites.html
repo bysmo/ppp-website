@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Actualités – Projet P3V</title>
+  <meta name="description" content="Dernières actualités, nouvelles et événements du projet P3V."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    .actu-filters { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:32px }
+    .af-btn { padding:8px 20px; border-radius:99px; border:2px solid var(--border); background:var(--white); font-size:.8rem; font-weight:700; color:var(--muted); cursor:pointer; transition:all .3s }
+    .af-btn.active,.af-btn:hover { background:var(--omsa-blue); border-color:var(--omsa-blue); color:#fff; transform:translateY(-2px) }
+
+    .actu-featured {
+      display:grid; grid-template-columns:1.4fr 1fr; gap:40px; margin-bottom:60px;
+    }
+    .actu-feat-card {
+      background:var(--white); border-radius:var(--r-lg); overflow:hidden;
+      box-shadow:var(--shadow-m); border:1px solid var(--border);
+      transition:all .4s var(--ease-out);
+    }
+    .actu-feat-card:hover { transform:translateY(-6px); box-shadow:var(--shadow-xl); border-color:var(--omsa-teal) }
+    .actu-feat-img { width:100%; height:280px; object-fit:cover; transition:transform .6s var(--ease-out) }
+    .actu-feat-card:hover .actu-feat-img { transform:scale(1.04) }
+    .actu-feat-body { padding:28px }
+    .actu-feat-badge {
+      display:inline-block; font-size:.7rem; font-weight:800; letter-spacing:1px;
+      text-transform:uppercase; padding:4px 14px; border-radius:99px;
+      background:var(--omsa-blue); color:#fff; margin-bottom:12px;
+    }
+    .actu-feat-badge.new { background:var(--omsa-orange) }
+    .actu-feat-body h2 { font-size:1.3rem; font-weight:800; color:var(--dark); margin-bottom:10px; line-height:1.3 }
+    .actu-feat-body p { font-size:.88rem; color:var(--muted); line-height:1.75; margin-bottom:16px }
+    .actu-feat-meta { display:flex; align-items:center; gap:12px; font-size:.78rem; color:var(--muted); margin-bottom:16px }
+    .actu-feat-meta i { color:var(--omsa-teal) }
+    .actu-read-more { display:inline-flex; align-items:center; gap:8px; font-size:.85rem; font-weight:700; color:var(--omsa-teal); transition:gap .3s }
+    .actu-read-more:hover { gap:12px; color:var(--omsa-blue) }
+
+    .actu-sidebar { display:flex; flex-direction:column; gap:20px }
+    .actu-sidebar-card {
+      display:flex; gap:16px; align-items:flex-start;
+      background:var(--white); border-radius:var(--r-md); padding:16px;
+      border:1px solid var(--border); box-shadow:var(--shadow-s);
+      transition:all .3s; cursor:pointer;
+    }
+    .actu-sidebar-card:hover { box-shadow:var(--shadow-m); border-color:var(--omsa-teal); transform:translateX(4px) }
+    .asc-img { width:80px; height:70px; border-radius:var(--r-sm); object-fit:cover; flex-shrink:0 }
+    .asc-body h4 { font-size:.85rem; font-weight:800; color:var(--dark); margin-bottom:4px; line-height:1.4 }
+    .asc-body span { font-size:.72rem; color:var(--muted) }
+
+    .actu-list-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(340px,1fr)); gap:28px }
+
+    .newsletter-box {
+      background:linear-gradient(135deg, var(--omsa-blue), var(--omsa-teal));
+      border-radius:var(--r-lg); padding:48px; text-align:center; color:#fff;
+    }
+    .newsletter-box h3 { font-size:1.6rem; font-weight:900; margin-bottom:8px }
+    .newsletter-box p { opacity:.85; margin-bottom:24px }
+    .newsletter-form { display:flex; gap:12px; max-width:440px; margin:0 auto }
+    .newsletter-form input {
+      flex:1; padding:12px 16px; border-radius:var(--r-md);
+      border:none; font-size:.9rem; font-family:var(--font); outline:none;
+    }
+    .newsletter-form button {
+      padding:12px 24px; border-radius:var(--r-md); border:none;
+      background:rgba(255,255,255,.2); color:#fff; font-weight:700;
+      cursor:pointer; transition:all .3s; font-family:var(--font);
+    }
+    .newsletter-form button:hover { background:rgba(255,255,255,.35) }
+
+    @media(max-width:768px){
+      .actu-featured { grid-template-columns:1fr }
+      .newsletter-form { flex-direction:column }
+    }
+  </style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-follower" id="cursorFollower"></div>
+<div id="pageLoader">
+  <div class="loader-content">
+    <div class="loader-badge">P3V</div>
+    <div class="loader-title">PROJET P3V</div>
+    <div class="loader-subtitle">Chargement...</div>
+    <div class="loader-line"><div class="loader-line-fill" id="loaderFill"></div></div>
+    <div class="loader-pct" id="loaderPct">0%</div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header id="site-header">
+  <div class="header-ribbon">
+    <div class="container">
+      <span><i class="fas fa-map-marker-alt"></i>Sénégal · Bénin · Togo</span>
+      <span><i class="fas fa-envelope"></i>contact@projetp3v.org</span>
+      <div class="ribbon-socials">
+        <a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-x-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+  <nav id="main-nav">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <div class="nl-badge">P3V</div>
+        <div class="nl-text"><strong>Projet P3V</strong><span>Para-Professionnels Vétérinaires</span></div>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="projet.html">Le Projet</a></li>
+        <li><a href="pays.html">Pays</a></li>
+        <li><a href="galerie.html">Galerie</a></li>
+        <li><a href="actualites.html" class="active">Actualités</a></li>
+        <li><a href="index.html#partenaires">Partenaires</a></li>
+        <li><a href="contact.html" class="nav-cta">Contact</a></li>
+      </ul>
+      <button class="burger-btn" id="burgerBtn"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="container">
+    <div class="page-hero-content">
+      <div class="page-hero-eyebrow">Informations du projet</div>
+      <h1><i class="fas fa-newspaper" style="color:var(--omsa-teal)"></i> Actualités <em style="color:var(--omsa-teal);font-style:normal">P3V</em></h1>
+      <p>Suivez les dernières nouvelles, avancées et événements du projet P3V.</p>
+      <nav class="breadcrumb-nav">
+        <a href="index.html">Accueil</a><i class="fas fa-chevron-right"></i><span>Actualités</span>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<!-- ACTUALITÉS -->
+<section style="padding:80px 0; background:var(--white)">
+  <div class="container">
+
+    <!-- Filtres -->
+    <div class="actu-filters" data-reveal="up">
+      <button class="af-btn active" data-cat="all">Toutes</button>
+      <button class="af-btn" data-cat="Formation">Formation</button>
+      <button class="af-btn" data-cat="Terrain">Terrain</button>
+      <button class="af-btn" data-cat="Événement">Événements</button>
+      <button class="af-btn" data-cat="Publication">Publications</button>
+      <button class="af-btn" data-cat="Partenariat">Partenariats</button>
+    </div>
+
+    <!-- Article à la une -->
+    <div class="actu-featured" data-reveal="up" style="transition-delay:.1s">
+      <div class="actu-feat-card">
+        <img src="images/hero-formation-ppv.jpg" alt="À la une" class="actu-feat-img"/>
+        <div class="actu-feat-body">
+          <span class="actu-feat-badge new">À la une</span>
+          <div class="actu-feat-meta">
+            <span><i class="fas fa-calendar-alt"></i>Mars 2024</span>
+            <span><i class="fas fa-map-marker-alt"></i>Dakar, Sénégal</span>
+            <span><i class="fas fa-tag"></i>Formation</span>
+          </div>
+          <h2>Validation du référentiel national de compétences des PPV au Sénégal</h2>
+          <p>Un atelier régional de validation des référentiels de compétences des para-professionnels vétérinaires s'est tenu à Dakar du 18 au 22 mars 2024, en présence de représentants de la Direction des Services Vétérinaires, de l'EISMV, du Réseau FAR et d'experts de l'OMSA/WOAH.</p>
+          <p>Cet atelier marque une étape décisive dans la professionnalisation des PPV sénégalais, avec la validation d'un référentiel de compétences harmonisé qui servira de base aux curricula de formation.</p>
+          <a href="#" class="actu-read-more">Lire l'article complet <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="actu-sidebar">
+        <div class="actu-sidebar-card">
+          <img src="images/ppv-examen-animal.jpg" alt="Mission Bénin" class="asc-img"/>
+          <div class="asc-body">
+            <div style="font-size:.7rem;font-weight:800;color:var(--omsa-orange);margin-bottom:4px;letter-spacing:.5px">TERRAIN · BÉNIN</div>
+            <h4>Mission de suivi des PPV certifiés dans le Borgou</h4>
+            <span><i class="fas fa-calendar-alt" style="color:var(--omsa-teal);margin-right:4px"></i>Février 2024</span>
+          </div>
+        </div>
+        <div class="actu-sidebar-card">
+          <img src="images/reunion-communautaire.jpg" alt="Atelier Lomé" class="asc-img"/>
+          <div class="asc-body">
+            <div style="font-size:.7rem;font-weight:800;color:var(--omsa-blue);margin-bottom:4px;letter-spacing:.5px">ÉVÉNEMENT · TOGO</div>
+            <h4>Atelier de plaidoyer pour la reconnaissance des PPV à Lomé</h4>
+            <span><i class="fas fa-calendar-alt" style="color:var(--omsa-teal);margin-right:4px"></i>Janvier 2024</span>
+          </div>
+        </div>
+        <div class="actu-sidebar-card">
+          <img src="images/hero-eleveurs-sahel.jpg" alt="Revue semestrielle" class="asc-img"/>
+          <div class="asc-body">
+            <div style="font-size:.7rem;font-weight:800;color:var(--omsa-teal);margin-bottom:4px;letter-spacing:.5px">PUBLICATION</div>
+            <h4>Rapport semestriel P3V : avancées 2023 et perspectives 2024</h4>
+            <span><i class="fas fa-calendar-alt" style="color:var(--omsa-teal);margin-right:4px"></i>Décembre 2023</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grille actualités -->
+    <div class="section-eyebrow" style="margin-bottom:16px">Toutes les actualités</div>
+    <div class="actu-list-grid" id="actuListGrid">
+      <!-- Chargé dynamiquement -->
+    </div>
+
+    <div id="actuLoading" style="text-align:center;padding:40px;color:var(--muted)">
+      <i class="fas fa-spinner fa-spin" style="font-size:1.5rem"></i>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section style="padding:80px 0; background:var(--light2)">
+  <div class="container">
+    <div class="newsletter-box" data-reveal="up">
+      <h3>Restez informé(e) des avancées du projet P3V</h3>
+      <p>Inscrivez-vous à notre newsletter pour recevoir les dernières actualités, rapports et événements directement dans votre boîte mail.</p>
+      <div class="newsletter-form">
+        <input type="email" placeholder="Votre adresse email" id="newsletterEmail"/>
+        <button type="button" onclick="subscribeNewsletter()">
+          <i class="fas fa-paper-plane"></i> S'inscrire
+        </button>
+      </div>
+      <p id="newsletterMsg" style="margin-top:12px;font-size:.82rem;display:none"></p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-wave"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,0 C300,60 900,60 1200,0 L1200,60 L0,60 Z" fill="#0A1628"/></svg></div>
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="fg-brand">
+          <a href="index.html" class="fg-logo">
+            <div class="fg-logo-badge">P3V</div>
+            <div class="fg-logo-text"><strong>Projet P3V</strong><span>Para-Professionnels Vétérinaires</span></div>
+          </a>
+          <p class="fg-desc">Initiative régionale de professionnalisation des para-vétérinaires. Financé par l'AFD, mis en œuvre par l'OMSA/WOAH.</p>
+          <div class="footer-socials"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-x-twitter"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-youtube"></i></a></div>
+        </div>
+        <div class="footer-col"><h5>Navigation</h5><div class="footer-links"><a href="index.html">Accueil</a><a href="projet.html">Le Projet</a><a href="pays.html">Pays</a><a href="galerie.html">Galerie</a><a href="actualites.html">Actualités</a><a href="contact.html">Contact</a></div></div>
+        <div class="footer-col"><h5>Catégories</h5><div class="footer-links"><a href="#">Formation</a><a href="#">Terrain</a><a href="#">Événements</a><a href="#">Publications</a><a href="#">Partenariats</a></div></div>
+        <div class="footer-col"><h5>Contact</h5><div class="footer-contact-list"><div class="fcl-row"><i class="fas fa-envelope"></i><span>contact@projetp3v.org</span></div><div class="fcl-row"><i class="fas fa-map-marker-alt"></i><span>EISMV Dakar, Sénégal</span></div></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom"><div class="container"><div class="fb-inner"><span>© 2024 Projet P3V</span><div class="fb-right"><a href="#">Mentions légales</a><a href="admin.html">Admin</a></div></div></div></div>
+</footer>
+<button id="backToTop"><i class="fas fa-chevron-up"></i></button>
+
+<script src="js/pages.js"></script>
+<script src="js/actualites.js"></script>
+</body>
+</html>

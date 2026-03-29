@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact – Projet P3V</title>
+  <meta name="description" content="Contactez l'équipe du projet P3V pour toute demande d'information, partenariat ou collaboration."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    .contact-info-card {
+      background:var(--white); border-radius:var(--r-lg); padding:32px;
+      box-shadow:var(--shadow-s); border:1px solid var(--border);
+      transition:all .35s var(--ease-out);
+    }
+    .contact-info-card:hover { box-shadow:var(--shadow-m); border-color:var(--omsa-teal); transform:translateY(-4px) }
+
+    .bureau-card {
+      background:var(--light2); border-radius:var(--r-md); padding:24px;
+      border:1px solid var(--border); transition:all .3s;
+    }
+    .bureau-card:hover { background:var(--white); box-shadow:var(--shadow-m); border-color:var(--omsa-teal) }
+    .bureau-flag { font-size:2rem; margin-bottom:10px; display:block }
+    .bureau-card h4 { font-size:.95rem; font-weight:800; color:var(--dark); margin-bottom:12px }
+    .bureau-contacts { display:flex; flex-direction:column; gap:8px }
+    .bc-row { display:flex; align-items:center; gap:8px; font-size:.82rem; color:var(--muted) }
+    .bc-row i { color:var(--omsa-teal); width:14px; flex-shrink:0 }
+
+    .bureaux-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px }
+
+    .faq-item {
+      background:var(--white); border-radius:var(--r-md); border:1px solid var(--border);
+      overflow:hidden; transition:all .3s;
+    }
+    .faq-item:hover { border-color:var(--omsa-teal) }
+    .faq-question {
+      padding:20px 24px; display:flex; justify-content:space-between; align-items:center;
+      cursor:pointer; gap:16px;
+    }
+    .faq-question h4 { font-size:.9rem; font-weight:700; color:var(--dark); flex:1 }
+    .faq-question i { color:var(--omsa-teal); transition:transform .3s; flex-shrink:0 }
+    .faq-item.open .faq-question i { transform:rotate(180deg) }
+    .faq-answer {
+      max-height:0; overflow:hidden; transition:max-height .4s ease, padding .3s;
+      padding:0 24px; font-size:.88rem; color:var(--muted); line-height:1.75;
+    }
+    .faq-item.open .faq-answer { max-height:300px; padding:0 24px 20px }
+
+    @media(max-width:768px){ .bureaux-grid{ grid-template-columns:1fr } }
+  </style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-follower" id="cursorFollower"></div>
+<div id="pageLoader">
+  <div class="loader-content">
+    <div class="loader-badge">P3V</div>
+    <div class="loader-title">PROJET P3V</div>
+    <div class="loader-subtitle">Chargement...</div>
+    <div class="loader-line"><div class="loader-line-fill" id="loaderFill"></div></div>
+    <div class="loader-pct" id="loaderPct">0%</div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header id="site-header">
+  <div class="header-ribbon">
+    <div class="container">
+      <span><i class="fas fa-map-marker-alt"></i>Sénégal · Bénin · Togo</span>
+      <span><i class="fas fa-envelope"></i>contact@projetp3v.org</span>
+      <div class="ribbon-socials">
+        <a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-x-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+  <nav id="main-nav">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <div class="nl-badge">P3V</div>
+        <div class="nl-text"><strong>Projet P3V</strong><span>Para-Professionnels Vétérinaires</span></div>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="projet.html">Le Projet</a></li>
+        <li><a href="pays.html">Pays</a></li>
+        <li><a href="galerie.html">Galerie</a></li>
+        <li><a href="actualites.html">Actualités</a></li>
+        <li><a href="index.html#partenaires">Partenaires</a></li>
+        <li><a href="contact.html" class="active nav-cta">Contact</a></li>
+      </ul>
+      <button class="burger-btn" id="burgerBtn"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="container">
+    <div class="page-hero-content">
+      <div class="page-hero-eyebrow">Nous écrire</div>
+      <h1><i class="fas fa-envelope" style="color:var(--omsa-teal)"></i> Contactez-<em style="color:var(--omsa-teal);font-style:normal">nous</em></h1>
+      <p>Notre équipe est disponible pour répondre à toutes vos questions sur le projet P3V.</p>
+      <nav class="breadcrumb-nav">
+        <a href="index.html">Accueil</a><i class="fas fa-chevron-right"></i><span>Contact</span>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT PRINCIPAL -->
+<section class="s-contact" style="padding:80px 0">
+  <div class="container">
+    <div class="contact-grid">
+      <div data-reveal="left">
+        <div class="section-eyebrow">Nous contacter</div>
+        <h2 class="section-heading">Restons en <em>Contact</em></h2>
+        <div class="sh-underline"></div>
+        <p style="color:rgba(255,255,255,.8);font-size:.95rem;line-height:1.8;margin-bottom:28px">Pour toute information sur le projet P3V, ses activités, ou pour établir un partenariat, n'hésitez pas à nous contacter. Notre équipe régionale est disponible pour répondre à vos questions.</p>
+
+        <div class="contact-items">
+          <div class="ci-row"><div class="ci-icon"><i class="fas fa-envelope"></i></div><div><strong>Email principal</strong><span>contact@projetp3v.org</span></div></div>
+          <div class="ci-row"><div class="ci-icon"><i class="fas fa-phone"></i></div><div><strong>Téléphone (EISMV)</strong><span>+221 33 865 10 08</span></div></div>
+          <div class="ci-row"><div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div><div><strong>Siège régional</strong><span>EISMV, BP 5077 – Dakar Fann, Sénégal</span></div></div>
+          <div class="ci-row"><div class="ci-icon"><i class="fab fa-whatsapp"></i></div><div><strong>WhatsApp</strong><span>+221 77 XXX XX XX</span></div></div>
+          <div class="ci-row"><div class="ci-icon"><i class="fas fa-clock"></i></div><div><strong>Disponibilité</strong><span>Lun–Ven : 08h00 – 17h00 (GMT)</span></div></div>
+        </div>
+
+        <!-- Logos partenaires -->
+        <div style="margin-top:32px">
+          <p style="font-size:.78rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:14px">Mis en œuvre par</p>
+          <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+            <div style="background:rgba(255,255,255,.12);border-radius:var(--r-sm);padding:8px 14px">
+              <img src="images/logo-woah.png" alt="OMSA/WOAH" style="height:36px;object-fit:contain;filter:brightness(0) invert(1);opacity:.85"/>
+            </div>
+            <div style="background:rgba(255,255,255,.12);border-radius:var(--r-sm);padding:8px 14px">
+              <img src="images/logo-afd.png" alt="AFD" style="height:36px;object-fit:contain;filter:brightness(0) invert(1);opacity:.85"/>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div data-reveal="right">
+        <div class="contact-form" id="contactFormWrap">
+          <h3 style="font-size:1.2rem;font-weight:800;color:var(--dark);margin-bottom:20px;border-bottom:2px solid var(--border);padding-bottom:14px">
+            <i class="fas fa-paper-plane" style="color:var(--omsa-teal);margin-right:8px"></i>Envoyer un message
+          </h3>
+          <form id="contactForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Prénom & Nom *</label>
+                <input type="text" name="nom" placeholder="Jean Dupont" required/>
+              </div>
+              <div class="form-group">
+                <label>Organisation / Structure</label>
+                <input type="text" name="organisation" placeholder="Votre organisation"/>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Email *</label>
+                <input type="email" name="email" placeholder="jean@email.com" required/>
+              </div>
+              <div class="form-group">
+                <label>Pays</label>
+                <select name="pays">
+                  <option value="">Sélectionner...</option>
+                  <option>Sénégal</option>
+                  <option>Bénin</option>
+                  <option>Togo</option>
+                  <option>France</option>
+                  <option>Autre</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Objet de votre message</label>
+              <select name="objet">
+                <option>Demande d'information générale</option>
+                <option>Partenariat institutionnel</option>
+                <option>Collaboration technique</option>
+                <option>Médias / Presse</option>
+                <option>Recherche / Académique</option>
+                <option>Formation / Stage</option>
+                <option>Autre</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Message *</label>
+              <textarea name="message" placeholder="Décrivez votre demande en détail..." required style="min-height:130px"></textarea>
+            </div>
+            <div class="form-group" style="display:flex;align-items:center;gap:10px">
+              <input type="checkbox" id="consent" style="width:auto;background:transparent" required/>
+              <label for="consent" style="font-size:.8rem;color:var(--muted);font-weight:500">J'accepte que mes données soient utilisées pour traiter ma demande.</label>
+            </div>
+            <button type="submit" class="form-submit">
+              <i class="fas fa-paper-plane"></i> Envoyer le message
+            </button>
+          </form>
+          <div id="formSuccess" style="display:none">
+            <i class="fas fa-check-circle" style="color:var(--omsa-green);font-size:3rem;display:block;margin-bottom:12px"></i>
+            <h3 style="font-size:1.1rem;font-weight:800;color:var(--dark)">Message envoyé !</h3>
+            <p style="color:var(--muted);margin-top:8px">Merci pour votre message. Notre équipe vous répondra dans les 48h ouvrées.</p>
+            <button onclick="document.getElementById('contactForm').style.display='';document.getElementById('formSuccess').style.display='none'" style="margin-top:16px;padding:10px 20px;border-radius:var(--r-md);background:var(--omsa-blue);color:#fff;border:none;cursor:pointer;font-weight:700">
+              Envoyer un autre message
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUREAUX NATIONAUX -->
+<section style="padding:80px 0; background:var(--white)">
+  <div class="container">
+    <div class="section-header" data-reveal="up">
+      <div class="section-eyebrow">Points de contact</div>
+      <h2 class="section-heading">Bureaux <em>Nationaux</em></h2>
+      <div class="sh-underline center"></div>
+    </div>
+    <div class="bureaux-grid" data-reveal="up" style="transition-delay:.1s">
+      <div class="bureau-card">
+        <span class="bureau-flag">🇸🇳</span>
+        <h4>Bureau Sénégal</h4>
+        <div class="bureau-contacts">
+          <div class="bc-row"><i class="fas fa-building"></i><span>EISMV de Dakar, Fann</span></div>
+          <div class="bc-row"><i class="fas fa-map-marker-alt"></i><span>BP 5077, Dakar, Sénégal</span></div>
+          <div class="bc-row"><i class="fas fa-phone"></i><span>+221 33 865 10 08</span></div>
+          <div class="bc-row"><i class="fas fa-envelope"></i><span>senegal@projetp3v.org</span></div>
+          <div class="bc-row"><i class="fas fa-user-tie"></i><span>Point focal : Direction des Services Vétérinaires (DSV)</span></div>
+        </div>
+      </div>
+      <div class="bureau-card">
+        <span class="bureau-flag">🇧🇯</span>
+        <h4>Bureau Bénin</h4>
+        <div class="bureau-contacts">
+          <div class="bc-row"><i class="fas fa-building"></i><span>MAEP – Direction de l'Élevage</span></div>
+          <div class="bc-row"><i class="fas fa-map-marker-alt"></i><span>Cotonou, République du Bénin</span></div>
+          <div class="bc-row"><i class="fas fa-phone"></i><span>+229 XX XX XX XX</span></div>
+          <div class="bc-row"><i class="fas fa-envelope"></i><span>benin@projetp3v.org</span></div>
+          <div class="bc-row"><i class="fas fa-user-tie"></i><span>Point focal : MAEP / Direction de l'Élevage</span></div>
+        </div>
+      </div>
+      <div class="bureau-card">
+        <span class="bureau-flag">🇹🇬</span>
+        <h4>Bureau Togo</h4>
+        <div class="bureau-contacts">
+          <div class="bc-row"><i class="fas fa-building"></i><span>DGSV – MAEH Togo</span></div>
+          <div class="bc-row"><i class="fas fa-map-marker-alt"></i><span>Lomé, République Togolaise</span></div>
+          <div class="bc-row"><i class="fas fa-phone"></i><span>+228 XX XX XX XX</span></div>
+          <div class="bc-row"><i class="fas fa-envelope"></i><span>togo@projetp3v.org</span></div>
+          <div class="bc-row"><i class="fas fa-user-tie"></i><span>Point focal : DGSV / MAEH</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="padding:80px 0; background:var(--light2)">
+  <div class="container">
+    <div class="section-header" data-reveal="up">
+      <div class="section-eyebrow">Questions fréquentes</div>
+      <h2 class="section-heading">FAQ – <em>Questions Fréquentes</em></h2>
+      <div class="sh-underline center"></div>
+    </div>
+    <div style="max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:12px" data-reveal="up" style="transition-delay:.1s">
+      <div class="faq-item">
+        <div class="faq-question"><h4>Qu'est-ce qu'un para-professionnel vétérinaire (PPV) ?</h4><i class="fas fa-chevron-down"></i></div>
+        <div class="faq-answer">Un para-professionnel vétérinaire est une personne qui, sans être vétérinaire diplômé, dispense des soins de santé animale de base aux éleveurs. Ils jouent un rôle crucial dans les zones rurales éloignées où les vétérinaires diplômés sont rares. Le projet P3V vise à structurer et professionnaliser cette catégorie d'acteurs clés.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question"><h4>Comment puis-je bénéficier des formations du projet P3V ?</h4><i class="fas fa-chevron-down"></i></div>
+        <div class="faq-answer">Les formations sont organisées dans les centres partenaires au Sénégal, au Bénin et au Togo. Pour accéder aux formations, contactez le bureau national de votre pays ou la Direction des Services Vétérinaires nationale. Des sessions sont régulièrement organisées dans les régions d'intervention.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question"><h4>Le projet P3V s'étend-il à d'autres pays ?</h4><i class="fas fa-chevron-down"></i></div>
+        <div class="faq-answer">Dans sa phase actuelle (2022-2026), le projet intervient exclusivement au Sénégal, au Bénin et au Togo. Cependant, les résultats et bonnes pratiques ont vocation à être diffusés à l'ensemble de la région Afrique de l'Ouest dans une phase ultérieure.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question"><h4>Comment devenir partenaire du projet P3V ?</h4><i class="fas fa-chevron-down"></i></div>
+        <div class="faq-answer">Les partenariats sont gérés au niveau de l'OMSA/WOAH et de l'AFD. Si vous êtes une organisation nationale, régionale ou internationale souhaitant s'associer au projet, envoyez-nous un message via ce formulaire en précisant votre organisation et votre domaine d'expertise.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question"><h4>Où puis-je consulter les rapports et publications du projet ?</h4><i class="fas fa-chevron-down"></i></div>
+        <div class="faq-answer">Les rapports, études et publications du projet P3V sont disponibles sur demande en contactant l'équipe par email. Certains documents sont également accessibles dans la section Actualités de ce site web.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question"><h4>Quel est le budget total du projet et qui le finance ?</h4><i class="fas fa-chevron-down"></i></div>
+        <div class="faq-answer">Le projet P3V est financé principalement par l'Agence Française de Développement (AFD) pour un budget estimé à environ 5 millions d'euros sur la période 2022-2026. La mise en œuvre est assurée par l'OMSA/WOAH en partenariat avec l'EISMV de Dakar, le Réseau FAR et les autorités nationales des trois pays bénéficiaires.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-wave"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,0 C300,60 900,60 1200,0 L1200,60 L0,60 Z" fill="#0A1628"/></svg></div>
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="fg-brand">
+          <a href="index.html" class="fg-logo">
+            <div class="fg-logo-badge">P3V</div>
+            <div class="fg-logo-text"><strong>Projet P3V</strong><span>Para-Professionnels Vétérinaires</span></div>
+          </a>
+          <p class="fg-desc">Initiative régionale de professionnalisation des para-vétérinaires. Financé par l'AFD, mis en œuvre par l'OMSA/WOAH.</p>
+          <div class="footer-socials"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-x-twitter"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-youtube"></i></a></div>
+        </div>
+        <div class="footer-col"><h5>Navigation</h5><div class="footer-links"><a href="index.html">Accueil</a><a href="projet.html">Le Projet</a><a href="pays.html">Pays</a><a href="galerie.html">Galerie</a><a href="actualites.html">Actualités</a><a href="contact.html">Contact</a></div></div>
+        <div class="footer-col"><h5>Contact rapide</h5><div class="footer-links"><a href="mailto:contact@projetp3v.org">contact@projetp3v.org</a><a href="mailto:senegal@projetp3v.org">Bureau Sénégal</a><a href="mailto:benin@projetp3v.org">Bureau Bénin</a><a href="mailto:togo@projetp3v.org">Bureau Togo</a></div></div>
+        <div class="footer-col"><h5>Partenaires</h5><div class="footer-partners-logos" style="flex-direction:column;align-items:flex-start;gap:8px"><span class="fpl-logo">OMSA/WOAH</span><span class="fpl-logo">AFD</span><span class="fpl-logo">EISMV</span><span class="fpl-logo">Réseau FAR</span><span class="fpl-logo">CILSS</span></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom"><div class="container"><div class="fb-inner"><span>© 2024 Projet P3V</span><div class="fb-right"><a href="#">Mentions légales</a><a href="admin.html">Admin</a></div></div></div></div>
+</footer>
+<button id="backToTop"><i class="fas fa-chevron-up"></i></button>
+
+<script src="js/pages.js"></script>
+<script>
+  // Formulaire contact
+  document.getElementById('contactForm')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = this.querySelector('.form-submit');
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+    btn.disabled = true;
+    setTimeout(() => {
+      this.style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    }, 1400);
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>

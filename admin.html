@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Administration – Galerie & Actualités | Projet P3V</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+
+  <!-- HEADER ADMIN -->
+  <header class="admin-header">
+    <div class="admin-header-inner">
+      <div class="admin-logo">
+        <div class="logo-badge">P3V</div>
+        <div>
+          <span class="logo-main">Projet P3V</span>
+          <span class="logo-sub">Espace Administration</span>
+        </div>
+      </div>
+      <nav class="admin-nav">
+        <button class="admin-tab-btn active" data-tab="galerie">
+          <i class="fas fa-images"></i> Galerie Média
+        </button>
+        <button class="admin-tab-btn" data-tab="actualites">
+          <i class="fas fa-newspaper"></i> Actualités
+        </button>
+        <a href="index.html" class="admin-back-btn">
+          <i class="fas fa-arrow-left"></i> Retour au site
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="admin-main">
+
+    <!-- ======= ONGLET GALERIE ======= -->
+    <div class="admin-panel active" id="tab-galerie">
+      <div class="admin-panel-header">
+        <div>
+          <h1><i class="fas fa-images"></i> Gestion de la Galerie Média</h1>
+          <p>Ajoutez des photos et vidéos du projet P3V. Supporté : URL d'image, URL de vidéo (MP4), YouTube.</p>
+        </div>
+        <button class="btn-admin-primary" id="openMediaModal">
+          <i class="fas fa-plus"></i> Ajouter un média
+        </button>
+      </div>
+
+      <!-- Stats galerie -->
+      <div class="admin-stats" id="galerieStats">
+        <div class="admin-stat"><i class="fas fa-photo-film"></i><div><strong id="totalMedias">–</strong><span>Total médias</span></div></div>
+        <div class="admin-stat"><i class="fas fa-image"></i><div><strong id="totalImages">–</strong><span>Images</span></div></div>
+        <div class="admin-stat"><i class="fas fa-video"></i><div><strong id="totalVideos">–</strong><span>Vidéos</span></div></div>
+      </div>
+
+      <!-- Filtres -->
+      <div class="admin-filters">
+        <select id="filterCat">
+          <option value="">Toutes catégories</option>
+          <option>Formation</option>
+          <option>Terrain</option>
+          <option>Évènements</option>
+          <option>Partenaires</option>
+        </select>
+        <select id="filterPays">
+          <option value="">Tous les pays</option>
+          <option>Sénégal</option>
+          <option>Bénin</option>
+          <option>Togo</option>
+        </select>
+        <input type="text" id="searchMedia" placeholder="Rechercher..." />
+      </div>
+
+      <!-- Grille médias -->
+      <div class="admin-media-grid" id="adminMediaGrid">
+        <div class="admin-loading"><i class="fas fa-spinner fa-spin"></i> Chargement...</div>
+      </div>
+    </div>
+
+    <!-- ======= ONGLET ACTUALITÉS ======= -->
+    <div class="admin-panel" id="tab-actualites">
+      <div class="admin-panel-header">
+        <div>
+          <h1><i class="fas fa-newspaper"></i> Gestion des Actualités</h1>
+          <p>Publiez et gérez les actualités, événements et publications du projet P3V.</p>
+        </div>
+        <button class="btn-admin-primary" id="openActuModal">
+          <i class="fas fa-plus"></i> Nouvelle actualité
+        </button>
+      </div>
+
+      <!-- Liste actualités -->
+      <div class="admin-actu-list" id="adminActuList">
+        <div class="admin-loading"><i class="fas fa-spinner fa-spin"></i> Chargement...</div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ======= MODAL AJOUT MÉDIA ======= -->
+  <div class="modal-overlay" id="mediaModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="mediaModalTitle"><i class="fas fa-plus-circle"></i> Ajouter un média</h2>
+        <button class="modal-close" id="closeMediaModal"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body">
+        <form id="mediaForm">
+          <input type="hidden" id="mediaId" />
+
+          <div class="form-group">
+            <label>Type de média *</label>
+            <div class="type-selector">
+              <label class="type-opt">
+                <input type="radio" name="type_media" value="image" checked />
+                <span><i class="fas fa-image"></i> Image</span>
+              </label>
+              <label class="type-opt">
+                <input type="radio" name="type_media" value="video" />
+                <span><i class="fas fa-video"></i> Vidéo</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="mediaTitre">Titre *</label>
+            <input type="text" id="mediaTitre" placeholder="Titre du média" required />
+          </div>
+
+          <div class="form-group">
+            <label for="mediaUrl">URL du média *</label>
+            <input type="url" id="mediaUrl" placeholder="https://exemple.com/photo.jpg" required />
+            <small>Copiez-collez l'URL directe de votre image ou vidéo MP4</small>
+          </div>
+
+          <div class="form-group" id="vignetteGroup">
+            <label for="mediaVignette">URL de la vignette (optionnel)</label>
+            <input type="url" id="mediaVignette" placeholder="https://exemple.com/thumb.jpg" />
+            <small>Pour les vidéos : image d'aperçu</small>
+          </div>
+
+          <!-- Prévisualisation -->
+          <div class="media-preview" id="mediaPreview"></div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="mediaCat">Catégorie *</label>
+              <select id="mediaCat" required>
+                <option value="">-- Choisir --</option>
+                <option>Formation</option>
+                <option>Terrain</option>
+                <option>Évènements</option>
+                <option>Partenaires</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="mediaPays">Pays</label>
+              <select id="mediaPays">
+                <option value="">-- Choisir --</option>
+                <option>Sénégal</option>
+                <option>Bénin</option>
+                <option>Togo</option>
+                <option>Tous</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="mediaDesc">Description</label>
+            <textarea id="mediaDesc" rows="3" placeholder="Description du média..."></textarea>
+          </div>
+
+          <div class="modal-actions">
+            <button type="button" class="btn-admin-secondary" id="cancelMediaBtn">Annuler</button>
+            <button type="submit" class="btn-admin-primary" id="saveMediaBtn">
+              <i class="fas fa-save"></i> <span>Enregistrer</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======= MODAL ACTUALITÉ ======= -->
+  <div class="modal-overlay" id="actuModal">
+    <div class="modal modal-lg">
+      <div class="modal-header">
+        <h2 id="actuModalTitle"><i class="fas fa-pen"></i> Nouvelle actualité</h2>
+        <button class="modal-close" id="closeActuModal"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body">
+        <form id="actuForm">
+          <input type="hidden" id="actuId" />
+
+          <div class="form-group">
+            <label for="actuTitre">Titre *</label>
+            <input type="text" id="actuTitre" placeholder="Titre de l'actualité" required />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="actuCat">Catégorie *</label>
+              <select id="actuCat" required>
+                <option value="">-- Choisir --</option>
+                <option>Actualité</option>
+                <option>Événement</option>
+                <option>Publication</option>
+                <option>Rapport</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="actuPays">Pays</label>
+              <select id="actuPays">
+                <option value="">-- Choisir --</option>
+                <option>Sénégal</option>
+                <option>Bénin</option>
+                <option>Togo</option>
+                <option>Tous</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="actuDate">Date de publication</label>
+              <input type="date" id="actuDate" />
+            </div>
+            <div class="form-group">
+              <label for="actuAuteur">Auteur</label>
+              <input type="text" id="actuAuteur" placeholder="Équipe P3V" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="actuImage">URL de l'image</label>
+            <input type="url" id="actuImage" placeholder="https://exemple.com/image.jpg" />
+          </div>
+
+          <div class="form-group">
+            <label for="actuResume">Résumé *</label>
+            <textarea id="actuResume" rows="2" placeholder="Résumé court (affiché dans la liste)" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="actuContenu">Contenu complet</label>
+            <textarea id="actuContenu" rows="6" placeholder="Contenu détaillé de l'actualité..."></textarea>
+          </div>
+
+          <div class="modal-actions">
+            <button type="button" class="btn-admin-secondary" id="cancelActuBtn">Annuler</button>
+            <button type="submit" class="btn-admin-primary" id="saveActuBtn">
+              <i class="fas fa-save"></i> <span>Publier</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

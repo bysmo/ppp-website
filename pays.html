@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pays d'intervention – Projet P3V</title>
+  <meta name="description" content="Fiches détaillées des pays d'intervention du projet P3V : Sénégal, Bénin, Togo."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    .pays-nav-pills {
+      display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-bottom:60px;
+    }
+    .pays-nav-pill {
+      padding:12px 32px; border-radius:var(--r-xl); border:2px solid var(--border);
+      font-size:.9rem; font-weight:800; cursor:pointer; background:var(--white);
+      color:var(--muted); transition:all .3s; display:flex; align-items:center; gap:8px;
+    }
+    .pays-nav-pill.active, .pays-nav-pill:hover {
+      background:var(--omsa-blue); color:#fff; border-color:var(--omsa-blue);
+      transform:translateY(-2px); box-shadow:var(--shadow-m);
+    }
+    .pays-section { display:none; animation:fadeInPage .5s ease }
+    .pays-section.active { display:block }
+    @keyframes fadeInPage { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:none} }
+
+    .pays-hero-band {
+      border-radius:var(--r-lg); overflow:hidden; margin-bottom:48px;
+      position:relative; height:320px;
+    }
+    .pays-hero-band img {
+      width:100%; height:100%; object-fit:cover;
+    }
+    .pays-hero-band-overlay {
+      position:absolute; inset:0;
+      background:linear-gradient(135deg, rgba(0,37,96,.85) 0%, rgba(0,100,120,.5) 60%, transparent);
+      display:flex; align-items:center; padding:40px;
+    }
+    .phb-content { color:#fff; max-width:500px }
+    .phb-flag { font-size:4rem; margin-bottom:10px; display:block }
+    .phb-name { font-size:2.4rem; font-weight:900; margin-bottom:8px }
+    .phb-tagline { font-size:1rem; opacity:.85; line-height:1.6 }
+    .phb-stats { display:flex; gap:32px; margin-top:20px }
+    .phb-stat-num { font-size:2rem; font-weight:900; display:block; line-height:1 }
+    .phb-stat-lbl { font-size:.7rem; opacity:.75; text-transform:uppercase; letter-spacing:.5px }
+
+    .detail-grid { display:grid; grid-template-columns:1fr 1fr; gap:32px; margin-bottom:40px }
+    .detail-block {
+      background:var(--light2); border-radius:var(--r-md); padding:28px;
+      border:1px solid var(--border);
+    }
+    .detail-block h4 {
+      font-size:.95rem; font-weight:800; color:var(--dark);
+      margin-bottom:16px; display:flex; align-items:center; gap:10px;
+    }
+    .detail-block h4 i { color:var(--omsa-teal) }
+
+    .activ-list { display:flex; flex-direction:column; gap:12px }
+    .activ-item {
+      display:flex; align-items:center; gap:12px;
+      padding:12px 16px; background:var(--white); border-radius:var(--r-sm);
+      border:1px solid var(--border); font-size:.85rem; color:var(--text);
+    }
+    .activ-item .ai-status {
+      width:10px; height:10px; border-radius:50%; flex-shrink:0;
+    }
+    .ai-status.done { background:var(--omsa-green) }
+    .ai-status.progress { background:var(--omsa-orange) }
+    .ai-status.pending { background:var(--border) }
+
+    .ppv-profile {
+      background:var(--white); border-radius:var(--r-md); padding:20px;
+      border:1px solid var(--border); text-align:center;
+      transition:all .3s;
+    }
+    .ppv-profile:hover { box-shadow:var(--shadow-m); border-color:var(--omsa-teal); transform:translateY(-3px) }
+    .ppv-avatar {
+      width:56px; height:56px; border-radius:50%; margin:0 auto 10px;
+      background:linear-gradient(135deg,var(--omsa-blue),var(--omsa-teal));
+      display:flex; align-items:center; justify-content:center;
+      color:#fff; font-size:1.4rem;
+    }
+    .ppv-name { font-size:.88rem; font-weight:700; color:var(--dark); margin-bottom:2px }
+    .ppv-region { font-size:.75rem; color:var(--muted) }
+    .ppv-spec { font-size:.72rem; color:var(--omsa-teal); font-weight:700; margin-top:4px }
+    .ppv-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:14px }
+
+    .map-placeholder {
+      background:linear-gradient(135deg, var(--light2), var(--light));
+      border:2px dashed var(--border); border-radius:var(--r-lg);
+      height:280px; display:flex; flex-direction:column;
+      align-items:center; justify-content:center; gap:12px; color:var(--muted);
+    }
+    .map-placeholder i { font-size:3rem; color:var(--border) }
+  </style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-follower" id="cursorFollower"></div>
+<div id="pageLoader">
+  <div class="loader-content">
+    <div class="loader-badge">P3V</div>
+    <div class="loader-title">PROJET P3V</div>
+    <div class="loader-subtitle">Chargement...</div>
+    <div class="loader-line"><div class="loader-line-fill" id="loaderFill"></div></div>
+    <div class="loader-pct" id="loaderPct">0%</div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header id="site-header">
+  <div class="header-ribbon">
+    <div class="container">
+      <span><i class="fas fa-map-marker-alt"></i>Sénégal · Bénin · Togo</span>
+      <span><i class="fas fa-envelope"></i>contact@projetp3v.org</span>
+      <div class="ribbon-socials">
+        <a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-x-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+  <nav id="main-nav">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <div class="nl-badge">P3V</div>
+        <div class="nl-text"><strong>Projet P3V</strong><span>Para-Professionnels Vétérinaires</span></div>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="projet.html">Le Projet</a></li>
+        <li><a href="pays.html" class="active">Pays</a></li>
+        <li><a href="galerie.html">Galerie</a></li>
+        <li><a href="actualites.html">Actualités</a></li>
+        <li><a href="index.html#partenaires">Partenaires</a></li>
+        <li><a href="contact.html" class="nav-cta">Contact</a></li>
+      </ul>
+      <button class="burger-btn" id="burgerBtn"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="container">
+    <div class="page-hero-content">
+      <div class="page-hero-eyebrow">Zones d'intervention</div>
+      <h1>🌍 Pays <em style="color:var(--omsa-teal);font-style:normal">d'Intervention</em></h1>
+      <p>Découvrez les activités du projet P3V et les avancées réalisées dans chaque pays partenaire.</p>
+      <nav class="breadcrumb-nav">
+        <a href="index.html">Accueil</a><i class="fas fa-chevron-right"></i><span>Pays</span>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<!-- NAVIGATION PAYS -->
+<section style="padding:60px 0; background:var(--white)">
+  <div class="container">
+    <div class="pays-nav-pills" data-reveal="up">
+      <button class="pays-nav-pill active" data-pays="senegal">🇸🇳 Sénégal</button>
+      <button class="pays-nav-pill" data-pays="benin">🇧🇯 Bénin</button>
+      <button class="pays-nav-pill" data-pays="togo">🇹🇬 Togo</button>
+    </div>
+
+    <!-- SÉNÉGAL -->
+    <div class="pays-section active" id="section-senegal">
+      <div class="pays-hero-band" data-reveal="up">
+        <img src="images/hero-ppv-vaccination.jpg" alt="Sénégal – PPV en action"/>
+        <div class="pays-hero-band-overlay">
+          <div class="phb-content">
+            <span class="phb-flag">🇸🇳</span>
+            <div class="phb-name">Sénégal</div>
+            <div class="phb-tagline">Pionnier du projet P3V – Modèle de référence régionale</div>
+            <div class="phb-stats">
+              <div><span class="phb-stat-num">42</span><span class="phb-stat-lbl">PPV formés</span></div>
+              <div><span class="phb-stat-num">3</span><span class="phb-stat-lbl">Centres actifs</span></div>
+              <div><span class="phb-stat-num">1 800</span><span class="phb-stat-lbl">Éleveurs</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-grid" data-reveal="up">
+        <div class="detail-block">
+          <h4><i class="fas fa-info-circle"></i>Contexte national</h4>
+          <p style="font-size:.88rem;color:var(--muted);line-height:1.8">Le Sénégal dispose d'une longue tradition d'élevage avec environ 3,3 millions de bovins, 5,5 millions d'ovins et 4,7 millions de caprins. La Direction des Services Vétérinaires (DSV) encadre officiellement le secteur, mais les zones rurales restent sous-desservies en personnel qualifié.</p>
+          <br/>
+          <p style="font-size:.88rem;color:var(--muted);line-height:1.8">Le P3V intervient principalement dans les régions de Thiès, Fatick, Ziguinchor et Tambacounda, zones à forte densité d'élevage extensif.</p>
+        </div>
+        <div class="detail-block">
+          <h4><i class="fas fa-chart-bar"></i>Avancement des activités</h4>
+          <div class="progress-item"><div class="pi-header"><span class="pi-label">Référentiel de formation</span><span class="pi-pct">100%</span></div><div class="pi-bar"><div class="pi-fill" style="--w:100%"></div></div></div>
+          <div class="progress-item"><div class="pi-header"><span class="pi-label">Formation des formateurs</span><span class="pi-pct">85%</span></div><div class="pi-bar"><div class="pi-fill" style="--w:85%"></div></div></div>
+          <div class="progress-item"><div class="pi-header"><span class="pi-label">Formation des PPV</span><span class="pi-pct">78%</span></div><div class="pi-bar"><div class="pi-fill" style="--w:78%"></div></div></div>
+          <div class="progress-item"><div class="pi-header"><span class="pi-label">Cadre réglementaire</span><span class="pi-pct">70%</span></div><div class="pi-bar"><div class="pi-fill" style="--w:70%"></div></div></div>
+          <div class="progress-item"><div class="pi-header"><span class="pi-label">Certification des PPV</span><span class="pi-pct">60%</span></div><div class="pi-bar"><div class="pi-fill" style="--w:60%"></div></div></div>
+        </div>
+      </div>
+
+      <div class="detail-grid" data-reveal="up" style="transition-delay:.1s">
+        <div class="detail-block">
+          <h4><i class="fas fa-tasks"></i>Activités réalisées</h4>
+          <div class="activ-list">
+            <div class="activ-item"><div class="ai-status done"></div>Étude diagnostique nationale finalisée</div>
+            <div class="activ-item"><div class="ai-status done"></div>Atelier de validation référentiel RACI</div>
+            <div class="activ-item"><div class="ai-status done"></div>Formation de 18 formateurs EISMV/CERP</div>
+            <div class="activ-item"><div class="ai-status done"></div>Équipement de 3 centres de formation</div>
+            <div class="activ-item"><div class="ai-status progress"></div>Déploiement 2ème vague de formation PPV</div>
+            <div class="activ-item"><div class="ai-status progress"></div>Dialogue avec DSV pour textes réglementaires</div>
+            <div class="activ-item"><div class="ai-status pending"></div>Certification officielle nationale des PPV</div>
+          </div>
+        </div>
+        <div class="detail-block">
+          <h4><i class="fas fa-handshake"></i>Partenaires nationaux</h4>
+          <div class="partenaires-list" style="margin-bottom:20px">
+            <span class="pl-tag"><i class="fas fa-shield-alt"></i>DSV Sénégal</span>
+            <span class="pl-tag"><i class="fas fa-university"></i>EISMV Dakar</span>
+            <span class="pl-tag"><i class="fas fa-leaf"></i>Réseau FAR</span>
+            <span class="pl-tag"><i class="fas fa-building"></i>CERP Thiès</span>
+            <span class="pl-tag"><i class="fas fa-building"></i>CERP Ziguinchor</span>
+            <span class="pl-tag"><i class="fas fa-building"></i>CERP Tambacounda</span>
+          </div>
+          <h4><i class="fas fa-map-marked-alt"></i>Zones d'intervention</h4>
+          <div class="map-placeholder">
+            <i class="fas fa-map"></i>
+            <span style="font-size:.85rem">Carte : Thiès, Fatick, Ziguinchor, Tambacounda</span>
+          </div>
+        </div>
+      </div>
+
+      <div data-reveal="up" style="transition-delay:.2s">
+        <div class="detail-block">
+          <h4><i class="fas fa-user-nurse"></i>Profil des PPV formés (exemples)</h4>
+          <div class="ppv-grid">
+            <div class="ppv-profile"><div class="ppv-avatar"><i class="fas fa-user"></i></div><div class="ppv-name">Mamadou D.</div><div class="ppv-region">Thiès</div><div class="ppv-spec">Vaccination & soins bovins</div></div>
+            <div class="ppv-profile"><div class="ppv-avatar"><i class="fas fa-user"></i></div><div class="ppv-name">Fatou N.</div><div class="ppv-region">Fatick</div><div class="ppv-spec">Petits ruminants</div></div>
+            <div class="ppv-profile"><div class="ppv-avatar"><i class="fas fa-user"></i></div><div class="ppv-name">Ibrahima S.</div><div class="ppv-region">Ziguinchor</div><div class="ppv-spec">Diagnostic clinique</div></div>
+            <div class="ppv-profile"><div class="ppv-avatar"><i class="fas fa-user"></i></div><div class="ppv-name">Aissatou B.</div><div class="ppv-region">Tambacounda</div><div class="ppv-spec">Hygiène alimentaire</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BÉNIN -->
+    <div class="pays-section" id="section-benin">
+      <div class="pays-hero-band" data-reveal="up">
+        <img src="images/hero-eleveurs-sahel.jpg" alt="Bénin – Éleveurs Sahel"/>
+        <div class="pays-hero-band-overlay" style="background:linear-gradient(135deg, rgba(0,100,120,.85) 0%, rgba(0,37,96,.5) 60%, transparent)">
+          <div class="phb-content">
+            <span class="phb-flag">🇧🇯</span>
+            <div class="phb-name">Bénin</div>
+            <div class="phb-tagline">Développement du cadre réglementaire et formation des PPV du Nord</div>
+            <div class="phb-stats">
+              <div><span class="phb-stat-num">38</span><span class="phb-stat-lbl">PPV formés</span></div>
+              <div><span class="phb-stat-num">2</span><span class="phb-stat-lbl">Centres actifs</span></div>
+              <div><span class="phb-stat-num">1 650</span><span class="phb-stat-lbl">Éleveurs</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-grid" data-reveal="up">
+        <div class="detail-block">
+          <h4><i class="fas fa-info-circle"></i>Contexte national</h4>
+          <p style="font-size:.88rem;color:var(--muted);line-height:1.8">Le Bénin compte environ 2,1 millions de bovins et un secteur de l'élevage dynamique, concentré principalement dans les régions nord (Borgou, Alibori, Atacora). Le Ministère de l'Agriculture, de l'Élevage et de la Pêche (MAEP) pilote le volet institutionnel du projet.</p>
+          <br/>
+          <p style="font-size:.88rem;color:var(--muted);line-height:1.8">Le projet intervient dans les zones de Parakou, Natitingou et Nikki, proches des couloirs de transhumance.</p>
+        </div>
+        <div class="detail-block">
+          <h4><i class="fas fa-chart-bar"></i>Avancement des activités</h4>
+          <div class="progress-item"><div class="pi-header"><span class="pi-label">Référentiel de formation</span><span class="pi-pct">90%</span></div><div class="pi-bar"><div class="pi-fill" style="--w:90%"></div></div></div>
+          <div class="progress-item"><div class="pi-header"><span class="pi-label">Formation des formateurs</span><span class="pi-pct">75%</span></div><div class="pi-bar"><div class="pi-fill" style="--w:75%"></div></div></div>
+          <div class="progress-item"><div class="pi-header"><span class="pi-label">Formation des PPV</span><span class="pi-pct">68%</span></div><div class="pi-bar"><div class="pi-fill" style="--w:68%"></div></div></div>
+          <div class="progress-item"><div class="pi-header"><span class="pi-label">Cadre réglementaire</span><span class="pi-pct">55%</span></div><div class="pi-bar"><div class="pi-fill" style="--w:55%"></div></div></div>
+          <div class="progress-item"><div class="pi-header"><span class="pi-label">Certification des PPV</span><span class="pi-pct">50%</span></div><div class="pi-bar"><div class="pi-fill" style="--w:50%"></div></div></div>
+        </div>
+      </div>
+
+      <div class="detail-grid" data-reveal="up" style="transition-delay:.1s">
+        <div class="detail-block">
+          <h4><i class="fas fa-tasks"></i>Activités réalisées</h4>
+          <div class="activ-list">
+            <div class="activ-item"><div class="ai-status done"></div>Étude diagnostique nationale réalisée</div>
+            <div class="activ-item"><div class="ai-status done"></div>Référentiel de compétences co-construit</div>
+            <div class="activ-item"><div class="ai-status done"></div>Formation de 14 formateurs CERAQ</div>
+            <div class="activ-item"><div class="ai-status progress"></div>Équipement du centre de Parakou en cours</div>
+            <div class="activ-item"><div class="ai-status progress"></div>Première vague de formation PPV (38 apprenants)</div>
+            <div class="activ-item"><div class="ai-status progress"></div>Atelier plaidoyer MAEP pour cadre légal</div>
+            <div class="activ-item"><div class="ai-status pending"></div>Validation officielle référentiel MAEP</div>
+          </div>
+        </div>
+        <div class="detail-block">
+          <h4><i class="fas fa-handshake"></i>Partenaires nationaux</h4>
+          <div class="partenaires-list">
+            <span class="pl-tag"><i class="fas fa-shield-alt"></i>MAEP Bénin</span>
+            <span class="pl-tag"><i class="fas fa-university"></i>UA/FSA Abomey-Calavi</span>
+            <span class="pl-tag"><i class="fas fa-leaf"></i>ATDA</span>
+            <span class="pl-tag"><i class="fas fa-building"></i>CERAQ Parakou</span>
+            <span class="pl-tag"><i class="fas fa-building"></i>INRAB</span>
+          </div>
+          <br/>
+          <h4><i class="fas fa-map-marked-alt"></i>Zones d'intervention</h4>
+          <div class="map-placeholder">
+            <i class="fas fa-map"></i>
+            <span style="font-size:.85rem">Carte : Parakou, Natitingou, Nikki, Alibori</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOGO -->
+    <div class="pays-section" id="section-togo">
+      <div class="pays-hero-band" data-reveal="up">
+        <img src="images/ppv-examen-animal.jpg" alt="Togo – PPV examen animal"/>
+        <div class="pays-hero-band-overlay" style="background:linear-gradient(135deg, rgba(46,125,50,.85) 0%, rgba(0,100,120,.5) 60%, transparent)">
+          <div class="phb-content">
+            <span class="phb-flag">🇹🇬</span>
+            <div class="phb-name">Togo</div>
+            <div class="phb-tagline">Formalisation du statut PPV et renforcement des services vétérinaires</div>
+            <div class="phb-stats">
+              <div><span class="phb-stat-num">35</span><span class="phb-stat-lbl">PPV formés</span></div>
+              <div><span class="phb-stat-num">2</span><span class="phb-stat-lbl">Centres actifs</span></div>
+              <div><span class="phb-stat-num">1 550</span><span class="phb-stat-lbl">Éleveurs</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-grid" data-reveal="up">
+        <div class="detail-block">
+          <h4><i class="fas fa-info-circle"></i>Contexte national</h4>
+          <p style="font-size:.88rem;color:var(--muted);line-height:1.8">Le Togo compte un cheptel estimé à 1,8 million de bovins, 1,9 million d'ovins et 2,1 millions de caprins. La Direction Générale des Services Vétérinaires (DGSV) et le Ministère de l'Agriculture, de l'Élevage et du Développement Rural (MAEH) pilotent la mise en œuvre nationale.</p>
+          <br/>
+          <p style="font-size:.88rem;color:var(--muted);line-height:1.8">Le projet intervient principalement dans les régions de Kara, Savanes et Centrale, zones à forte tradition pastorale.</p>
+        </div>
+        <div class="detail-block">
+          <h4><i class="fas fa-chart-bar"></i>Avancement des activités</h4>
+          <div class="progress-item"><div class="pi-header"><span class="pi-label">Référentiel de formation</span><span class="pi-pct">88%</span></div><div class="pi-bar"><div class="pi-fill" style="--w:88%"></div></div></div>
+          <div class="progress-item"><div class="pi-header"><span class="pi-label">Formation des formateurs</span><span class="pi-pct">72%</span></div><div class="pi-bar"><div class="pi-fill" style="--w:72%"></div></div></div>
+          <div class="progress-item"><div class="pi-header"><span class="pi-label">Formation des PPV</span><span class="pi-pct">62%</span></div><div class="pi-bar"><div class="pi-fill" style="--w:62%"></div></div></div>
+          <div class="progress-item"><div class="pi-header"><span class="pi-label">Cadre réglementaire</span><span class="pi-pct">60%</span></div><div class="pi-bar"><div class="pi-fill" style="--w:60%"></div></div></div>
+          <div class="progress-item"><div class="pi-header"><span class="pi-label">Certification des PPV</span><span class="pi-pct">48%</span></div><div class="pi-bar"><div class="pi-fill" style="--w:48%"></div></div></div>
+        </div>
+      </div>
+
+      <div class="detail-grid" data-reveal="up" style="transition-delay:.1s">
+        <div class="detail-block">
+          <h4><i class="fas fa-tasks"></i>Activités réalisées</h4>
+          <div class="activ-list">
+            <div class="activ-item"><div class="ai-status done"></div>Étude diagnostique réalisée (DGSV + projet)</div>
+            <div class="activ-item"><div class="ai-status done"></div>Ateliers de co-construction référentiel</div>
+            <div class="activ-item"><div class="ai-status done"></div>Formation de 12 formateurs ESP Kara</div>
+            <div class="activ-item"><div class="ai-status progress"></div>Equipement CFSA Lomé et ESP Kara</div>
+            <div class="activ-item"><div class="ai-status progress"></div>Formation 35 PPV en cours (1ère promotion)</div>
+            <div class="activ-item"><div class="ai-status progress"></div>Dialogue MAEH pour reconnaissance légale PPV</div>
+            <div class="activ-item"><div class="ai-status pending"></div>Adoption décret de reconnaissance des PPV</div>
+          </div>
+        </div>
+        <div class="detail-block">
+          <h4><i class="fas fa-handshake"></i>Partenaires nationaux</h4>
+          <div class="partenaires-list">
+            <span class="pl-tag"><i class="fas fa-shield-alt"></i>DGSV Togo</span>
+            <span class="pl-tag"><i class="fas fa-leaf"></i>MAEH Togo</span>
+            <span class="pl-tag"><i class="fas fa-university"></i>ESP Kara</span>
+            <span class="pl-tag"><i class="fas fa-building"></i>CFSA Lomé</span>
+            <span class="pl-tag"><i class="fas fa-building"></i>ITRA</span>
+          </div>
+          <br/>
+          <h4><i class="fas fa-map-marked-alt"></i>Zones d'intervention</h4>
+          <div class="map-placeholder">
+            <i class="fas fa-map"></i>
+            <span style="font-size:.85rem">Carte : Kara, Savanes, Centrale, Lomé</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="background:linear-gradient(135deg,var(--omsa-blue-dark),var(--omsa-teal-dark));padding:64px 0;text-align:center;color:#fff">
+  <div class="container" data-reveal="up">
+    <h2 style="font-size:1.8rem;font-weight:800;margin-bottom:12px">Suivre les activités du projet</h2>
+    <p style="color:rgba(255,255,255,.8);margin-bottom:28px">Consultez notre galerie pour voir les activités sur le terrain et nos dernières actualités.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+      <a href="galerie.html" class="btn-hero-primary"><i class="fas fa-images"></i> Galerie photos</a>
+      <a href="actualites.html" class="btn-hero-ghost"><i class="fas fa-newspaper"></i> Actualités</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-wave"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,0 C300,60 900,60 1200,0 L1200,60 L0,60 Z" fill="#0A1628"/></svg></div>
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="fg-brand">
+          <a href="index.html" class="fg-logo">
+            <div class="fg-logo-badge">P3V</div>
+            <div class="fg-logo-text"><strong>Projet P3V</strong><span>Para-Professionnels Vétérinaires</span></div>
+          </a>
+          <p class="fg-desc">Initiative régionale de professionnalisation des para-vétérinaires au Sénégal, Bénin et Togo. Financé par l'AFD, mis en œuvre par l'OMSA/WOAH.</p>
+          <div class="footer-socials"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-x-twitter"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-youtube"></i></a></div>
+        </div>
+        <div class="footer-col"><h5>Navigation</h5><div class="footer-links"><a href="index.html">Accueil</a><a href="projet.html">Le Projet</a><a href="pays.html">Pays</a><a href="galerie.html">Galerie</a><a href="actualites.html">Actualités</a><a href="contact.html">Contact</a></div></div>
+        <div class="footer-col"><h5>Pays</h5><div class="footer-links"><a href="pays.html" onclick="showPays('senegal')">🇸🇳 Sénégal</a><a href="pays.html" onclick="showPays('benin')">🇧🇯 Bénin</a><a href="pays.html" onclick="showPays('togo')">🇹🇬 Togo</a></div></div>
+        <div class="footer-col"><h5>Contact</h5><div class="footer-contact-list"><div class="fcl-row"><i class="fas fa-envelope"></i><span>contact@projetp3v.org</span></div><div class="fcl-row"><i class="fas fa-map-marker-alt"></i><span>EISMV Dakar, Sénégal</span></div></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container"><div class="fb-inner"><span>© 2024 Projet P3V – Tous droits réservés</span><div class="fb-right"><a href="#">Mentions légales</a><a href="admin.html">Admin</a></div></div></div>
+  </div>
+</footer>
+
+<button id="backToTop"><i class="fas fa-chevron-up"></i></button>
+
+<script src="js/pages.js"></script>
+<script>
+  // Tabs pays
+  document.querySelectorAll('.pays-nav-pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.pays-nav-pill').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.pays-section').forEach(s => s.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('section-' + btn.dataset.pays)?.classList.add('active');
+      // Re-trigger barres de progression
+      setTimeout(() => {
+        document.querySelectorAll('.pi-fill').forEach(bar => bar.classList.remove('animated'));
+        setTimeout(() => document.querySelectorAll('.pi-fill').forEach(bar => bar.classList.add('animated')), 100);
+      }, 50);
+    });
+  });
+  // Check hash
+  const hash = location.hash.replace('#','');
+  if(['senegal','benin','togo'].includes(hash)){
+    document.querySelector(`[data-pays="${hash}"]`)?.click();
+  }
+</script>
+</body>
+</html>
