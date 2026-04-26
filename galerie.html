@@ -1,315 +1,605 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Galerie – Projet P3V</title>
-  <meta name="description" content="Galerie photos et vidéos du projet P3V – Activités de terrain, formations et événements."/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css"/>
-  <link rel="stylesheet" href="css/style.css"/>
+  <meta name="description"
+    content="Galerie photos et vidéos du projet P3V – Activités de terrain, formations et événements." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
   <style>
     .galerie-header-controls {
-      display:flex; justify-content:space-between; align-items:center;
-      flex-wrap:wrap; gap:16px; margin-bottom:32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 32px;
     }
+
     .galerie-search {
-      display:flex; align-items:center; gap:0;
-      border:2px solid var(--border); border-radius:var(--r-md);
-      overflow:hidden; background:var(--white);
+      display: flex;
+      align-items: center;
+      gap: 0;
+      border: 2px solid var(--border);
+      border-radius: var(--r-md);
+      overflow: hidden;
+      background: var(--white);
     }
+
     .galerie-search input {
-      border:none; outline:none; padding:10px 16px;
-      font-size:.88rem; font-family:var(--font); color:var(--text);
-      background:transparent; width:260px;
+      border: none;
+      outline: none;
+      padding: 10px 16px;
+      font-size: .88rem;
+      font-family: var(--font);
+      color: var(--text);
+      background: transparent;
+      width: 260px;
     }
+
     .galerie-search button {
-      padding:10px 16px; background:var(--omsa-blue); color:#fff;
-      border:none; cursor:pointer; font-size:.9rem; transition:background .3s;
+      padding: 10px 16px;
+      background: var(--omsa-dark);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-size: .9rem;
+      transition: background .3s;
     }
-    .galerie-search button:hover { background:var(--omsa-teal) }
+
+    .galerie-search button:hover {
+      background: var(--primary)
+    }
 
     .galerie-count {
-      font-size:.82rem; color:var(--muted); font-weight:600;
+      font-size: .82rem;
+      color: var(--muted);
+      font-weight: 600;
     }
-    .galerie-count strong { color:var(--omsa-blue) }
+
+    .galerie-count strong {
+      color: var(--omsa-dark)
+    }
 
     .galerie-grid-full {
-      display:grid;
-      grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));
-      gap:20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
     }
+
     .gi-card {
-      background:var(--white); border-radius:var(--r-md); overflow:hidden;
-      box-shadow:var(--shadow-s); border:1px solid var(--border);
-      transition:all .4s var(--ease-out); cursor:pointer;
+      background: var(--white);
+      border-radius: var(--r-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-s);
+      border: 1px solid var(--border);
+      transition: all .4s var(--ease-out);
+      cursor: pointer;
     }
-    .gi-card:hover { transform:translateY(-6px); box-shadow:var(--shadow-l); border-color:var(--omsa-teal) }
+
+    .gi-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-l);
+      border-color: var(--primary)
+    }
+
     .gi-card-img {
-      position:relative; overflow:hidden; height:200px;
+      position: relative;
+      overflow: hidden;
+      height: 200px;
     }
+
     .gi-card-img img {
-      width:100%; height:100%; object-fit:cover;
-      transition:transform .6s var(--ease-out);
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .6s var(--ease-out);
     }
-    .gi-card:hover .gi-card-img img { transform:scale(1.08) }
+
+    .gi-card:hover .gi-card-img img {
+      transform: scale(1.08)
+    }
+
     .gi-card-img-overlay {
-      position:absolute; inset:0;
-      background:linear-gradient(to top, rgba(0,37,96,.7) 0%, transparent 60%);
-      opacity:0; transition:opacity .3s;
-      display:flex; align-items:center; justify-content:center;
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(39, 40, 42, .7) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity .3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .gi-card:hover .gi-card-img-overlay { opacity:1 }
+
+    .gi-card:hover .gi-card-img-overlay {
+      opacity: 1
+    }
+
     .gi-expand-btn {
-      width:48px; height:48px; border-radius:50%;
-      background:rgba(255,255,255,.2); backdrop-filter:blur(4px);
-      border:2px solid rgba(255,255,255,.5); color:#fff;
-      display:flex; align-items:center; justify-content:center;
-      font-size:1.1rem;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .2);
+      backdrop-filter: blur(4px);
+      border: 2px solid rgba(255, 255, 255, .5);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
     }
+
     .gi-card-badges {
-      position:absolute; top:12px; left:12px; right:12px;
-      display:flex; justify-content:space-between; align-items:flex-start;
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      right: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
     }
+
     .gi-card-cat {
-      font-size:.68rem; font-weight:800; letter-spacing:.5px; text-transform:uppercase;
-      padding:4px 10px; border-radius:99px;
-      background:var(--omsa-blue); color:#fff;
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 99px;
+      background: var(--omsa-dark);
+      color: #fff;
     }
+
     .gi-card-type-badge {
-      font-size:.68rem; font-weight:800; padding:4px 10px;
-      border-radius:99px; background:rgba(0,0,0,.5);
-      color:#fff; display:flex; align-items:center; gap:4px;
+      font-size: .68rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 99px;
+      background: rgba(0, 0, 0, .5);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
-    .gi-card-body { padding:16px }
-    .gi-card-title { font-size:.9rem; font-weight:700; color:var(--dark); margin-bottom:4px }
-    .gi-card-meta { display:flex; align-items:center; gap:12px; font-size:.75rem; color:var(--muted) }
-    .gi-card-meta i { color:var(--omsa-teal) }
+
+    .gi-card-body {
+      padding: 16px
+    }
+
+    .gi-card-title {
+      font-size: .9rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 4px
+    }
+
+    .gi-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: .75rem;
+      color: var(--muted)
+    }
+
+    .gi-card-meta i {
+      color: var(--primary)
+    }
 
     /* Lightbox améliorée */
     .lightbox-overlay {
-      position:fixed; inset:0; z-index:90000;
-      background:rgba(0,0,0,.95); display:flex; align-items:center; justify-content:center;
-      opacity:0; visibility:hidden; transition:all .3s; padding:20px;
+      position: fixed;
+      inset: 0;
+      z-index: 90000;
+      background: rgba(0, 0, 0, .95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all .3s;
+      padding: 20px;
     }
-    .lightbox-overlay.open { opacity:1; visibility:visible }
-    .lightbox-inner { position:relative; max-width:900px; width:100%; max-height:95vh }
-    .lightbox-img { width:100%; max-height:70vh; object-fit:contain; border-radius:var(--r-md); display:block }
+
+    .lightbox-overlay.open {
+      opacity: 1;
+      visibility: visible
+    }
+
+    .lightbox-inner {
+      position: relative;
+      max-width: 900px;
+      width: 100%;
+      max-height: 95vh
+    }
+
+    .lightbox-img {
+      width: 100%;
+      max-height: 70vh;
+      object-fit: contain;
+      border-radius: var(--r-md);
+      display: block
+    }
+
     .lightbox-close {
-      position:absolute; top:-16px; right:-16px; width:40px; height:40px;
-      border-radius:50%; background:rgba(255,255,255,.15); border:none;
-      color:#fff; font-size:1.1rem; cursor:pointer; transition:all .3s;
-      display:flex; align-items:center; justify-content:center;
+      position: absolute;
+      top: -16px;
+      right: -16px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .15);
+      border: none;
+      color: #fff;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all .3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .lightbox-close:hover { background:var(--omsa-teal); transform:rotate(90deg) }
-    .lightbox-caption { color:#fff; padding:16px 0 }
-    .lightbox-caption h3 { font-size:1.1rem; font-weight:800; margin-bottom:4px }
-    .lightbox-caption p { font-size:.85rem; opacity:.75 }
+
+    .lightbox-close:hover {
+      background: var(--primary);
+      transform: rotate(90deg)
+    }
+
+    .lightbox-caption {
+      color: #fff;
+      padding: 16px 0
+    }
+
+    .lightbox-caption h3 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      margin-bottom: 4px
+    }
+
+    .lightbox-caption p {
+      font-size: .85rem;
+      opacity: .75
+    }
+
     .lightbox-nav {
-      position:absolute; top:50%; transform:translateY(-50%);
-      width:44px; height:44px; border-radius:50%;
-      background:rgba(255,255,255,.15); border:none; color:#fff;
-      cursor:pointer; font-size:1.1rem; transition:all .3s;
-      display:flex; align-items:center; justify-content:center;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .15);
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: all .3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .lightbox-nav:hover { background:var(--omsa-teal) }
-    .lightbox-prev { left:-60px }
-    .lightbox-next { right:-60px }
+
+    .lightbox-nav:hover {
+      background: var(--primary)
+    }
+
+    .lightbox-prev {
+      left: -60px
+    }
+
+    .lightbox-next {
+      right: -60px
+    }
 
     /* Upload zone */
     .upload-zone {
-      border:2px dashed var(--border); border-radius:var(--r-lg);
-      padding:48px; text-align:center; background:var(--light2);
-      transition:all .3s; cursor:pointer;
+      border: 2px dashed var(--border);
+      border-radius: var(--r-lg);
+      padding: 48px;
+      text-align: center;
+      background: var(--light2);
+      transition: all .3s;
+      cursor: pointer;
     }
-    .upload-zone:hover, .upload-zone.dragover {
-      border-color:var(--omsa-teal); background:rgba(0,135,158,.06);
+
+    .upload-zone:hover,
+    .upload-zone.dragover {
+      border-color: var(--primary);
+      background: rgba(0, 135, 158, .06);
     }
-    .upload-zone i { font-size:3rem; color:var(--border); display:block; margin-bottom:16px; transition:color .3s }
-    .upload-zone:hover i { color:var(--omsa-teal) }
-    .upload-zone h4 { font-size:1rem; font-weight:700; color:var(--dark); margin-bottom:8px }
-    .upload-zone p { font-size:.84rem; color:var(--muted) }
-    .upload-zone input { display:none }
 
-    .empty-state { text-align:center; padding:80px 20px; color:var(--muted) }
-    .empty-state i { font-size:4rem; display:block; margin-bottom:16px; color:var(--border) }
-    .empty-state h3 { font-size:1.1rem; font-weight:700; margin-bottom:8px }
+    .upload-zone i {
+      font-size: 3rem;
+      color: var(--border);
+      display: block;
+      margin-bottom: 16px;
+      transition: color .3s
+    }
 
-    .pagination { display:flex; gap:8px; justify-content:center; margin-top:40px }
+    .upload-zone:hover i {
+      color: var(--primary)
+    }
+
+    .upload-zone h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 8px
+    }
+
+    .upload-zone p {
+      font-size: .84rem;
+      color: var(--muted)
+    }
+
+    .upload-zone input {
+      display: none
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 80px 20px;
+      color: var(--muted)
+    }
+
+    .empty-state i {
+      font-size: 4rem;
+      display: block;
+      margin-bottom: 16px;
+      color: var(--border)
+    }
+
+    .empty-state h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 8px
+    }
+
+    .pagination {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 40px
+    }
+
     .page-btn {
-      width:38px; height:38px; border-radius:var(--r-sm); border:2px solid var(--border);
-      background:var(--white); color:var(--muted); cursor:pointer; font-weight:700;
-      font-size:.85rem; transition:all .3s; display:flex; align-items:center; justify-content:center;
-    }
-    .page-btn.active, .page-btn:hover {
-      background:var(--omsa-blue); border-color:var(--omsa-blue); color:#fff;
+      width: 38px;
+      height: 38px;
+      border-radius: var(--r-sm);
+      border: 2px solid var(--border);
+      background: var(--white);
+      color: var(--muted);
+      cursor: pointer;
+      font-weight: 700;
+      font-size: .85rem;
+      transition: all .3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    @media(max-width:768px){
-      .galerie-header-controls{ flex-direction:column; align-items:flex-start }
-      .galerie-search input{ width:200px }
-      .lightbox-prev{ left:-20px } .lightbox-next{ right:-20px }
+    .page-btn.active,
+    .page-btn:hover {
+      background: var(--omsa-dark);
+      border-color: var(--omsa-dark);
+      color: #fff;
+    }
+
+    @media(max-width:768px) {
+      .galerie-header-controls {
+        flex-direction: column;
+        align-items: flex-start
+      }
+
+      .galerie-search input {
+        width: 200px
+      }
+
+      .lightbox-prev {
+        left: -20px
+      }
+
+      .lightbox-next {
+        right: -20px
+      }
     }
   </style>
 </head>
+
 <body>
 
-<div class="cursor" id="cursor"></div>
-<div class="cursor-follower" id="cursorFollower"></div>
-<div id="pageLoader">
-  <div class="loader-content">
-    <div class="loader-badge">P3V</div>
-    <div class="loader-title">PROJET P3V</div>
-    <div class="loader-subtitle">Chargement de la galerie...</div>
-    <div class="loader-line"><div class="loader-line-fill" id="loaderFill"></div></div>
-    <div class="loader-pct" id="loaderPct">0%</div>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+  <div id="pageLoader">
+    <div class="loader-content">
+      <div class="loader-partners"><img src="images/logo-woah.png" alt="OMSA" /><img src="images/logo-afd.png"
+          alt="AFD" /><img src="images/logo-eismv.png" alt="EISMV" /><img src="images/logo-far.png" alt="Réseau FAR" />
+      </div>
+      <div class="loader-title">PROJET P3V</div>
+      <div class="loader-subtitle">Chargement de la galerie...</div>
+      <div class="loader-line">
+        <div class="loader-line-fill" id="loaderFill"></div>
+      </div>
+      <div class="loader-pct" id="loaderPct">0%</div>
+    </div>
   </div>
-</div>
 
-<!-- HEADER -->
-<header id="site-header">
-  <div class="header-ribbon">
+  <!-- HEADER -->
+  <header id="site-header">
+    <div class="header-ribbon">
+      <div class="container">
+        Le projet P3V est financé par l’Agence française de développement (AFD) et mis en œuvre par l’Organisation
+        mondiale de la santé animale (OMSA), en partenariat avec l'École Inter-États des Sciences et Médecine
+        Vétérinaires (EISMV) de Dakar et le Réseau FAR. Sénégal - Togo - Bénin
+      </div>
+    </div>
+    <nav id="main-nav">
+      <div class="container">
+        <a href="index.html" class="nav-logo">
+          <div class="header-partners"><img src="images/logo-woah.png" alt="OMSA" /><img src="images/logo-afd.png"
+              alt="AFD" /><img src="images/logo-eismv.png" alt="EISMV" /><img src="images/logo-far.png"
+              alt="Réseau FAR" /></div>
+          <div class="nl-text"><strong>Projet P3V</strong><span>Para-Professionnels Vétérinaires</span></div>
+        </a>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="projet.html">Le Projet</a></li>
+          <li><a href="pays.html">Pays</a></li>
+          <li><a href="galerie.html" class="active">Galerie</a></li>
+          <li><a href="actualites.html">Actualités</a></li>
+          <li><a href="index.html#partenaires">Partenaires</a></li>
+          <li><a href="contact.html" class="nav-cta">Contact</a></li>
+        </ul>
+        <button class="burger-btn" id="burgerBtn"><span></span><span></span><span></span></button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
     <div class="container">
-      <span><i class="fas fa-map-marker-alt"></i>Sénégal · Bénin · Togo</span>
-      <span><i class="fas fa-envelope"></i>contact@projetp3v.org</span>
-      <div class="ribbon-socials">
-        <a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-x-twitter"></i></a>
-        <a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-youtube"></i></a>
+      <div class="page-hero-content">
+        <div class="page-hero-eyebrow">Médiathèque P3V</div>
+        <h1><i class="fas fa-images" style="color:var(--primary)"></i> Galerie <em
+            style="color:var(--primary);font-style:normal">Photos & Vidéos</em></h1>
+        <p>Découvrez les activités du projet P3V à travers notre collection de photos et vidéos de terrain.</p>
+        <nav class="breadcrumb-nav">
+          <a href="index.html">Accueil</a><i class="fas fa-chevron-right"></i><span>Galerie</span>
+        </nav>
       </div>
     </div>
   </div>
-  <nav id="main-nav">
+
+  <!-- GALERIE -->
+  <section style="padding:80px 0; background:var(--white)">
     <div class="container">
-      <a href="index.html" class="nav-logo">
-        <div class="nl-badge">P3V</div>
-        <div class="nl-text"><strong>Projet P3V</strong><span>Para-Professionnels Vétérinaires</span></div>
-      </a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="index.html">Accueil</a></li>
-        <li><a href="projet.html">Le Projet</a></li>
-        <li><a href="pays.html">Pays</a></li>
-        <li><a href="galerie.html" class="active">Galerie</a></li>
-        <li><a href="actualites.html">Actualités</a></li>
-        <li><a href="index.html#partenaires">Partenaires</a></li>
-        <li><a href="contact.html" class="nav-cta">Contact</a></li>
-      </ul>
-      <button class="burger-btn" id="burgerBtn"><span></span><span></span><span></span></button>
-    </div>
-  </nav>
-</header>
 
-<!-- PAGE HERO -->
-<div class="page-hero">
-  <div class="container">
-    <div class="page-hero-content">
-      <div class="page-hero-eyebrow">Médiathèque P3V</div>
-      <h1><i class="fas fa-images" style="color:var(--omsa-teal)"></i> Galerie <em style="color:var(--omsa-teal);font-style:normal">Photos & Vidéos</em></h1>
-      <p>Découvrez les activités du projet P3V à travers notre collection de photos et vidéos de terrain.</p>
-      <nav class="breadcrumb-nav">
-        <a href="index.html">Accueil</a><i class="fas fa-chevron-right"></i><span>Galerie</span>
-      </nav>
-    </div>
-  </div>
-</div>
-
-<!-- GALERIE -->
-<section style="padding:80px 0; background:var(--white)">
-  <div class="container">
-
-    <!-- Contrôles -->
-    <div class="galerie-header-controls" data-reveal="up">
-      <div class="galerie-filters" style="margin-bottom:0;justify-content:flex-start">
-        <button class="gf-btn active" data-filter="all">Tout</button>
-        <button class="gf-btn" data-filter="formation">Formation</button>
-        <button class="gf-btn" data-filter="terrain">Terrain</button>
-        <button class="gf-btn" data-filter="evenement">Événements</button>
-        <button class="gf-btn" data-filter="video">Vidéos</button>
-      </div>
-      <div style="display:flex;gap:12px;align-items:center">
-        <div class="galerie-search">
-          <input type="text" id="searchInput" placeholder="Rechercher..."/>
-          <button><i class="fas fa-search"></i></button>
+      <!-- Contrôles -->
+      <div class="galerie-header-controls" data-reveal="up">
+        <div class="galerie-filters" style="margin-bottom:0;justify-content:flex-start">
+          <button class="gf-btn active" data-filter="all">Tout</button>
+          <button class="gf-btn" data-filter="formation">Formation</button>
+          <button class="gf-btn" data-filter="terrain">Terrain</button>
+          <button class="gf-btn" data-filter="evenement">Événements</button>
+          <button class="gf-btn" data-filter="video">Vidéos</button>
         </div>
-        <span class="galerie-count" id="galerieCount">Affichage de <strong>0</strong> médias</span>
-      </div>
-    </div>
-
-    <!-- Grille -->
-    <div class="galerie-grid-full" id="galerieGridFull" data-reveal="up" style="transition-delay:.1s">
-      <!-- Chargé dynamiquement -->
-    </div>
-
-    <!-- Empty state -->
-    <div class="empty-state" id="emptyState" style="display:none">
-      <i class="fas fa-images"></i>
-      <h3>Aucun média trouvé</h3>
-      <p>Essayez un autre filtre ou consultez notre page d'administration pour ajouter des médias.</p>
-      <a href="admin.html" class="btn-primary-pill" style="margin-top:16px">
-        <i class="fas fa-plus"></i> Ajouter des médias
-      </a>
-    </div>
-
-    <div class="pagination" id="pagination"></div>
-  </div>
-</section>
-
-<!-- UPLOAD SECTION -->
-<section style="background:var(--light2);padding:64px 0">
-  <div class="container">
-    <div class="section-header" data-reveal="up">
-      <div class="section-eyebrow">Contribuez</div>
-      <h2 class="section-heading">Partagez vos <em>Photos & Vidéos</em></h2>
-      <div class="sh-underline center"></div>
-      <p class="section-sub">Vous avez des photos ou vidéos des activités P3V ? Partagez-les avec la communauté du projet via la page d'administration.</p>
-    </div>
-    <div style="max-width:600px;margin:0 auto;text-align:center" data-reveal="up" style="transition-delay:.1s">
-      <a href="admin.html" class="btn-primary-pill" style="font-size:1rem;padding:16px 36px">
-        <i class="fas fa-upload"></i> Accéder à la médiathèque admin
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- LIGHTBOX -->
-<div class="lightbox-overlay" id="lightbox">
-  <div class="lightbox-inner">
-    <button class="lightbox-close" id="lightboxClose"><i class="fas fa-times"></i></button>
-    <button class="lightbox-nav lightbox-prev" id="lightboxPrev"><i class="fas fa-chevron-left"></i></button>
-    <button class="lightbox-nav lightbox-next" id="lightboxNext"><i class="fas fa-chevron-right"></i></button>
-    <img src="" alt="" class="lightbox-img" id="lightboxImg"/>
-    <div class="lightbox-caption">
-      <h3 id="lightboxTitle"></h3>
-      <p id="lightboxDesc"></p>
-    </div>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-wave"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,0 C300,60 900,60 1200,0 L1200,60 L0,60 Z" fill="#0A1628"/></svg></div>
-  <div class="footer-main">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="fg-brand">
-          <a href="index.html" class="fg-logo">
-            <div class="fg-logo-badge">P3V</div>
-            <div class="fg-logo-text"><strong>Projet P3V</strong><span>Para-Professionnels Vétérinaires</span></div>
-          </a>
-          <p class="fg-desc">Initiative régionale de professionnalisation des para-vétérinaires. Financé par l'AFD, mis en œuvre par l'OMSA/WOAH.</p>
-          <div class="footer-socials"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-x-twitter"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-youtube"></i></a></div>
+        <div style="display:flex;gap:12px;align-items:center">
+          <div class="galerie-search">
+            <input type="text" id="searchInput" placeholder="Rechercher..." />
+            <button><i class="fas fa-search"></i></button>
+          </div>
+          <span class="galerie-count" id="galerieCount">Affichage de <strong>0</strong> médias</span>
         </div>
-        <div class="footer-col"><h5>Navigation</h5><div class="footer-links"><a href="index.html">Accueil</a><a href="projet.html">Le Projet</a><a href="pays.html">Pays</a><a href="galerie.html">Galerie</a><a href="actualites.html">Actualités</a><a href="contact.html">Contact</a></div></div>
-        <div class="footer-col"><h5>Galerie</h5><div class="footer-links"><a href="galerie.html">Toutes les photos</a><a href="galerie.html">Vidéos</a><a href="admin.html">Ajouter un média</a></div></div>
-        <div class="footer-col"><h5>Contact</h5><div class="footer-contact-list"><div class="fcl-row"><i class="fas fa-envelope"></i><span>contact@projetp3v.org</span></div><div class="fcl-row"><i class="fas fa-map-marker-alt"></i><span>EISMV Dakar, Sénégal</span></div></div></div>
+      </div>
+
+      <!-- Grille -->
+      <div class="galerie-grid-full" id="galerieGridFull" data-reveal="up" style="transition-delay:.1s">
+        <!-- Chargé dynamiquement -->
+      </div>
+
+      <!-- Empty state -->
+      <div class="empty-state" id="emptyState" style="display:none">
+        <i class="fas fa-images"></i>
+        <h3>Aucun média trouvé</h3>
+        <p>Essayez un autre filtre ou consultez notre page d'administration pour ajouter des médias.</p>
+        <a href="admin.html" class="btn-primary-pill" style="margin-top:16px">
+          <i class="fas fa-plus"></i> Ajouter des médias
+        </a>
+      </div>
+
+      <div class="pagination" id="pagination"></div>
+    </div>
+  </section>
+
+  <!-- UPLOAD SECTION -->
+  <section style="background:var(--light2);padding:64px 0">
+    <div class="container">
+      <div class="section-header" data-reveal="up">
+        <div class="section-eyebrow">Contribuez</div>
+        <h2 class="section-heading">Partagez vos <em>Photos & Vidéos</em></h2>
+        <div class="sh-underline center"></div>
+        <p class="section-sub">Vous avez des photos ou vidéos des activités P3V ? Partagez-les avec la communauté du
+          projet via la page d'administration.</p>
+      </div>
+      <div style="max-width:600px;margin:0 auto;text-align:center" data-reveal="up" style="transition-delay:.1s">
+        <a href="admin.html" class="btn-primary-pill" style="font-size:1rem;padding:16px 36px">
+          <i class="fas fa-upload"></i> Accéder à la médiathèque admin
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox-overlay" id="lightbox">
+    <div class="lightbox-inner">
+      <button class="lightbox-close" id="lightboxClose"><i class="fas fa-times"></i></button>
+      <button class="lightbox-nav lightbox-prev" id="lightboxPrev"><i class="fas fa-chevron-left"></i></button>
+      <button class="lightbox-nav lightbox-next" id="lightboxNext"><i class="fas fa-chevron-right"></i></button>
+      <img src="" alt="" class="lightbox-img" id="lightboxImg" />
+      <div class="lightbox-caption">
+        <h3 id="lightboxTitle"></h3>
+        <p id="lightboxDesc"></p>
       </div>
     </div>
   </div>
-  <div class="footer-bottom"><div class="container"><div class="fb-inner"><span>© 2024 Projet P3V</span><div class="fb-right"><a href="#">Mentions légales</a><a href="admin.html">Admin</a></div></div></div></div>
-</footer>
 
-<button id="backToTop"><i class="fas fa-chevron-up"></i></button>
-<script src="js/pages.js"></script>
-<script src="js/galerie.js"></script>
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-wave"><svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+        <path d="M0,0 C300,60 900,60 1200,0 L1200,60 L0,60 Z" fill="#27282A" />
+      </svg></div>
+    <div class="footer-main">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="fg-brand">
+            <a href="index.html" class="fg-logo">
+              <div class="loader-badge" style="width:40px;height:40px;font-size:1rem;margin:0;border-radius:10px">P3V
+              </div>
+              <div class="fg-logo-text"><strong>Projet P3V</strong><span>Para-Professionnels Vétérinaires</span></div>
+            </a>
+            <p class="fg-desc">Initiative régionale de professionnalisation des para-vétérinaires. Financé par l'AFD,
+              mis en œuvre par l'OMSA/WOAH.</p>
+            <div class="footer-socials"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i
+                  class="fab fa-x-twitter"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i
+                  class="fab fa-youtube"></i></a></div>
+          </div>
+          <div class="footer-col">
+            <h5>Navigation</h5>
+            <div class="footer-links"><a href="index.html">Accueil</a><a href="projet.html">Le Projet</a><a
+                href="pays.html">Pays</a><a href="galerie.html">Galerie</a><a href="actualites.html">Actualités</a><a
+                href="contact.html">Contact</a></div>
+          </div>
+          <div class="footer-col">
+            <h5>Galerie</h5>
+            <div class="footer-links"><a href="galerie.html">Toutes les photos</a><a href="galerie.html">Vidéos</a><a
+                href="admin.html">Ajouter un média</a></div>
+          </div>
+          <div class="footer-col">
+            <h5>Contact</h5>
+            <div class="footer-contact-list">
+              <div class="fcl-row"><i class="fas fa-envelope"></i><span>contact@projetp3v.org</span></div>
+              <div class="fcl-row"><i class="fas fa-map-marker-alt"></i><span>EISMV Dakar, Sénégal</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="fb-inner"><span>© 2024 Projet P3V</span>
+          <div class="fb-right"><a href="#">Mentions légales</a><a href="admin.html">Admin</a></div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button id="backToTop"><i class="fas fa-chevron-up"></i></button>
+  <script src="js/pages.js"></script>
+  <script src="js/galerie.js"></script>
 </body>
+
 </html>

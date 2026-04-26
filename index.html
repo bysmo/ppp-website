@@ -1,963 +1,1075 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Projet P3V – Professionnalisation des Para-Professionnels Vétérinaires</title>
-  <meta name="description" content="Le projet P3V professionnalise les para-vétérinaires au Sénégal, Bénin et Togo. Financé par l'AFD, mis en œuvre par l'OMSA/WOAH."/>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css"/>
-  <link rel="stylesheet" href="css/style.css"/>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projet P3V – Professionnalisation des Para-Professionnels Vétérinaires</title>
+  <meta name="description"
+    content="Le projet P3V professionnalise les para-professionnels au Sénégal, Bénin et Togo. Financé par l'AFD, mis en œuvre par l'OMSA/WOAH." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
   <style>
     /* ── Styles spécifiques index ── */
     .omsa-badge-strip {
-      background: linear-gradient(135deg, #003F87, #00879E);
-      color: #fff; font-size:.72rem; font-weight:700;
-      text-align:center; padding:8px; letter-spacing:1px;
-      text-transform:uppercase;
+      background: var(--grad-orange);
+      color: #fff;
+      font-size: .72rem;
+      font-weight: 700;
+      text-align: center;
+      padding: 8px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }
   </style>
 </head>
+
 <body>
 
-<!-- CURSOR -->
-<div class="cursor" id="cursor"></div>
-<div class="cursor-follower" id="cursorFollower"></div>
+  <!-- CURSOR -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
 
-<!-- LOADER -->
-<div id="pageLoader">
-  <div class="loader-content">
-    <div class="loader-badge">P3V</div>
-    <div class="loader-title">PROJET P3V</div>
-    <div class="loader-subtitle">Professionnalisation des Para-Professionnels Vétérinaires</div>
-    <div class="loader-line"><div class="loader-line-fill" id="loaderFill"></div></div>
-    <div class="loader-pct" id="loaderPct">0%</div>
+  <!-- LOADER -->
+  <div id="pageLoader">
+    <div class="loader-content">
+      <div class="loader-partners">
+        <img src="images/logo-woah.png" alt="OMSA" />
+        <img src="images/logo-afd.png" alt="AFD" />
+        <img src="images/logo-eismv.png" alt="EISMV" />
+        <img src="images/logo-far.png" alt="Réseau FAR" />
+      </div>
+      <div class="loader-title">PROJET P3V</div>
+      <div class="loader-subtitle">Professionnalisation des Para-Professionnels Vétérinaires</div>
+      <div class="loader-line">
+        <div class="loader-line-fill" id="loaderFill"></div>
+      </div>
+      <div class="loader-pct" id="loaderPct">0%</div>
+    </div>
   </div>
-</div>
 
-<!-- HEADER -->
-<header id="site-header">
-  <div class="header-ribbon">
+  <!-- HEADER -->
+  <header id="site-header">
+    <div class="header-ribbon">
+      <div class="container">
+        Le projet P3V est financé par l’Agence française de développement (AFD) et mis en œuvre par l’Organisation
+        mondiale de la santé animale (OMSA), en partenariat avec l'École Inter-États des Sciences et Médecine
+        Vétérinaires (EISMV) de Dakar et le Réseau FAR. Sénégal - Togo - Bénin
+      </div>
+    </div>
+
+    <nav id="main-nav">
+      <div class="container">
+        <a href="index.html" class="nav-logo">
+          <div class="header-partners">
+            <img src="images/logo-woah.png" alt="OMSA" />
+            <img src="images/logo-afd.png" alt="AFD" />
+            <img src="images/logo-eismv.png" alt="EISMV" />
+            <img src="images/logo-far.png" alt="Réseau FAR" />
+          </div>
+          <div class="nl-text">
+            <strong>Projet P3V</strong>
+            <span>Para-Professionnels Vétérinaires</span>
+          </div>
+        </a>
+
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html" class="active">Accueil</a></li>
+          <li><a href="projet.html">Le Projet</a></li>
+          <li><a href="pays.html">Pays</a></li>
+          <li><a href="galerie.html">Galerie</a></li>
+          <li><a href="actualites.html">Actualités</a></li>
+          <li><a href="index.html#partenaires">Partenaires</a></li>
+          <li><a href="contact.html" class="nav-cta">Contact</a></li>
+        </ul>
+
+        <button class="burger-btn" id="burgerBtn" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ══════════ HERO ══════════ -->
+  <section id="hero">
+    <div class="hero-bg-slider" id="heroBgSlider">
+      <div class="hbs-slide active" style="background-image:url('images/hero-ppv-vaccination.jpg')"></div>
+      <div class="hbs-slide" style="background-image:url('images/hero-formation-ppv.jpg')"></div>
+      <div class="hbs-slide" style="background-image:url('images/hero-eleveurs-sahel.jpg')"></div>
+    </div>
+    <div class="hero-overlay-gradient"></div>
+    <div class="hero-particles" id="heroParticles"></div>
+
+    <div class="hero-body container">
+      <div class="hero-kicker">
+        <span class="kicker-dot"></span>
+        <span>Financé par l'AFD &nbsp;·&nbsp; Mis en œuvre par l'OMSA/WOAH</span>
+      </div>
+      <h1 class="hero-title">
+        <span class="ht-line">Professionnaliser</span>
+        <span class="ht-line accent">les para-professionnels</span>
+        <span class="ht-line">vétérinaires</span>
+      </h1>
+      <p class="hero-desc">
+        Un projet régional d'envergure pour structurer la formation, renforcer les compétences
+        et améliorer la santé animale au <strong>Sénégal</strong>, au <strong>Bénin</strong> et au
+        <strong>Togo</strong>.
+      </p>
+      <div class="hero-actions">
+        <a href="projet.html" class="btn-hero-primary">
+          <span>Découvrir le projet</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+        <a href="galerie.html" class="btn-hero-ghost">
+          <i class="fas fa-play-circle"></i>
+          <span>Voir la galerie</span>
+        </a>
+      </div>
+      <div class="hero-flags">
+        <div class="hf-item">
+          <img src="https://flagcdn.com/w40/sn.png" srcset="https://flagcdn.com/w80/sn.png 2x" width="20" alt="Sénégal"
+            class="hf-flag-img">
+          <span>Sénégal</span>
+        </div>
+        <div class="hf-sep">·</div>
+        <div class="hf-item">
+          <img src="https://flagcdn.com/w40/bj.png" srcset="https://flagcdn.com/w80/bj.png 2x" width="20" alt="Bénin"
+            class="hf-flag-img">
+          <span>Bénin</span>
+        </div>
+        <div class="hf-sep">·</div>
+        <div class="hf-item">
+          <img src="https://flagcdn.com/w40/tg.png" srcset="https://flagcdn.com/w80/tg.png 2x" width="20" alt="Togo"
+            class="hf-flag-img">
+          <span>Togo</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-bullets" id="heroBullets">
+      <button class="hb active" data-slide="0"></button>
+      <button class="hb" data-slide="1"></button>
+      <button class="hb" data-slide="2"></button>
+    </div>
+
+    <div class="hero-stats-bar">
+      <div class="container">
+        <div class="hsb-inner">
+          <div class="hsb-item">
+            <div class="hsb-label">Projet</div>
+            <div class="hsb-num">P3V</div>
+
+          </div>
+          <div class="hsb-divider"></div>
+          <div class="hsb-item">
+            <div class="hsb-label">Exécution</div>
+            <div class="hsb-num">2020 – 2026</div>
+
+          </div>
+          <div class="hsb-divider"></div>
+          <div class="hsb-item">
+            <div class="hsb-label">Pays d'intervention</div>
+            <div class="hsb-num">Sénégal, Togo, Bénin</div>
+
+          </div>
+          <div class="hsb-divider"></div>
+          <div class="hsb-item" title="Agence française de développement">
+
+            <div class="hsb-label">Bailleur de fonds</div>
+            <div class="hsb-num">AFD</div>
+          </div>
+          <div class="hsb-divider"></div>
+          <div class="hsb-item" title="Organisation mondiale de la santé animale">
+
+            <div class="hsb-label">Maître d'œuvre</div>
+            <div class="hsb-num">OMSA</div>
+          </div>
+          <div class="hsb-divider"></div>
+          <div class="hsb-item">
+
+            <div class="hsb-label">Partenaires Tech.</div>
+            <div class="hsb-num">EISMV, FAR</div>
+          </div>
+          <div class="hsb-divider"></div>
+          <div class="hsb-item"
+            title="Togo: INFA Tové - ISMA Kara | Sénégal: ISFAR - CNFTEIA - USSEIN | Bénin: EPAC - LAMS">
+
+            <div class="hsb-label">Établissements</div>
+            <div class="hsb-num">7 Centres</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a href="#partenaires-ribbon" class="hero-scroll-arrow">
+      <span>Découvrir</span>
+      <div class="scroll-arrow-anim"><i class="fas fa-chevron-down"></i></div>
+    </a>
+  </section>
+
+  <!-- ══════════ BANDEAU LOGOS PARTENAIRES DÉFILANTS ══════════ -->
+  <div class="partners-ribbon" id="partenaires-ribbon">
+    <div class="partners-ribbon-inner">
+      <div class="partners-ribbon-track" id="partnersTrack">
+        <!-- Partenaires avec logos -->
+        <div class="prt-logo"><img src="images/logo-woah.png" alt="OMSA" /></div>
+        <div class="prt-logo"><img src="images/logo-afd.png" alt="AFD" /></div>
+        <div class="prt-logo"><img src="images/logo-far.png" alt="Réseau FAR" /></div>
+        <div class="prt-logo"><img src="images/logo-eismv.png" alt="EISMV" /></div>
+
+        <!-- Partenaires avec texte -->
+        <div class="prt-logo"><span class="prt-logo-text">The Brooke</span></div>
+        <div class="prt-logo"><span class="prt-logo-text">VSF Suisse Togo</span></div>
+        <div class="prt-logo"><span class="prt-logo-text">PRAPS</span></div>
+        <div class="prt-logo"><span class="prt-logo-text">ODVS Sénégal</span></div>
+        <div class="prt-logo"><span class="prt-logo-text">ONMVT Togo</span></div>
+        <div class="prt-logo"><span class="prt-logo-text">ONMVB Bénin</span></div>
+        <div class="prt-logo"><span class="prt-logo-text">MAEP Bénin</span></div>
+        <div class="prt-logo"><span class="prt-logo-text">MAPRASA Togo</span></div>
+        <div class="prt-logo"><span class="prt-logo-text">MEPA Sénégal</span></div>
+        <div class="prt-logo"><span class="prt-logo-text">Association des PPV</span></div>
+
+        <!-- DUPLICATA POUR BOUCLE INFINIE -->
+        <div class="prt-logo"><img src="images/logo-woah.png" alt="OMSA" /></div>
+        <div class="prt-logo"><img src="images/logo-afd.png" alt="AFD" /></div>
+        <div class="prt-logo"><img src="images/logo-far.png" alt="Réseau FAR" /></div>
+        <div class="prt-logo"><img src="images/logo-eismv.png" alt="EISMV" /></div>
+        <div class="prt-logo"><span class="prt-logo-text">The Brooke</span></div>
+        <div class="prt-logo"><span class="prt-logo-text">VSF Suisse Togo</span></div>
+        <div class="prt-logo"><span class="prt-logo-text">PRAPS</span></div>
+        <div class="prt-logo"><span class="prt-logo-text">ODVS Sénégal</span></div>
+        <div class="prt-logo"><span class="prt-logo-text">ONMVT Togo</span></div>
+        <div class="prt-logo"><span class="prt-logo-text">ONMVB Bénin</span></div>
+        <div class="prt-logo"><span class="prt-logo-text">MAEP Bénin</span></div>
+        <div class="prt-logo"><span class="prt-logo-text">MAPRASA Togo</span></div>
+        <div class="prt-logo"><span class="prt-logo-text">MEPA Sénégal</span></div>
+        <div class="prt-logo"><span class="prt-logo-text">Association des PPV</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ SECTION PROJET ══════════ -->
+  <section id="projet" class="s-projet">
     <div class="container">
-      <span><i class="fas fa-map-marker-alt"></i>Sénégal · Bénin · Togo</span>
-      <span><i class="fas fa-envelope"></i>contact@projetp3v.org</span>
-      <div class="ribbon-socials">
-        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" aria-label="X"><i class="fab fa-x-twitter"></i></a>
-        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-      </div>
-    </div>
-  </div>
-
-  <nav id="main-nav">
-    <div class="container">
-      <a href="index.html" class="nav-logo">
-        <div class="nl-badge">P3V</div>
-        <div class="nl-text">
-          <strong>Projet P3V</strong>
-          <span>Para-Professionnels Vétérinaires</span>
-        </div>
-      </a>
-
-      <ul class="nav-links" id="navLinks">
-        <li><a href="index.html" class="active">Accueil</a></li>
-        <li><a href="projet.html">Le Projet</a></li>
-        <li><a href="pays.html">Pays</a></li>
-        <li><a href="galerie.html">Galerie</a></li>
-        <li><a href="actualites.html">Actualités</a></li>
-        <li><a href="index.html#partenaires">Partenaires</a></li>
-        <li><a href="contact.html" class="nav-cta">Contact</a></li>
-      </ul>
-
-      <button class="burger-btn" id="burgerBtn" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
-</header>
-
-<!-- ══════════ HERO ══════════ -->
-<section id="hero">
-  <div class="hero-bg-slider" id="heroBgSlider">
-    <div class="hbs-slide active" style="background-image:url('images/hero-ppv-vaccination.jpg')"></div>
-    <div class="hbs-slide" style="background-image:url('images/hero-formation-ppv.jpg')"></div>
-    <div class="hbs-slide" style="background-image:url('images/hero-eleveurs-sahel.jpg')"></div>
-  </div>
-  <div class="hero-overlay-gradient"></div>
-  <div class="hero-particles" id="heroParticles"></div>
-
-  <div class="hero-body container">
-    <div class="hero-kicker">
-      <span class="kicker-dot"></span>
-      <span>Financé par l'AFD &nbsp;·&nbsp; Mis en œuvre par l'OMSA/WOAH</span>
-    </div>
-    <h1 class="hero-title">
-      <span class="ht-line">Professionnaliser</span>
-      <span class="ht-line accent">les para-vétérinaires</span>
-      <span class="ht-line">d'Afrique de l'Ouest</span>
-    </h1>
-    <p class="hero-desc">
-      Un projet régional d'envergure pour structurer la formation, renforcer les compétences
-      et améliorer la santé animale au <strong>Sénégal</strong>, au <strong>Bénin</strong> et au <strong>Togo</strong>.
-    </p>
-    <div class="hero-actions">
-      <a href="projet.html" class="btn-hero-primary">
-        <span>Découvrir le projet</span>
-        <i class="fas fa-arrow-right"></i>
-      </a>
-      <a href="galerie.html" class="btn-hero-ghost">
-        <i class="fas fa-play-circle"></i>
-        <span>Voir la galerie</span>
-      </a>
-    </div>
-    <div class="hero-flags">
-      <div class="hf-item"><span class="hf-flag">🇸🇳</span><span>Sénégal</span></div>
-      <div class="hf-sep">·</div>
-      <div class="hf-item"><span class="hf-flag">🇧🇯</span><span>Bénin</span></div>
-      <div class="hf-sep">·</div>
-      <div class="hf-item"><span class="hf-flag">🇹🇬</span><span>Togo</span></div>
-    </div>
-  </div>
-
-  <div class="hero-bullets" id="heroBullets">
-    <button class="hb active" data-slide="0"></button>
-    <button class="hb" data-slide="1"></button>
-    <button class="hb" data-slide="2"></button>
-  </div>
-
-  <div class="hero-stats-bar">
-    <div class="container">
-      <div class="hsb-inner">
-        <div class="hsb-item">
-          <div class="hsb-num"><span class="hero-count" data-target="115">0</span><span>+</span></div>
-          <div class="hsb-label">PPV formés</div>
-        </div>
-        <div class="hsb-divider"></div>
-        <div class="hsb-item">
-          <div class="hsb-num"><span class="hero-count" data-target="5000">0</span><span>+</span></div>
-          <div class="hsb-label">Éleveurs bénéficiaires</div>
-        </div>
-        <div class="hsb-divider"></div>
-        <div class="hsb-item">
-          <div class="hsb-num"><span>3</span></div>
-          <div class="hsb-label">Pays d'intervention</div>
-        </div>
-        <div class="hsb-divider"></div>
-        <div class="hsb-item">
-          <div class="hsb-num"><span>7</span></div>
-          <div class="hsb-label">Centres de formation</div>
-        </div>
-        <div class="hsb-divider"></div>
-        <div class="hsb-item">
-          <div class="hsb-num"><span>2022</span><span>–2026</span></div>
-          <div class="hsb-label">Durée du projet</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <a href="#partenaires-ribbon" class="hero-scroll-arrow">
-    <span>Découvrir</span>
-    <div class="scroll-arrow-anim"><i class="fas fa-chevron-down"></i></div>
-  </a>
-</section>
-
-<!-- ══════════ BANDEAU LOGOS PARTENAIRES DÉFILANTS ══════════ -->
-<div class="partners-ribbon" id="partenaires-ribbon">
-  <div class="partners-ribbon-inner">
-    <div class="partners-ribbon-track" id="partnersTrack">
-      <!-- Item 1 -->
-      <div class="prt-logo">
-        <img src="images/logo-woah.png" alt="OMSA/WOAH"/>
-      </div>
-      <!-- Item 2 -->
-      <div class="prt-logo">
-        <img src="images/logo-afd.png" alt="AFD"/>
-      </div>
-      <!-- Item 3 -->
-      <div class="prt-logo">
-        <img src="images/logo-eismv.png" alt="EISMV"/>
-      </div>
-      <!-- Item 4 -->
-      <div class="prt-logo">
-        <img src="images/logo-far.png" alt="Réseau FAR"/>
-      </div>
-      <!-- Item 5 -->
-      <div class="prt-logo">
-        <img src="images/logo-cilss.png" alt="CILSS"/>
-      </div>
-      <!-- Texte badges pour partenaires sans logo image -->
-      <div class="prt-logo"><span class="prt-logo-text">DSV Sénégal</span></div>
-      <div class="prt-logo"><span class="prt-logo-text">MAEP Bénin</span></div>
-      <div class="prt-logo"><span class="prt-logo-text">MAEH Togo</span></div>
-      <div class="prt-logo"><span class="prt-logo-text">UA-BIRA</span></div>
-      <div class="prt-logo"><span class="prt-logo-text">DGSV Togo</span></div>
-      <!-- Duplicate pour boucle infinie -->
-      <div class="prt-logo">
-        <img src="images/logo-woah.png" alt="OMSA/WOAH"/>
-      </div>
-      <div class="prt-logo">
-        <img src="images/logo-afd.png" alt="AFD"/>
-      </div>
-      <div class="prt-logo">
-        <img src="images/logo-eismv.png" alt="EISMV"/>
-      </div>
-      <div class="prt-logo">
-        <img src="images/logo-far.png" alt="Réseau FAR"/>
-      </div>
-      <div class="prt-logo">
-        <img src="images/logo-cilss.png" alt="CILSS"/>
-      </div>
-      <div class="prt-logo"><span class="prt-logo-text">DSV Sénégal</span></div>
-      <div class="prt-logo"><span class="prt-logo-text">MAEP Bénin</span></div>
-      <div class="prt-logo"><span class="prt-logo-text">MAEH Togo</span></div>
-      <div class="prt-logo"><span class="prt-logo-text">UA-BIRA</span></div>
-      <div class="prt-logo"><span class="prt-logo-text">DGSV Togo</span></div>
-    </div>
-  </div>
-</div>
-
-<!-- ══════════ SECTION PROJET ══════════ -->
-<section id="projet" class="s-projet">
-  <div class="container">
-    <div class="projet-grid">
-      <div class="projet-visual" data-reveal="left">
-        <div class="pv-frame">
-          <img src="images/hero-ppv-vaccination.jpg" alt="PPV en action – vaccination animale au Sahel"/>
-          <div class="pv-deco-1"></div>
-          <div class="pv-deco-2"></div>
-          <div class="pv-card floating">
-            <i class="fas fa-award"></i>
-            <div>
-              <strong>Certifié & validé</strong>
-              <span>par l'AFD & l'OMSA/WOAH</span>
-            </div>
-          </div>
-        </div>
-        <div class="pv-stat-bubble" data-reveal="up" style="transition-delay:.3s">
-          <div class="psb-num"><span class="count-it" data-target="115">0</span>+</div>
-          <div class="psb-txt">PPV formés dans 3 pays</div>
-        </div>
-      </div>
-
-      <div class="projet-text" data-reveal="right">
-        <div class="section-eyebrow">À propos du projet</div>
-        <h2 class="section-heading">Le Projet <em>P3V</em></h2>
-        <div class="sh-underline"></div>
-        <p class="projet-lead">Le projet de <strong>Professionnalisation des Para-Professionnels Vétérinaires (P3V)</strong> est une initiative régionale visant à structurer et à renforcer le secteur de la santé animale en Afrique de l'Ouest.</p>
-        <p>Financé par l'<strong>Agence Française de Développement (AFD)</strong> et mis en œuvre par l'<strong>Organisation mondiale de la santé animale (OMSA/WOAH)</strong>, en partenariat avec l'<strong>EISMV de Dakar</strong> et le <strong>Réseau FAR</strong>, ce projet intervient au Sénégal, au Bénin et au Togo sur la période 2022–2026.</p>
-
-        <div class="projet-obj">
-          <div class="po-item" data-reveal="up" style="transition-delay:.1s">
-            <div class="poi-icon"><i class="fas fa-graduation-cap"></i></div>
-            <div><strong>Référentiels de formation</strong><span>Élaboration de curricula harmonisés et adaptés</span></div>
-          </div>
-          <div class="po-item" data-reveal="up" style="transition-delay:.2s">
-            <div class="poi-icon"><i class="fas fa-building"></i></div>
-            <div><strong>Renforcement institutionnel</strong><span>Appui aux centres et institutions de formation</span></div>
-          </div>
-          <div class="po-item" data-reveal="up" style="transition-delay:.3s">
-            <div class="poi-icon"><i class="fas fa-gavel"></i></div>
-            <div><strong>Cadre réglementaire</strong><span>Reconnaissance officielle du statut des PPV</span></div>
-          </div>
-          <div class="po-item" data-reveal="up" style="transition-delay:.4s">
-            <div class="poi-icon"><i class="fas fa-chart-line"></i></div>
-            <div><strong>Suivi & capitalisation</strong><span>Évaluation d'impact et diffusion des bonnes pratiques</span></div>
-          </div>
-        </div>
-
-        <a href="projet.html" class="btn-primary-pill">
-          En savoir plus <i class="fas fa-long-arrow-alt-right"></i>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ COMPOSANTES ══════════ -->
-<section id="composantes" class="s-composantes">
-  <div class="composantes-bg-shape"></div>
-  <div class="container">
-    <div class="section-header" data-reveal="up">
-      <div class="section-eyebrow">Organisation du projet</div>
-      <h2 class="section-heading">Les <em>4 Composantes</em> Stratégiques</h2>
-      <div class="sh-underline center"></div>
-      <p class="section-sub">Le projet P3V est structuré autour de quatre composantes complémentaires agissant sur l'ensemble de la chaîne de valeur de la formation vétérinaire.</p>
-    </div>
-
-    <div class="comp-cards">
-      <div class="comp-card" data-reveal="up" style="transition-delay:0ms">
-        <div class="cc-number">01</div>
-        <div class="cc-icon-wrap" style="--cc:#003F87"><i class="fas fa-book-open"></i></div>
-        <h3>Référentiels & Formations</h3>
-        <p>Élaboration participative de référentiels de compétences et curricula adaptés aux contextes nationaux et aux standards OMSA.</p>
-        <ul class="cc-list">
-          <li><i class="fas fa-check-circle"></i>Analyse des besoins en compétences</li>
-          <li><i class="fas fa-check-circle"></i>Développement de curricula harmonisés</li>
-          <li><i class="fas fa-check-circle"></i>Certification et validation nationale</li>
-        </ul>
-        <div class="cc-border" style="background:var(--omsa-blue)"></div>
-      </div>
-
-      <div class="comp-card" data-reveal="up" style="transition-delay:100ms">
-        <div class="cc-number">02</div>
-        <div class="cc-icon-wrap" style="--cc:#00879E"><i class="fas fa-chalkboard-teacher"></i></div>
-        <h3>Renforcement Institutionnel</h3>
-        <p>Appui aux institutions de formation vétérinaire pour améliorer leurs capacités pédagogiques et opérationnelles.</p>
-        <ul class="cc-list">
-          <li><i class="fas fa-check-circle"></i>Formation des formateurs (FdF)</li>
-          <li><i class="fas fa-check-circle"></i>Équipements pédagogiques modernes</li>
-          <li><i class="fas fa-check-circle"></i>Mise en réseau des centres nationaux</li>
-        </ul>
-        <div class="cc-border" style="background:var(--omsa-teal)"></div>
-      </div>
-
-      <div class="comp-card" data-reveal="up" style="transition-delay:200ms">
-        <div class="cc-number">03</div>
-        <div class="cc-icon-wrap" style="--cc:#E8760A"><i class="fas fa-balance-scale"></i></div>
-        <h3>Cadre Réglementaire</h3>
-        <p>Soutien à l'élaboration de cadres législatifs reconnaissant officiellement le statut et les attributions des PPV.</p>
-        <ul class="cc-list">
-          <li><i class="fas fa-check-circle"></i>Dialogue politique sectoriel</li>
-          <li><i class="fas fa-check-circle"></i>Élaboration de textes réglementaires</li>
-          <li><i class="fas fa-check-circle"></i>Reconnaissance officielle des PPV</li>
-        </ul>
-        <div class="cc-border" style="background:var(--omsa-orange)"></div>
-      </div>
-
-      <div class="comp-card" data-reveal="up" style="transition-delay:300ms">
-        <div class="cc-number">04</div>
-        <div class="cc-icon-wrap" style="--cc:#4CAF50"><i class="fas fa-chart-bar"></i></div>
-        <h3>Suivi & Capitalisation</h3>
-        <p>Mise en place d'un système de suivi-évaluation rigoureux et capitalisation des acquis pour une réplication à plus grande échelle.</p>
-        <ul class="cc-list">
-          <li><i class="fas fa-check-circle"></i>Indicateurs de résultats et d'impact</li>
-          <li><i class="fas fa-check-circle"></i>Documentation des bonnes pratiques</li>
-          <li><i class="fas fa-check-circle"></i>Diffusion et communication régionale</li>
-        </ul>
-        <div class="cc-border" style="background:var(--omsa-green)"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ CHIFFRES CLÉS ══════════ -->
-<section id="realisations" class="s-realisations">
-  <div class="container">
-    <div class="section-header" data-reveal="up">
-      <div class="section-eyebrow">Impact du projet</div>
-      <h2 class="section-heading">Chiffres Clés & <em>Réalisations</em></h2>
-      <div class="sh-underline center"></div>
-      <p class="section-sub">Des résultats concrets sur le terrain, au service des éleveurs et de la santé animale au Sahel.</p>
-    </div>
-
-    <div class="real-grid">
-      <div class="real-card" data-reveal="up" style="transition-delay:0ms">
-        <img src="images/ppv-examen-animal.jpg" alt="PPV examen animal" class="rc-img"/>
-        <div class="rc-icon"><i class="fas fa-user-nurse"></i></div>
-        <div class="rc-num"><span class="count-it" data-target="115">0</span><sup>+</sup></div>
-        <div class="rc-label">PPV formés et certifiés</div>
-      </div>
-      <div class="real-card" data-reveal="up" style="transition-delay:100ms">
-        <img src="images/formation-terrain-eismv.jpg" alt="Formation terrain" class="rc-img"/>
-        <div class="rc-icon"><i class="fas fa-users"></i></div>
-        <div class="rc-num"><span class="count-it" data-target="5000">0</span><sup>+</sup></div>
-        <div class="rc-label">Éleveurs bénéficiaires</div>
-      </div>
-      <div class="real-card" data-reveal="up" style="transition-delay:200ms">
-        <img src="images/reunion-communautaire.jpg" alt="Réunion communautaire" class="rc-img"/>
-        <div class="rc-icon"><i class="fas fa-paw"></i></div>
-        <div class="rc-num"><span class="count-it" data-target="25000">0</span><sup>+</sup></div>
-        <div class="rc-label">Animaux traités</div>
-      </div>
-      <div class="real-card" data-reveal="up" style="transition-delay:300ms">
-        <img src="images/hero-eleveurs-sahel.jpg" alt="Éleveurs Sahel" class="rc-img"/>
-        <div class="rc-icon"><i class="fas fa-school"></i></div>
-        <div class="rc-num"><span class="count-it" data-target="7">0</span></div>
-        <div class="rc-label">Centres de formation actifs</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ PAYS ══════════ -->
-<section id="pays" class="s-pays">
-  <div class="container">
-    <div class="section-header" data-reveal="up">
-      <div class="section-eyebrow">Zones d'intervention</div>
-      <h2 class="section-heading">3 Pays, <em>1 Vision</em> Commune</h2>
-      <div class="sh-underline center"></div>
-      <p class="section-sub">Le projet P3V intervient simultanément au Sénégal, au Bénin et au Togo, adaptant son approche aux réalités locales tout en promouvant une harmonisation régionale.</p>
-    </div>
-
-    <div class="pays-tabs" data-reveal="up" style="transition-delay:.1s">
-      <button class="pays-tab-btn active" data-pays="senegal">🇸🇳 Sénégal</button>
-      <button class="pays-tab-btn" data-pays="benin">🇧🇯 Bénin</button>
-      <button class="pays-tab-btn" data-pays="togo">🇹🇬 Togo</button>
-    </div>
-
-    <!-- Sénégal -->
-    <div class="pays-panel active" id="panel-senegal" data-reveal="up">
-      <div class="pays-info-map">
-        <div class="pim-country-card">
-          <div class="pcc-flag">🇸🇳</div>
-          <div class="pcc-name">Sénégal</div>
-          <div class="pcc-desc">Pionnier dans la mise en œuvre, le Sénégal dispose d'un réseau de para-vétérinaires structuré autour de la Direction des Services Vétérinaires (DSV). Le projet y développe des curricula innovants et renforce les centres de formation.</div>
-          <div class="pcc-stats">
-            <div class="pcc-stat"><span class="pcc-stat-num">42</span><span class="pcc-stat-lbl">PPV formés</span></div>
-            <div class="pcc-stat"><span class="pcc-stat-num">3</span><span class="pcc-stat-lbl">Centres</span></div>
-            <div class="pcc-stat"><span class="pcc-stat-num">1800</span><span class="pcc-stat-lbl">Éleveurs</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="pays-details">
-        <div class="pd-block">
-          <h4><i class="fas fa-chart-line"></i>Avancement des activités</h4>
-          <div class="progress-item">
-            <div class="pi-header"><span class="pi-label">Référentiel de formation validé</span><span class="pi-pct">100%</span></div>
-            <div class="pi-bar"><div class="pi-fill" style="--w:100%"></div></div>
-          </div>
-          <div class="progress-item">
-            <div class="pi-header"><span class="pi-label">Formation des formateurs</span><span class="pi-pct">85%</span></div>
-            <div class="pi-bar"><div class="pi-fill" style="--w:85%"></div></div>
-          </div>
-          <div class="progress-item">
-            <div class="pi-header"><span class="pi-label">Cadre réglementaire PPV</span><span class="pi-pct">70%</span></div>
-            <div class="pi-bar"><div class="pi-fill" style="--w:70%"></div></div>
-          </div>
-          <div class="progress-item">
-            <div class="pi-header"><span class="pi-label">Certification des PPV</span><span class="pi-pct">60%</span></div>
-            <div class="pi-bar"><div class="pi-fill" style="--w:60%"></div></div>
-          </div>
-        </div>
-        <div class="pd-block">
-          <h4><i class="fas fa-handshake"></i>Partenaires nationaux</h4>
-          <div class="partenaires-list">
-            <span class="pl-tag"><i class="fas fa-shield-alt"></i>DSV Sénégal</span>
-            <span class="pl-tag"><i class="fas fa-university"></i>EISMV Dakar</span>
-            <span class="pl-tag"><i class="fas fa-leaf"></i>Réseau FAR</span>
-            <span class="pl-tag"><i class="fas fa-building"></i>CERP Thiès</span>
-            <span class="pl-tag"><i class="fas fa-building"></i>CERP Ziguinchor</span>
-          </div>
-        </div>
-        <a href="pays.html" class="btn-outline-pill" style="margin-top:8px">
-          <i class="fas fa-arrow-right"></i> Voir la fiche pays complète
-        </a>
-      </div>
-    </div>
-
-    <!-- Bénin -->
-    <div class="pays-panel" id="panel-benin">
-      <div class="pays-info-map">
-        <div class="pim-country-card" style="background:linear-gradient(135deg, #006478, #003F87)">
-          <div class="pcc-flag">🇧🇯</div>
-          <div class="pcc-name">Bénin</div>
-          <div class="pcc-desc">Au Bénin, le projet s'appuie sur le Ministère de l'Agriculture, de l'Élevage et de la Pêche (MAEP) pour développer un cadre réglementaire solide et structurer la profession d'agent vétérinaire para-professionnel.</div>
-          <div class="pcc-stats">
-            <div class="pcc-stat"><span class="pcc-stat-num">38</span><span class="pcc-stat-lbl">PPV formés</span></div>
-            <div class="pcc-stat"><span class="pcc-stat-num">2</span><span class="pcc-stat-lbl">Centres</span></div>
-            <div class="pcc-stat"><span class="pcc-stat-num">1650</span><span class="pcc-stat-lbl">Éleveurs</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="pays-details">
-        <div class="pd-block">
-          <h4><i class="fas fa-chart-line"></i>Avancement des activités</h4>
-          <div class="progress-item">
-            <div class="pi-header"><span class="pi-label">Référentiel de formation validé</span><span class="pi-pct">90%</span></div>
-            <div class="pi-bar"><div class="pi-fill" style="--w:90%"></div></div>
-          </div>
-          <div class="progress-item">
-            <div class="pi-header"><span class="pi-label">Formation des formateurs</span><span class="pi-pct">75%</span></div>
-            <div class="pi-bar"><div class="pi-fill" style="--w:75%"></div></div>
-          </div>
-          <div class="progress-item">
-            <div class="pi-header"><span class="pi-label">Cadre réglementaire PPV</span><span class="pi-pct">55%</span></div>
-            <div class="pi-bar"><div class="pi-fill" style="--w:55%"></div></div>
-          </div>
-          <div class="progress-item">
-            <div class="pi-header"><span class="pi-label">Certification des PPV</span><span class="pi-pct">50%</span></div>
-            <div class="pi-bar"><div class="pi-fill" style="--w:50%"></div></div>
-          </div>
-        </div>
-        <div class="pd-block">
-          <h4><i class="fas fa-handshake"></i>Partenaires nationaux</h4>
-          <div class="partenaires-list">
-            <span class="pl-tag"><i class="fas fa-shield-alt"></i>MAEP Bénin</span>
-            <span class="pl-tag"><i class="fas fa-university"></i>UA/FSA Abomey</span>
-            <span class="pl-tag"><i class="fas fa-leaf"></i>ATDA</span>
-            <span class="pl-tag"><i class="fas fa-building"></i>CERAQ Parakou</span>
-          </div>
-        </div>
-        <a href="pays.html" class="btn-outline-pill" style="margin-top:8px">
-          <i class="fas fa-arrow-right"></i> Voir la fiche pays complète
-        </a>
-      </div>
-    </div>
-
-    <!-- Togo -->
-    <div class="pays-panel" id="panel-togo">
-      <div class="pays-info-map">
-        <div class="pim-country-card" style="background:linear-gradient(135deg, #2E7D32, #006478)">
-          <div class="pcc-flag">🇹🇬</div>
-          <div class="pcc-name">Togo</div>
-          <div class="pcc-desc">Au Togo, le projet collabore étroitement avec la Direction Générale des Services Vétérinaires (DGSV) et le Ministère de l'Agriculture, de l'Élevage et du Développement Rural pour formaliser le statut des PPV.</div>
-          <div class="pcc-stats">
-            <div class="pcc-stat"><span class="pcc-stat-num">35</span><span class="pcc-stat-lbl">PPV formés</span></div>
-            <div class="pcc-stat"><span class="pcc-stat-num">2</span><span class="pcc-stat-lbl">Centres</span></div>
-            <div class="pcc-stat"><span class="pcc-stat-num">1550</span><span class="pcc-stat-lbl">Éleveurs</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="pays-details">
-        <div class="pd-block">
-          <h4><i class="fas fa-chart-line"></i>Avancement des activités</h4>
-          <div class="progress-item">
-            <div class="pi-header"><span class="pi-label">Référentiel de formation validé</span><span class="pi-pct">88%</span></div>
-            <div class="pi-bar"><div class="pi-fill" style="--w:88%"></div></div>
-          </div>
-          <div class="progress-item">
-            <div class="pi-header"><span class="pi-label">Formation des formateurs</span><span class="pi-pct">72%</span></div>
-            <div class="pi-bar"><div class="pi-fill" style="--w:72%"></div></div>
-          </div>
-          <div class="progress-item">
-            <div class="pi-header"><span class="pi-label">Cadre réglementaire PPV</span><span class="pi-pct">60%</span></div>
-            <div class="pi-bar"><div class="pi-fill" style="--w:60%"></div></div>
-          </div>
-          <div class="progress-item">
-            <div class="pi-header"><span class="pi-label">Certification des PPV</span><span class="pi-pct">48%</span></div>
-            <div class="pi-bar"><div class="pi-fill" style="--w:48%"></div></div>
-          </div>
-        </div>
-        <div class="pd-block">
-          <h4><i class="fas fa-handshake"></i>Partenaires nationaux</h4>
-          <div class="partenaires-list">
-            <span class="pl-tag"><i class="fas fa-shield-alt"></i>DGSV Togo</span>
-            <span class="pl-tag"><i class="fas fa-university"></i>ESP Kara</span>
-            <span class="pl-tag"><i class="fas fa-leaf"></i>ITRA</span>
-            <span class="pl-tag"><i class="fas fa-building"></i>CFSA Lomé</span>
-          </div>
-        </div>
-        <a href="pays.html" class="btn-outline-pill" style="margin-top:8px">
-          <i class="fas fa-arrow-right"></i> Voir la fiche pays complète
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ MÉTHODOLOGIE ══════════ -->
-<section class="methodology-section">
-  <div class="container">
-    <div class="section-header" data-reveal="up">
-      <div class="section-eyebrow">Notre approche</div>
-      <h2 class="section-heading">Méthodologie en <em>5 Étapes</em></h2>
-      <div class="sh-underline center"></div>
-    </div>
-    <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-content">
-          <div class="tl-num">Étape 01</div>
-          <h4>Diagnostic et analyse situationnelle</h4>
-          <p>Réalisation d'études nationales approfondies sur les pratiques existantes, les besoins en formation et le cadre réglementaire des PPV dans chaque pays.</p>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-content">
-          <div class="tl-num">Étape 02</div>
-          <h4>Élaboration participative des référentiels</h4>
-          <p>Conception collaborative des référentiels de compétences et curricula de formation avec l'ensemble des parties prenantes nationales et les experts OMSA.</p>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-content">
-          <div class="tl-num">Étape 03</div>
-          <h4>Formation et renforcement des capacités</h4>
-          <p>Déploiement des programmes de formation initiale et continue des PPV, avec formation des formateurs et dotation en équipements pédagogiques.</p>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-content">
-          <div class="tl-num">Étape 04</div>
-          <h4>Plaidoyer et reconnaissance réglementaire</h4>
-          <p>Accompagnement des gouvernements dans l'élaboration de textes législatifs reconnaissant officiellement le statut des PPV et définissant leurs attributions.</p>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-content">
-          <div class="tl-num">Étape 05</div>
-          <h4>Capitalisation et passage à l'échelle</h4>
-          <p>Documentation des résultats, diffusion des bonnes pratiques et préparation du passage à l'échelle des modèles validés à l'ensemble de la région sahélienne.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ GALERIE APERÇU ══════════ -->
-<section id="galerie" class="s-galerie">
-  <div class="container">
-    <div class="section-header" data-reveal="up">
-      <div class="section-eyebrow">Médiathèque</div>
-      <h2 class="section-heading">Galerie <em>Photos & Vidéos</em></h2>
-      <div class="sh-underline center"></div>
-      <p class="section-sub">Découvrez les activités du projet P3V à travers nos photos et vidéos de terrain.</p>
-    </div>
-
-    <div class="galerie-filters" data-reveal="up" style="transition-delay:.1s">
-      <button class="gf-btn active" data-filter="all">Tout</button>
-      <button class="gf-btn" data-filter="formation">Formation</button>
-      <button class="gf-btn" data-filter="terrain">Terrain</button>
-      <button class="gf-btn" data-filter="evenement">Événements</button>
-    </div>
-
-    <div class="galerie-grid" id="galerieGrid">
-      <div class="galerie-item" data-cat="terrain">
-        <img src="images/hero-ppv-vaccination.jpg" alt="Vaccination bovins – Sénégal" class="gi-img"/>
-        <div class="gi-overlay">
-          <div class="gi-info"><h4>Vaccination bovins – Sénégal</h4><span>Mission terrain, Thiès 2023</span></div>
-        </div>
-        <span class="gi-type">Photo</span>
-      </div>
-      <div class="galerie-item" data-cat="formation">
-        <img src="images/hero-formation-ppv.jpg" alt="Session de formation – Centre EISMV" class="gi-img"/>
-        <div class="gi-overlay">
-          <div class="gi-info"><h4>Session de formation – EISMV</h4><span>Dakar, Février 2024</span></div>
-        </div>
-        <span class="gi-type">Photo</span>
-      </div>
-      <div class="galerie-item" data-cat="terrain">
-        <img src="images/hero-eleveurs-sahel.jpg" alt="Éleveurs Sahel – Bénin" class="gi-img"/>
-        <div class="gi-overlay">
-          <div class="gi-info"><h4>Transhumance – Bénin Nord</h4><span>Mission terrain, Parakou 2023</span></div>
-        </div>
-        <span class="gi-type">Photo</span>
-      </div>
-      <div class="galerie-item" data-cat="terrain">
-        <img src="images/ppv-examen-animal.jpg" alt="PPV examen caprin – Togo" class="gi-img"/>
-        <div class="gi-overlay">
-          <div class="gi-info"><h4>Examen clinique – Togo</h4><span>Mission terrain, Kara 2024</span></div>
-        </div>
-        <span class="gi-type">Photo</span>
-      </div>
-      <div class="galerie-item" data-cat="formation">
-        <img src="images/formation-terrain-eismv.jpg" alt="Formation terrain EISMV" class="gi-img"/>
-        <div class="gi-overlay">
-          <div class="gi-info"><h4>Formation pratique terrain</h4><span>EISMV Dakar, Mars 2024</span></div>
-        </div>
-        <span class="gi-type">Photo</span>
-      </div>
-      <div class="galerie-item" data-cat="evenement">
-        <img src="images/reunion-communautaire.jpg" alt="Réunion communautaire" class="gi-img"/>
-        <div class="gi-overlay">
-          <div class="gi-info"><h4>Atelier communautaire</h4><span>Lomé, Janvier 2024</span></div>
-        </div>
-        <span class="gi-type">Photo</span>
-      </div>
-    </div>
-
-    <div class="text-center mt-lg" data-reveal="up">
-      <a href="galerie.html" class="btn-primary-pill">
-        <i class="fas fa-images"></i> Voir toute la galerie
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ ACTUALITÉS ══════════ -->
-<section id="actualites" class="s-actualites">
-  <div class="container">
-    <div class="section-header" data-reveal="up">
-      <div class="section-eyebrow">Informations</div>
-      <h2 class="section-heading">Dernières <em>Actualités</em></h2>
-      <div class="sh-underline center"></div>
-    </div>
-    <div class="actu-grid" id="actuGrid">
-      <!-- Chargées dynamiquement depuis la DB -->
-    </div>
-    <div class="text-center mt-lg" data-reveal="up">
-      <a href="actualites.html" class="btn-outline-pill">
-        Toutes les actualités <i class="fas fa-arrow-right"></i>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ PARTENAIRES ══════════ -->
-<section id="partenaires" class="s-partenaires">
-  <div class="container">
-    <div class="section-header" data-reveal="up">
-      <div class="section-eyebrow">Écosystème P3V</div>
-      <h2 class="section-heading">Nos <em>Partenaires</em></h2>
-      <div class="sh-underline center"></div>
-      <p class="section-sub">Le projet P3V rassemble un consortium d'acteurs nationaux et internationaux engagés pour la santé animale en Afrique de l'Ouest.</p>
-    </div>
-
-    <div class="partners-categories">
-      <!-- Partenaires financiers -->
-      <div data-reveal="up">
-        <div class="pc-title">
-          <span><i class="fas fa-euro-sign"></i></span>
-          Partenaires financiers
-        </div>
-        <div class="partners-logos-grid">
-          <div class="partner-logo-card">
-            <img src="images/logo-afd.png" alt="AFD – Agence Française de Développement"/>
-            <span class="plc-name">AFD</span>
-          </div>
-          <div class="partner-text-badge">
-            <span class="ptb-abbr">UE</span>
-            <span class="ptb-full">Union Européenne – Fonds de cofinancement</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Partenaires de mise en œuvre -->
-      <div data-reveal="up" style="transition-delay:.1s">
-        <div class="pc-title">
-          <span><i class="fas fa-cogs"></i></span>
-          Partenaires de mise en œuvre
-        </div>
-        <div class="partners-logos-grid">
-          <div class="partner-logo-card">
-            <img src="images/logo-woah.png" alt="OMSA/WOAH"/>
-            <span class="plc-name">OMSA/WOAH</span>
-          </div>
-          <div class="partner-logo-card">
-            <img src="images/logo-eismv.png" alt="EISMV Dakar"/>
-            <span class="plc-name">EISMV Dakar</span>
-          </div>
-          <div class="partner-logo-card">
-            <img src="images/logo-far.png" alt="Réseau FAR"/>
-            <span class="plc-name">Réseau FAR</span>
-          </div>
-          <div class="partner-logo-card">
-            <img src="images/logo-cilss.png" alt="CILSS"/>
-            <span class="plc-name">CILSS/INSAH</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Partenaires techniques nationaux -->
-      <div data-reveal="up" style="transition-delay:.2s">
-        <div class="pc-title">
-          <span><i class="fas fa-flag"></i></span>
-          Partenaires techniques nationaux
-        </div>
-        <div class="partners-logos-grid">
-          <div class="partner-text-badge">
-            <span class="ptb-abbr">DSV</span>
-            <span class="ptb-full">Direction des Services Vétérinaires – Sénégal</span>
-          </div>
-          <div class="partner-text-badge">
-            <span class="ptb-abbr">MAEP</span>
-            <span class="ptb-full">Ministère Agri., Élevage & Pêche – Bénin</span>
-          </div>
-          <div class="partner-text-badge">
-            <span class="ptb-abbr">DGSV</span>
-            <span class="ptb-full">Direction Générale des Services Vétérinaires – Togo</span>
-          </div>
-          <div class="partner-text-badge">
-            <span class="ptb-abbr">MAEH</span>
-            <span class="ptb-full">Ministère Agri., Élevage & Hydraulique – Togo</span>
-          </div>
-          <div class="partner-text-badge">
-            <span class="ptb-abbr">UA-BIRA</span>
-            <span class="ptb-full">Union Africaine – Bureau Inter-Africain des Ressources Animales</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ CONTACT ══════════ -->
-<section id="contact" class="s-contact">
-  <div class="container">
-    <div class="contact-grid">
-      <div class="contact-info" data-reveal="left">
-        <div class="section-eyebrow">Nous contacter</div>
-        <h2 class="section-heading">Restons en <em>Contact</em></h2>
-        <div class="sh-underline"></div>
-        <p>Pour toute information sur le projet P3V, ses activités ou pour établir un partenariat, n'hésitez pas à nous contacter. Notre équipe est disponible pour répondre à vos questions.</p>
-        <div class="contact-items">
-          <div class="ci-row">
-            <div class="ci-icon"><i class="fas fa-envelope"></i></div>
-            <div><strong>Email</strong><span>contact@projetp3v.org</span></div>
-          </div>
-          <div class="ci-row">
-            <div class="ci-icon"><i class="fas fa-phone"></i></div>
-            <div><strong>Téléphone</strong><span>+221 33 XXX XX XX</span></div>
-          </div>
-          <div class="ci-row">
-            <div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div>
-            <div><strong>Siège régional</strong><span>EISMV, BP 5077 – Dakar Fann, Sénégal</span></div>
-          </div>
-          <div class="ci-row">
-            <div class="ci-icon"><i class="fab fa-whatsapp"></i></div>
-            <div><strong>WhatsApp</strong><span>+221 77 XXX XX XX</span></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="contact-form-wrap" data-reveal="right">
-        <div class="contact-form" id="contactFormWrap">
-          <form id="contactForm">
-            <div class="form-row">
-              <div class="form-group">
-                <label>Prénom & Nom *</label>
-                <input type="text" placeholder="Jean Dupont" required/>
-              </div>
-              <div class="form-group">
-                <label>Organisation</label>
-                <input type="text" placeholder="Votre organisation"/>
+      <div class="projet-grid">
+        <div class="projet-visual" data-reveal="left">
+          <div class="pv-frame">
+            <img src="images/hero-ppv-vaccination.jpg" alt="PPV en action – vaccination animale au Sahel" />
+            <div class="pv-deco-1"></div>
+            <div class="pv-deco-2"></div>
+            <div class="pv-card floating">
+              <i class="fas fa-award"></i>
+              <div>
+                <strong>Certifié & validé</strong>
+                <span>par l'AFD & l'OMSA/WOAH</span>
               </div>
             </div>
-            <div class="form-group">
-              <label>Email *</label>
-              <input type="email" placeholder="jean.dupont@email.com" required/>
-            </div>
-            <div class="form-group">
-              <label>Objet</label>
-              <select>
-                <option>Demande d'information générale</option>
-                <option>Partenariat</option>
-                <option>Médias / Presse</option>
-                <option>Recherche / Académique</option>
-                <option>Autre</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Message *</label>
-              <textarea placeholder="Votre message..." required></textarea>
-            </div>
-            <button type="submit" class="form-submit">
-              <i class="fas fa-paper-plane"></i> Envoyer le message
-            </button>
-          </form>
-          <div id="formSuccess">
-            <i class="fas fa-check-circle"></i>
-            <h3>Message envoyé !</h3>
-            <p>Nous vous répondrons dans les meilleurs délais.</p>
+          </div>
+          <div class="pv-stat-bubble" data-reveal="up" style="transition-delay:.3s">
+            <div class="psb-num"><span class="count-it" data-target="115">0</span>+</div>
+            <div class="psb-txt">PPV formés dans 3 pays</div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ══════════ FOOTER ══════════ -->
-<footer>
-  <div class="footer-wave">
-    <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
-      <path d="M0,0 C300,60 900,60 1200,0 L1200,60 L0,60 Z" fill="#0A1628"/>
-    </svg>
-  </div>
-  <div class="footer-main">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="fg-brand">
-          <a href="index.html" class="fg-logo">
-            <div class="fg-logo-badge">P3V</div>
-            <div class="fg-logo-text">
-              <strong>Projet P3V</strong>
-              <span>Para-Professionnels Vétérinaires</span>
+        <div class="projet-text" data-reveal="right">
+          <div class="section-eyebrow">À propos du projet</div>
+          <h2 class="section-heading">Le Projet <em>P3V</em></h2>
+          <div class="sh-underline"></div>
+          <p class="projet-lead">P3V, une approche concrète pour l’intégration des PPV dans des Services Vétérinaires
+            accessibles, inclusifs et durables.</p>
+
+          <div class="projet-obj">
+            <div class="po-item" data-reveal="up" style="transition-delay:.1s">
+              <div class="poi-icon"><i class="fas fa-graduation-cap"></i></div>
+              <div><strong>Référentiels de formation</strong><span>Élaboration de curricula harmonisés et adaptés</span>
+              </div>
             </div>
+            <div class="po-item" data-reveal="up" style="transition-delay:.2s">
+              <div class="poi-icon"><i class="fas fa-building"></i></div>
+              <div><strong>Renforcement institutionnel</strong><span>Appui aux centres et institutions de
+                  formation</span></div>
+            </div>
+            <div class="po-item" data-reveal="up" style="transition-delay:.3s">
+              <div class="poi-icon"><i class="fas fa-gavel"></i></div>
+              <div><strong>Cadre réglementaire</strong><span>Reconnaissance officielle du statut des PPV</span></div>
+            </div>
+            <div class="po-item" data-reveal="up" style="transition-delay:.4s">
+              <div class="poi-icon"><i class="fas fa-chart-line"></i></div>
+              <div><strong>Suivi & capitalisation</strong><span>Évaluation d'impact et diffusion des bonnes
+                  pratiques</span></div>
+            </div>
+          </div>
+
+          <a href="projet.html" class="btn-primary-pill">
+            En savoir plus <i class="fas fa-long-arrow-alt-right"></i>
           </a>
-          <p class="fg-desc">Initiative régionale de professionnalisation des para-vétérinaires au Sénégal, Bénin et Togo. Financé par l'AFD, mis en œuvre par l'OMSA/WOAH et ses partenaires.</p>
-          <div class="footer-socials">
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" aria-label="X"><i class="fab fa-x-twitter"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-          </div>
-          <div class="footer-funder">
-            <i class="fas fa-info-circle"></i>
-            <span>Financé par :</span> <span>Agence Française de Développement (AFD)</span>
-          </div>
-        </div>
-
-        <div class="footer-col">
-          <h5>Navigation</h5>
-          <div class="footer-links">
-            <a href="index.html">Accueil</a>
-            <a href="projet.html">Le Projet</a>
-            <a href="pays.html">Pays d'intervention</a>
-            <a href="galerie.html">Galerie</a>
-            <a href="actualites.html">Actualités</a>
-            <a href="contact.html">Contact</a>
-          </div>
-        </div>
-
-        <div class="footer-col">
-          <h5>Le Projet</h5>
-          <div class="footer-links">
-            <a href="projet.html#objectifs">Objectifs</a>
-            <a href="projet.html#composantes">Composantes</a>
-            <a href="projet.html#methodologie">Méthodologie</a>
-            <a href="projet.html#resultats">Résultats</a>
-            <a href="index.html#partenaires">Partenaires</a>
-          </div>
-        </div>
-
-        <div class="footer-col">
-          <h5>Contact</h5>
-          <div class="footer-contact-list">
-            <div class="fcl-row"><i class="fas fa-envelope"></i><span>contact@projetp3v.org</span></div>
-            <div class="fcl-row"><i class="fas fa-map-marker-alt"></i><span>EISMV Dakar, Sénégal</span></div>
-          </div>
-          <h5 style="margin-top:20px">Partenaires</h5>
-          <div class="footer-partners-logos">
-            <span class="fpl-logo">OMSA</span>
-            <span class="fpl-logo">AFD</span>
-            <span class="fpl-logo">EISMV</span>
-            <span class="fpl-logo">FAR</span>
-            <span class="fpl-logo">CILSS</span>
-          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="footer-bottom">
+  </section>
+
+  <!-- ══════════ COMPOSANTES ══════════ -->
+  <section id="composantes" class="s-composantes">
+    <div class="composantes-bg-shape"></div>
     <div class="container">
-      <div class="fb-inner">
-        <span>© 2024 Projet P3V – Tous droits réservés</span>
-        <div class="fb-right">
-          <a href="#">Mentions légales</a>
-          <a href="#">Politique de confidentialité</a>
-          <a href="admin.html">Admin</a>
+      <div class="section-header" data-reveal="up">
+        <div class="section-eyebrow">Organisation du projet</div>
+        <h2 class="section-heading">Les <em>4 Composantes</em> Stratégiques</h2>
+        <div class="sh-underline center"></div>
+        <p class="section-sub">Le projet P3V est structuré autour de quatre composantes complémentaires agissant sur
+          l'ensemble de la chaîne de valeur de la formation vétérinaire.</p>
+      </div>
+
+      <div class="comp-cards">
+        <div class="comp-card" data-reveal="up" style="transition-delay:0ms">
+          <div class="cc-number">01</div>
+          <div class="cc-icon-wrap" style="--cc:var(--omsa-dark)"><i class="fas fa-book-open"></i></div>
+          <h3>Référentiels & Formations</h3>
+          <p>Élaboration participative de référentiels de compétences et curricula adaptés aux contextes nationaux et
+            aux standards OMSA.</p>
+          <ul class="cc-list">
+            <li><i class="fas fa-check-circle"></i>Analyse des besoins en compétences</li>
+            <li><i class="fas fa-check-circle"></i>Développement de curricula harmonisés</li>
+            <li><i class="fas fa-check-circle"></i>Certification et validation nationale</li>
+          </ul>
+          <div class="cc-border" style="background:var(--omsa-orange)"></div>
+        </div>
+
+        <div class="comp-card" data-reveal="up" style="transition-delay:100ms">
+          <div class="cc-number">02</div>
+          <div class="cc-icon-wrap" style="--cc:var(--primary)"><i class="fas fa-chalkboard-teacher"></i></div>
+          <h3>Renforcement Institutionnel</h3>
+          <p>Appui aux institutions de formation vétérinaire pour améliorer leurs capacités pédagogiques et
+            opérationnelles.</p>
+          <ul class="cc-list">
+            <li><i class="fas fa-check-circle"></i>Formation des formateurs (FdF)</li>
+            <li><i class="fas fa-check-circle"></i>Équipements pédagogiques modernes</li>
+            <li><i class="fas fa-check-circle"></i>Mise en réseau des centres nationaux</li>
+          </ul>
+          <div class="cc-border" style="background:var(--primary)"></div>
+        </div>
+
+        <div class="comp-card" data-reveal="up" style="transition-delay:200ms">
+          <div class="cc-number">03</div>
+          <div class="cc-icon-wrap" style="--cc:var(--omsa-orange-mid)"><i class="fas fa-balance-scale"></i></div>
+          <h3>Cadre Réglementaire</h3>
+          <p>Soutien à l'élaboration de cadres législatifs reconnaissant officiellement le statut et les attributions
+            des PPV.</p>
+          <ul class="cc-list">
+            <li><i class="fas fa-check-circle"></i>Dialogue politique sectoriel</li>
+            <li><i class="fas fa-check-circle"></i>Élaboration de textes réglementaires</li>
+            <li><i class="fas fa-check-circle"></i>Reconnaissance officielle des PPV</li>
+          </ul>
+          <div class="cc-border" style="background:var(--omsa-orange)"></div>
+        </div>
+
+        <div class="comp-card" data-reveal="up" style="transition-delay:300ms">
+          <div class="cc-number">04</div>
+          <div class="cc-icon-wrap" style="--cc:var(--omsa-dark)"><i class="fas fa-chart-bar"></i></div>
+          <h3>Suivi & Capitalisation</h3>
+          <p>Mise en place d'un système de suivi-évaluation rigoureux et capitalisation des acquis pour une réplication
+            à plus grande échelle.</p>
+          <ul class="cc-list">
+            <li><i class="fas fa-check-circle"></i>Indicateurs de résultats et d'impact</li>
+            <li><i class="fas fa-check-circle"></i>Documentation des bonnes pratiques</li>
+            <li><i class="fas fa-check-circle"></i>Diffusion et communication régionale</li>
+          </ul>
+          <div class="cc-border" style="background:var(--omsa-green)"></div>
         </div>
       </div>
     </div>
-  </div>
-</footer>
+  </section>
 
-<!-- Back to top -->
-<button id="backToTop" aria-label="Retour en haut">
-  <i class="fas fa-chevron-up"></i>
-</button>
+  <!-- ══════════ CHIFFRES CLÉS ══════════ -->
+  <section id="realisations" class="s-realisations">
+    <div class="container">
+      <div class="section-header" data-reveal="up">
+        <div class="section-eyebrow">Impact du projet</div>
+        <h2 class="section-heading">Chiffres Clés & <em>Réalisations</em></h2>
+        <div class="sh-underline center"></div>
+        <p class="section-sub">Des résultats concrets sur le terrain, au service des éleveurs et de la santé animale au
+          Sahel.</p>
+      </div>
 
-<!-- Lightbox modal -->
-<div class="modal-overlay" id="galerieModal">
-  <div class="modal-box">
-    <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
-    <img src="" alt="" class="modal-img" id="modalImg"/>
-    <div class="modal-body">
-      <div class="modal-cat" id="modalCat"></div>
-      <h2 id="modalTitle"></h2>
-      <p id="modalDesc"></p>
+      <div class="real-grid">
+        <div class="real-card" data-reveal="up" style="transition-delay:0ms">
+          <div class="rc-icon-img"><img src="images/logo-afd.png" alt="AFD" /></div>
+          <div class="rc-num" style="font-size:1.5rem">AFD</div>
+          <div class="rc-label">Bailleur de fonds</div>
+        </div>
+        <div class="real-card" data-reveal="up" style="transition-delay:100ms">
+          <div class="rc-icon-img"><img src="images/logo-woah.png" alt="OMSA" /></div>
+          <div class="rc-num" style="font-size:1.5rem">OMSA</div>
+          <div class="rc-label">Maître d'œuvre</div>
+        </div>
+        <div class="real-card" data-reveal="up" style="transition-delay:200ms">
+          <div class="rc-icon-img" style="gap:12px; display:flex; justify-content:center;">
+            <img src="images/logo-eismv.png" alt="EISMV" style="max-height:40px;" />
+            <img src="images/logo-far.png" alt="FAR" style="max-height:40px;" />
+          </div>
+          <div class="rc-num" style="font-size:1.2rem">EISMV - FAR</div>
+          <div class="rc-label">Partenaires techniques</div>
+        </div>
+        <div class="real-card" data-reveal="up" style="transition-delay:300ms">
+          <div class="rc-icon"><i class="fas fa-school"></i></div>
+          <div class="rc-num" style="font-size:1.5rem">7 Centres</div>
+          <div class="rc-label">Togo, Sénégal, Bénin</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ PAYS ══════════ -->
+  <section id="pays" class="s-pays">
+    <div class="container">
+      <div class="section-header" data-reveal="up">
+        <div class="section-eyebrow">Zones d'intervention</div>
+        <h2 class="section-heading">3 Pays, <em>1 Vision</em> Commune</h2>
+        <div class="sh-underline center"></div>
+        <p class="section-sub">Le projet P3V intervient simultanément au Sénégal, au Bénin et au Togo, adaptant son
+          approche aux réalités locales tout en promouvant une harmonisation régionale.</p>
+      </div>
+
+      <div class="pays-tabs" data-reveal="up" style="transition-delay:.1s">
+        <button class="pays-tab-btn active" data-pays="senegal">🇸🇳 Sénégal</button>
+        <button class="pays-tab-btn" data-pays="benin">🇧🇯 Bénin</button>
+        <button class="pays-tab-btn" data-pays="togo">🇹🇬 Togo</button>
+      </div>
+
+      <!-- Sénégal -->
+      <div class="pays-panel active" id="panel-senegal" data-reveal="up">
+        <div class="pays-info-map">
+          <div class="pim-country-card">
+            <div class="pcc-flag"><img src="https://flagcdn.com/w80/sn.png" width="50" class="hf-flag-img" alt=""></div>
+            <div class="pcc-name">Sénégal</div>
+            <div class="pcc-desc">Pionnier dans la mise en œuvre, le Sénégal dispose d'un réseau de para-vétérinaires
+              structuré autour de la Direction des Services Vétérinaires (DSV). Le projet y développe des curricula
+              innovants et renforce les centres de formation.</div>
+            <div class="pcc-stats">
+              <div class="pcc-stat"><span class="pcc-stat-num">42</span><span class="pcc-stat-lbl">PPV formés</span>
+              </div>
+              <div class="pcc-stat"><span class="pcc-stat-num">3</span><span class="pcc-stat-lbl">Centres</span></div>
+              <div class="pcc-stat"><span class="pcc-stat-num">1800</span><span class="pcc-stat-lbl">Éleveurs</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pays-details">
+          <div class="pd-block">
+            <h4><i class="fas fa-chart-line"></i>Avancement des activités</h4>
+            <div class="progress-item">
+              <div class="pi-header"><span class="pi-label">Référentiel de formation validé</span><span
+                  class="pi-pct">100%</span></div>
+              <div class="pi-bar">
+                <div class="pi-fill" style="--w:100%"></div>
+              </div>
+            </div>
+            <div class="progress-item">
+              <div class="pi-header"><span class="pi-label">Formation des formateurs</span><span
+                  class="pi-pct">85%</span></div>
+              <div class="pi-bar">
+                <div class="pi-fill" style="--w:85%"></div>
+              </div>
+            </div>
+            <div class="progress-item">
+              <div class="pi-header"><span class="pi-label">Cadre réglementaire PPV</span><span
+                  class="pi-pct">70%</span></div>
+              <div class="pi-bar">
+                <div class="pi-fill" style="--w:70%"></div>
+              </div>
+            </div>
+            <div class="progress-item">
+              <div class="pi-header"><span class="pi-label">Certification des PPV</span><span class="pi-pct">60%</span>
+              </div>
+              <div class="pi-bar">
+                <div class="pi-fill" style="--w:60%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="pd-block">
+            <h4><i class="fas fa-handshake"></i>Partenaires nationaux</h4>
+            <div class="partenaires-list">
+              <span class="pl-tag"><i class="fas fa-shield-alt"></i>DSV Sénégal</span>
+              <span class="pl-tag"><i class="fas fa-university"></i>EISMV Dakar</span>
+              <span class="pl-tag"><i class="fas fa-leaf"></i>Réseau FAR</span>
+              <span class="pl-tag"><i class="fas fa-building"></i>CERP Thiès</span>
+              <span class="pl-tag"><i class="fas fa-building"></i>CERP Ziguinchor</span>
+            </div>
+          </div>
+          <a href="pays.html" class="btn-outline-pill" style="margin-top:8px">
+            <i class="fas fa-arrow-right"></i> Voir la fiche pays complète
+          </a>
+        </div>
+      </div>
+
+      <!-- Bénin -->
+      <div class="pays-panel" id="panel-benin">
+        <div class="pays-info-map">
+          <div class="pim-country-card">
+            <div class="pcc-flag"><img src="https://flagcdn.com/w80/bj.png" width="50" class="hf-flag-img" alt=""></div>
+            <div class="pcc-name">Bénin</div>
+            <div class="pcc-desc">Au Bénin, le projet s'appuie sur le Ministère de l'Agriculture, de l'Élevage et de la
+              Pêche (MAEP) pour développer un cadre réglementaire solide et structurer la profession d'agent vétérinaire
+              para-professionnel.</div>
+            <div class="pcc-stats">
+              <div class="pcc-stat"><span class="pcc-stat-num">38</span><span class="pcc-stat-lbl">PPV formés</span>
+              </div>
+              <div class="pcc-stat"><span class="pcc-stat-num">2</span><span class="pcc-stat-lbl">Centres</span></div>
+              <div class="pcc-stat"><span class="pcc-stat-num">1650</span><span class="pcc-stat-lbl">Éleveurs</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pays-details">
+          <div class="pd-block">
+            <h4><i class="fas fa-chart-line"></i>Avancement des activités</h4>
+            <div class="progress-item">
+              <div class="pi-header"><span class="pi-label">Référentiel de formation validé</span><span
+                  class="pi-pct">90%</span></div>
+              <div class="pi-bar">
+                <div class="pi-fill" style="--w:90%"></div>
+              </div>
+            </div>
+            <div class="progress-item">
+              <div class="pi-header"><span class="pi-label">Formation des formateurs</span><span
+                  class="pi-pct">75%</span></div>
+              <div class="pi-bar">
+                <div class="pi-fill" style="--w:75%"></div>
+              </div>
+            </div>
+            <div class="progress-item">
+              <div class="pi-header"><span class="pi-label">Cadre réglementaire PPV</span><span
+                  class="pi-pct">55%</span></div>
+              <div class="pi-bar">
+                <div class="pi-fill" style="--w:55%"></div>
+              </div>
+            </div>
+            <div class="progress-item">
+              <div class="pi-header"><span class="pi-label">Certification des PPV</span><span class="pi-pct">50%</span>
+              </div>
+              <div class="pi-bar">
+                <div class="pi-fill" style="--w:50%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="pd-block">
+            <h4><i class="fas fa-handshake"></i>Partenaires nationaux</h4>
+            <div class="partenaires-list">
+              <span class="pl-tag"><i class="fas fa-shield-alt"></i>MAEP Bénin</span>
+              <span class="pl-tag"><i class="fas fa-university"></i>UA/FSA Abomey</span>
+              <span class="pl-tag"><i class="fas fa-leaf"></i>ATDA</span>
+              <span class="pl-tag"><i class="fas fa-building"></i>CERAQ Parakou</span>
+            </div>
+          </div>
+          <a href="pays.html" class="btn-outline-pill" style="margin-top:8px">
+            <i class="fas fa-arrow-right"></i> Voir la fiche pays complète
+          </a>
+        </div>
+      </div>
+
+      <!-- Togo -->
+      <div class="pays-panel" id="panel-togo">
+        <div class="pays-info-map">
+          <div class="pim-country-card">
+            <div class="pcc-flag"><img src="https://flagcdn.com/w80/tg.png" width="50" class="hf-flag-img" alt=""></div>
+            <div class="pcc-name">Togo</div>
+            <div class="pcc-desc">Au Togo, le projet collabore étroitement avec la Direction Générale des Services
+              Vétérinaires (DGSV) et le Ministère de l'Agriculture, de l'Élevage et du Développement Rural pour
+              formaliser le statut des PPV.</div>
+            <div class="pcc-stats">
+              <div class="pcc-stat"><span class="pcc-stat-num">35</span><span class="pcc-stat-lbl">PPV formés</span>
+              </div>
+              <div class="pcc-stat"><span class="pcc-stat-num">2</span><span class="pcc-stat-lbl">Centres</span></div>
+              <div class="pcc-stat"><span class="pcc-stat-num">1550</span><span class="pcc-stat-lbl">Éleveurs</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pays-details">
+          <div class="pd-block">
+            <h4><i class="fas fa-chart-line"></i>Avancement des activités</h4>
+            <div class="progress-item">
+              <div class="pi-header"><span class="pi-label">Référentiel de formation validé</span><span
+                  class="pi-pct">88%</span></div>
+              <div class="pi-bar">
+                <div class="pi-fill" style="--w:88%"></div>
+              </div>
+            </div>
+            <div class="progress-item">
+              <div class="pi-header"><span class="pi-label">Formation des formateurs</span><span
+                  class="pi-pct">72%</span></div>
+              <div class="pi-bar">
+                <div class="pi-fill" style="--w:72%"></div>
+              </div>
+            </div>
+            <div class="progress-item">
+              <div class="pi-header"><span class="pi-label">Cadre réglementaire PPV</span><span
+                  class="pi-pct">60%</span></div>
+              <div class="pi-bar">
+                <div class="pi-fill" style="--w:60%"></div>
+              </div>
+            </div>
+            <div class="progress-item">
+              <div class="pi-header"><span class="pi-label">Certification des PPV</span><span class="pi-pct">48%</span>
+              </div>
+              <div class="pi-bar">
+                <div class="pi-fill" style="--w:48%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="pd-block">
+            <h4><i class="fas fa-handshake"></i>Partenaires nationaux</h4>
+            <div class="partenaires-list">
+              <span class="pl-tag"><i class="fas fa-shield-alt"></i>DGSV Togo</span>
+              <span class="pl-tag"><i class="fas fa-university"></i>ESP Kara</span>
+              <span class="pl-tag"><i class="fas fa-leaf"></i>ITRA</span>
+              <span class="pl-tag"><i class="fas fa-building"></i>CFSA Lomé</span>
+            </div>
+          </div>
+          <a href="pays.html" class="btn-outline-pill" style="margin-top:8px">
+            <i class="fas fa-arrow-right"></i> Voir la fiche pays complète
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ MÉTHODOLOGIE ══════════ -->
+  <section class="methodology-section">
+    <div class="container">
+      <div class="section-header" data-reveal="up">
+        <div class="section-eyebrow">Notre approche</div>
+        <h2 class="section-heading">Méthodologie en <em>5 Étapes</em></h2>
+        <div class="sh-underline center"></div>
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-num">Étape 01</div>
+            <h4>Diagnostic et analyse situationnelle</h4>
+            <p>Réalisation d'études nationales approfondies sur les pratiques existantes, les besoins en formation et le
+              cadre réglementaire des PPV dans chaque pays.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-num">Étape 02</div>
+            <h4>Élaboration participative des référentiels</h4>
+            <p>Conception collaborative des référentiels de compétences et curricula de formation avec l'ensemble des
+              parties prenantes nationales et les experts OMSA.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-num">Étape 03</div>
+            <h4>Formation et renforcement des capacités</h4>
+            <p>Déploiement des programmes de formation initiale et continue des PPV, avec formation des formateurs et
+              dotation en équipements pédagogiques.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-num">Étape 04</div>
+            <h4>Plaidoyer et reconnaissance réglementaire</h4>
+            <p>Accompagnement des gouvernements dans l'élaboration de textes législatifs reconnaissant officiellement le
+              statut des PPV et définissant leurs attributions.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-num">Étape 05</div>
+            <h4>Capitalisation et passage à l'échelle</h4>
+            <p>Documentation des résultats, diffusion des bonnes pratiques et préparation du passage à l'échelle des
+              modèles validés à l'ensemble de la région sahélienne.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ GALERIE APERÇU ══════════ -->
+  <section id="galerie" class="s-galerie">
+    <div class="container">
+      <div class="section-header" data-reveal="up">
+        <div class="section-eyebrow">Médiathèque</div>
+        <h2 class="section-heading">Galerie <em>Photos & Vidéos</em></h2>
+        <div class="sh-underline center"></div>
+        <p class="section-sub">Découvrez les activités du projet P3V à travers nos photos et vidéos de terrain.</p>
+      </div>
+
+      <div class="galerie-filters" data-reveal="up" style="transition-delay:.1s">
+        <button class="gf-btn active" data-filter="all">Tout</button>
+        <button class="gf-btn" data-filter="formation">Formation</button>
+        <button class="gf-btn" data-filter="terrain">Terrain</button>
+        <button class="gf-btn" data-filter="evenement">Événements</button>
+      </div>
+
+      <div class="galerie-grid" id="galerieGrid">
+        <div class="galerie-item" data-cat="terrain">
+          <img src="images/hero-ppv-vaccination.jpg" alt="Vaccination bovins – Sénégal" class="gi-img" />
+          <div class="gi-overlay">
+            <div class="gi-info">
+              <h4>Vaccination bovins – Sénégal</h4><span>Mission terrain, Thiès 2023</span>
+            </div>
+          </div>
+          <span class="gi-type">Photo</span>
+        </div>
+        <div class="galerie-item" data-cat="formation">
+          <img src="images/hero-formation-ppv.jpg" alt="Session de formation – Centre EISMV" class="gi-img" />
+          <div class="gi-overlay">
+            <div class="gi-info">
+              <h4>Session de formation – EISMV</h4><span>Dakar, Février 2024</span>
+            </div>
+          </div>
+          <span class="gi-type">Photo</span>
+        </div>
+        <div class="galerie-item" data-cat="terrain">
+          <img src="images/hero-eleveurs-sahel.jpg" alt="Éleveurs Sahel – Bénin" class="gi-img" />
+          <div class="gi-overlay">
+            <div class="gi-info">
+              <h4>Transhumance – Bénin Nord</h4><span>Mission terrain, Parakou 2023</span>
+            </div>
+          </div>
+          <span class="gi-type">Photo</span>
+        </div>
+        <div class="galerie-item" data-cat="terrain">
+          <img src="images/ppv-examen-animal.jpg" alt="PPV examen caprin – Togo" class="gi-img" />
+          <div class="gi-overlay">
+            <div class="gi-info">
+              <h4>Examen clinique – Togo</h4><span>Mission terrain, Kara 2024</span>
+            </div>
+          </div>
+          <span class="gi-type">Photo</span>
+        </div>
+        <div class="galerie-item" data-cat="formation">
+          <img src="images/formation-terrain-eismv.jpg" alt="Formation terrain EISMV" class="gi-img" />
+          <div class="gi-overlay">
+            <div class="gi-info">
+              <h4>Formation pratique terrain</h4><span>EISMV Dakar, Mars 2024</span>
+            </div>
+          </div>
+          <span class="gi-type">Photo</span>
+        </div>
+        <div class="galerie-item" data-cat="evenement">
+          <img src="images/reunion-communautaire.jpg" alt="Réunion communautaire" class="gi-img" />
+          <div class="gi-overlay">
+            <div class="gi-info">
+              <h4>Atelier communautaire</h4><span>Lomé, Janvier 2024</span>
+            </div>
+          </div>
+          <span class="gi-type">Photo</span>
+        </div>
+      </div>
+
+      <div class="text-center mt-lg" data-reveal="up">
+        <a href="galerie.html" class="btn-primary-pill">
+          <i class="fas fa-images"></i> Voir toute la galerie
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ ACTUALITÉS ══════════ -->
+  <section id="actualites" class="s-actualites">
+    <div class="container">
+      <div class="section-header" data-reveal="up">
+        <div class="section-eyebrow">Informations</div>
+        <h2 class="section-heading">Dernières <em>Actualités</em></h2>
+        <div class="sh-underline center"></div>
+      </div>
+      <div class="actu-grid" id="actuGrid">
+        <!-- Chargées dynamiquement depuis la DB -->
+      </div>
+      <div class="text-center mt-lg" data-reveal="up">
+        <a href="actualites.html" class="btn-outline-pill">
+          Toutes les actualités <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ PARTENAIRES ══════════ -->
+  <section id="partenaires" class="s-partenaires">
+    <div class="container">
+      <div class="section-header" data-reveal="up">
+        <div class="section-eyebrow">Écosystème P3V</div>
+        <h2 class="section-heading">Nos <em>Partenaires</em></h2>
+        <div class="sh-underline center"></div>
+        <p class="section-sub">Le projet P3V rassemble un consortium d'acteurs nationaux et internationaux engagés pour
+          la santé animale en Afrique de l'Ouest.</p>
+      </div>
+
+      <div class="partners-categories">
+        <!-- Partenaires financiers -->
+        <div data-reveal="up">
+          <div class="pc-title">
+            <span><i class="fas fa-euro-sign"></i></span>
+            Partenaires financiers
+          </div>
+          <div class="partners-logos-grid">
+            <div class="partner-logo-card">
+              <img src="images/logo-afd.png" alt="AFD – Agence Française de Développement" />
+              <span class="plc-name">AFD</span>
+            </div>
+            <div class="partner-text-badge">
+              <span class="ptb-abbr">UE</span>
+              <span class="ptb-full">Union Européenne – Fonds de cofinancement</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Partenaires de mise en œuvre -->
+        <div data-reveal="up" style="transition-delay:.1s">
+          <div class="pc-title">
+            <span><i class="fas fa-cogs"></i></span>
+            Partenaires de mise en œuvre
+          </div>
+          <div class="partners-logos-grid">
+            <div class="partner-logo-card">
+              <img src="images/logo-woah.png" alt="OMSA/WOAH" />
+              <span class="plc-name">OMSA/WOAH</span>
+            </div>
+            <div class="partner-logo-card">
+              <img src="images/logo-eismv.png" alt="EISMV Dakar" />
+              <span class="plc-name">EISMV Dakar</span>
+            </div>
+            <div class="partner-logo-card">
+              <img src="images/logo-far.png" alt="Réseau FAR" />
+              <span class="plc-name">Réseau FAR</span>
+            </div>
+            <div class="partner-logo-card">
+              <img src="images/logo-cilss.png" alt="CILSS" />
+              <span class="plc-name">CILSS/INSAH</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Partenaires techniques nationaux -->
+        <div data-reveal="up" style="transition-delay:.2s">
+          <div class="pc-title">
+            <span><i class="fas fa-flag"></i></span>
+            Partenaires techniques nationaux
+          </div>
+          <div class="partners-logos-grid">
+            <div class="partner-text-badge">
+              <span class="ptb-abbr">DSV</span>
+              <span class="ptb-full">Direction des Services Vétérinaires – Sénégal</span>
+            </div>
+            <div class="partner-text-badge">
+              <span class="ptb-abbr">MAEP</span>
+              <span class="ptb-full">Ministère Agri., Élevage & Pêche – Bénin</span>
+            </div>
+            <div class="partner-text-badge">
+              <span class="ptb-abbr">DGSV</span>
+              <span class="ptb-full">Direction Générale des Services Vétérinaires – Togo</span>
+            </div>
+            <div class="partner-text-badge">
+              <span class="ptb-abbr">MAEH</span>
+              <span class="ptb-full">Ministère Agri., Élevage & Hydraulique – Togo</span>
+            </div>
+            <div class="partner-text-badge">
+              <span class="ptb-abbr">UA-BIRA</span>
+              <span class="ptb-full">Union Africaine – Bureau Inter-Africain des Ressources Animales</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ CONTACT ══════════ -->
+  <section id="contact" class="s-contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info" data-reveal="left">
+          <div class="section-eyebrow">Nous contacter</div>
+          <h2 class="section-heading">Restons en <em>Contact</em></h2>
+          <div class="sh-underline"></div>
+          <p>Pour toute information sur le projet P3V, ses activités ou pour établir un partenariat, n'hésitez pas à
+            nous contacter. Notre équipe est disponible pour répondre à vos questions.</p>
+          <div class="contact-items">
+            <div class="ci-row">
+              <div class="ci-icon"><i class="fas fa-envelope"></i></div>
+              <div><strong>Email</strong><span>contact@projetp3v.org</span></div>
+            </div>
+            <div class="ci-row">
+              <div class="ci-icon"><i class="fas fa-phone"></i></div>
+              <div><strong>Téléphone</strong><span>+221 33 XXX XX XX</span></div>
+            </div>
+            <div class="ci-row">
+              <div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div>
+              <div><strong>Siège régional</strong><span>EISMV, BP 5077 – Dakar Fann, Sénégal</span></div>
+            </div>
+            <div class="ci-row">
+              <div class="ci-icon"><i class="fab fa-whatsapp"></i></div>
+              <div><strong>WhatsApp</strong><span>+221 77 XXX XX XX</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-wrap" data-reveal="right">
+          <div class="contact-form" id="contactFormWrap">
+            <form id="contactForm">
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Prénom & Nom *</label>
+                  <input type="text" placeholder="Jean Dupont" required />
+                </div>
+                <div class="form-group">
+                  <label>Organisation</label>
+                  <input type="text" placeholder="Votre organisation" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Email *</label>
+                <input type="email" placeholder="jean.dupont@email.com" required />
+              </div>
+              <div class="form-group">
+                <label>Objet</label>
+                <select>
+                  <option>Demande d'information générale</option>
+                  <option>Partenariat</option>
+                  <option>Médias / Presse</option>
+                  <option>Recherche / Académique</option>
+                  <option>Autre</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Message *</label>
+                <textarea placeholder="Votre message..." required></textarea>
+              </div>
+              <button type="submit" class="form-submit">
+                <i class="fas fa-paper-plane"></i> Envoyer le message
+              </button>
+            </form>
+            <div id="formSuccess">
+              <i class="fas fa-check-circle"></i>
+              <h3>Message envoyé !</h3>
+              <p>Nous vous répondrons dans les meilleurs délais.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ FOOTER ══════════ -->
+  <footer>
+    <div class="footer-wave">
+      <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+        <path d="M0,0 C300,60 900,60 1200,0 L1200,60 L0,60 Z" fill="#27282A" />
+      </svg>
+    </div>
+    <div class="footer-main">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="fg-brand">
+            <a href="index.html" class="fg-logo">
+              <div class="loader-badge" style="width:40px;height:40px;font-size:1rem;margin:0;border-radius:10px">P3V
+              </div>
+              <div class="fg-logo-text">
+                <strong>Projet P3V</strong>
+                <span>Para-Professionnels Vétérinaires</span>
+              </div>
+            </a>
+            <p class="fg-desc">Initiative régionale de professionnalisation des para-vétérinaires au Sénégal, Bénin et
+              Togo. Financé par l'AFD, mis en œuvre par l'OMSA/WOAH et ses partenaires.</p>
+            <div class="footer-socials">
+              <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+              <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+            <div class="footer-funder">
+              <i class="fas fa-info-circle"></i>
+              <span>Financé par :</span> <span>Agence Française de Développement (AFD)</span>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h5>Navigation</h5>
+            <div class="footer-links">
+              <a href="index.html">Accueil</a>
+              <a href="projet.html">Le Projet</a>
+              <a href="pays.html">Pays d'intervention</a>
+              <a href="galerie.html">Galerie</a>
+              <a href="actualites.html">Actualités</a>
+              <a href="contact.html">Contact</a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h5>Le Projet</h5>
+            <div class="footer-links">
+              <a href="projet.html#objectifs">Objectifs</a>
+              <a href="projet.html#composantes">Composantes</a>
+              <a href="projet.html#methodologie">Méthodologie</a>
+              <a href="projet.html#resultats">Résultats</a>
+              <a href="index.html#partenaires">Partenaires</a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h5>Contact</h5>
+            <div class="footer-contact-list">
+              <div class="fcl-row"><i class="fas fa-envelope"></i><span>contact@projetp3v.org</span></div>
+              <div class="fcl-row"><i class="fas fa-map-marker-alt"></i><span>EISMV Dakar, Sénégal</span></div>
+            </div>
+            <h5 style="margin-top:20px">Partenaires</h5>
+            <div class="footer-partners-logos">
+              <span class="fpl-logo">OMSA</span>
+              <span class="fpl-logo">AFD</span>
+              <span class="fpl-logo">EISMV</span>
+              <span class="fpl-logo">FAR</span>
+              <span class="fpl-logo">CILSS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="fb-inner">
+          <span>© 2024 Projet P3V – Tous droits réservés</span>
+          <div class="fb-right">
+            <a href="#">Mentions légales</a>
+            <a href="#">Politique de confidentialité</a>
+            <a href="admin.html">Admin</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button id="backToTop" aria-label="Retour en haut">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- Lightbox modal -->
+  <div class="modal-overlay" id="galerieModal">
+    <div class="modal-box">
+      <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
+      <img src="" alt="" class="modal-img" id="modalImg" />
+      <div class="modal-body">
+        <div class="modal-cat" id="modalCat"></div>
+        <h2 id="modalTitle"></h2>
+        <p id="modalDesc"></p>
+      </div>
     </div>
   </div>
-</div>
 
-<script src="js/main.js"></script>
+  <script src="js/main.js"></script>
 </body>
+
 </html>
