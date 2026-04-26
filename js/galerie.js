@@ -17,12 +17,14 @@
 
   /* ── Données de démonstration ── */
   const DEMO_MEDIA = [
-    { id:'1', titre:'Vaccination bovins – Région de Thiès', categorie:'terrain', type:'photo', pays:'Sénégal', date:'Mars 2024', img:'images/hero-ppv-vaccination.jpg', desc:'Séance de vaccination contre la péripneumonie contagieuse bovine dans la région de Thiès, conduite par une PPV certifiée.' },
-    { id:'2', titre:'Session de formation – EISMV Dakar', categorie:'formation', type:'photo', pays:'Sénégal', date:'Février 2024', img:'images/hero-formation-ppv.jpg', desc:'Formation pratique des para-professionnels vétérinaires au sein de l\'EISMV de Dakar, axée sur les techniques de diagnostic clinique.' },
-    { id:'3', titre:'Transhumance – Borgou, Bénin', categorie:'terrain', type:'photo', pays:'Bénin', date:'Janvier 2024', img:'images/hero-eleveurs-sahel.jpg', desc:'Troupeau de zébus traversant le couloir de transhumance du Borgou, accompagnés d\'éleveurs Peuls et d\'un PPV en mission de suivi.' },
-    { id:'4', titre:'Examen clinique caprin – Kara, Togo', categorie:'terrain', type:'photo', pays:'Togo', date:'Décembre 2023', img:'images/ppv-examen-animal.jpg', desc:'Une PPV togolaise effectue un examen clinique d\'un caprin dans le cadre de sa mission de suivi des troupeaux de la région de Kara.' },
-    { id:'5', titre:'Formation pratique terrain – EISMV', categorie:'formation', type:'photo', pays:'Sénégal', date:'Novembre 2023', img:'images/formation-terrain-eismv.jpg', desc:'Session de formation pratique sur le terrain organisée par l\'EISMV pour les promotions de PPV, exercices de diagnostic en conditions réelles.' },
-    { id:'6', titre:'Atelier plaidoyer – Lomé', categorie:'evenement', type:'photo', pays:'Togo', date:'Octobre 2023', img:'images/reunion-communautaire.jpg', desc:'Atelier de plaidoyer pour la reconnaissance légale des PPV, réunissant élus, ministères et acteurs de la société civile à Lomé.' },
+    { id:'1', titre:'Comité de Pilotage (COPIL) – Session 2024', categorie:'evenement', type:'photo', pays:'Sénégal', date:'Avril 2024', img:'images/p3v/COPIL 1.JPG', desc:'Réunion du Comité de Pilotage réunissant les partenaires institutionnels et techniques à Dakar.' },
+    { id:'2', titre:'Atelier de validation des référentiels', categorie:'formation', type:'photo', pays:'Bénin', date:'Mars 2024', img:'images/p3v/DSC_3051.jpg', desc:'Travaux de groupe lors de l\'atelier national de validation des curricula de formation pour les PPV.' },
+    { id:'3', titre:'Mission de suivi terrain – Zone Est', categorie:'terrain', type:'photo', pays:'Togo', date:'Février 2024', img:'images/p3v/CCS_8259.jpg', desc:'Équipe de coordination en mission de suivi des centres de formation partenaires.' },
+    { id:'4', titre:'Réunion institutionnelle OMSA-AFD', categorie:'evenement', type:'photo', pays:'Sénégal', date:'Janvier 2024', img:'images/p3v/CCS_8189.jpg', desc:'Échanges entre les représentants de l\'OMSA et de l\'AFD sur l\'avancement du projet.' },
+    { id:'5', titre:'Formation pratique des formateurs', categorie:'formation', type:'photo', pays:'Bénin', date:'Novembre 2023', img:'images/p3v/DSC_0468.JPG', desc:'Session de renforcement des capacités pédagogiques pour les enseignants des écoles vétérinaires.' },
+    { id:'6', titre:'Déploiement des équipements pédagogiques', categorie:'terrain', type:'photo', pays:'Togo', date:'Octobre 2023', img:'images/p3v/DSC_3177.JPG', desc:'Réception et installation du matériel technique dans un centre de formation professionnel.' },
+    { id:'7', titre:'Atelier technique régional', categorie:'evenement', type:'photo', pays:'Sénégal', date:'Septembre 2023', img:'images/p3v/IMG Atelier (15).JPG', desc:'Rencontre technique régionale pour l\'harmonisation des outils de formation.' },
+    { id:'8', titre:'Visite de terrain – Élevage communautaire', categorie:'terrain', type:'photo', pays:'Bénin', date:'Août 2023', img:'images/p3v/CCS_8305.jpg', desc:'Sensibilisation des éleveurs locaux au rôle des para-professionnels vétérinaires.' },
   ];
 
   /* ── Normalise un enregistrement (API ou LS) vers format interne ── */
