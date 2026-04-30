@@ -6,7 +6,79 @@
 (function() {
   'use strict';
 
-  /* ── 1. PAGE LOADER ── */
+  /* ── 0. CINEMATIC STORY INTRO ── */
+  (function initStoryIntro() {
+    const wrap        = document.getElementById('storyIntro');
+    if (!wrap) return;
+
+    const TOTAL       = 5;
+    const bgLayers    = document.querySelectorAll('.si-bg-layer');
+    const chapters    = document.querySelectorAll('.si-chapter');
+    const dots        = document.querySelectorAll('.sid');
+    const progressFl  = document.getElementById('siProgressFill');
+    const scrollHint  = document.getElementById('siScrollHint');
+    let   current     = 0;
+    let   isMobile    = window.innerWidth <= 768;
+
+    /* — switch chapter — */
+    function goChapter(idx) {
+      if (idx < 0 || idx >= TOTAL || idx === current) return;
+      chapters[current]?.classList.remove('active');
+      bgLayers[current]?.classList.remove('active');
+      dots[current]?.classList.remove('active');
+
+      current = idx;
+
+      chapters[current]?.classList.add('active');
+      bgLayers[current]?.classList.add('active');
+      dots[current]?.classList.add('active');
+
+      // hide scroll hint after ch0
+      if (scrollHint) scrollHint.classList.toggle('hidden', current > 0);
+    }
+
+    /* — scroll handler — */
+    function onScroll() {
+      if (isMobile) return;
+      const wrapTop    = wrap.getBoundingClientRect().top + window.pageYOffset;
+      const scrolled   = window.pageYOffset - wrapTop;
+      const scrollRange = wrap.offsetHeight - window.innerHeight;
+
+      // header mode
+      const inStory = scrolled >= 0 && scrolled <= scrollRange + 40;
+      document.body.classList.toggle('story-mode', inStory);
+
+      if (scrolled < 0 || scrolled > scrollRange + 50) return;
+
+      const progress = Math.max(0, Math.min(1, scrolled / scrollRange));
+      const idx      = Math.min(Math.round(progress * (TOTAL - 1)), TOTAL - 1);
+
+      if (progressFl) progressFl.style.width = (progress * 100) + '%';
+      if (idx !== current) goChapter(idx);
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', () => { isMobile = window.innerWidth <= 768; });
+
+    /* — dot clicks — */
+    dots.forEach((d, i) => d.addEventListener('click', () => {
+      const wrapTop    = wrap.getBoundingClientRect().top + window.pageYOffset;
+      const scrollRange = wrap.offsetHeight - window.innerHeight;
+      window.scrollTo({ top: wrapTop + (i / (TOTAL - 1)) * scrollRange, behavior: 'smooth' });
+    }));
+
+    /* — mobile: swipe — */
+    let tX = 0;
+    wrap.addEventListener('touchstart', e => { tX = e.touches[0].clientY; }, { passive: true });
+    wrap.addEventListener('touchend', e => {
+      const diff = tX - e.changedTouches[0].clientY;
+      if (Math.abs(diff) > 60) goChapter(diff > 0 ? current + 1 : current - 1);
+    }, { passive: true });
+
+    /* — init — */
+    onScroll();
+  })();
+
   const loader = document.getElementById('pageLoader');
   const loaderFill = document.getElementById('loaderFill');
   const loaderPct = document.getElementById('loaderPct');
@@ -412,7 +484,124 @@
     });
   });
 
-  /* ── 17. INIT ── */
+  /* ── 17. STORY SLIDER — scroll-driven (scrollytelling) ── */
+  (function initStorySlider() {
+    const TOTAL        = 6;
+    const section      = document.getElementById('histoire');
+    const progressFill = document.getElementById('storyProgressFill');
+    const prevBtn      = document.getElementById('storyPrev');
+    const nextBtn      = document.getElementById('storyNext');
+    const scCurrent    = document.getElementById('scCurrent');
+    const scTotal      = document.getElementById('scTotal');
+    const navBtns      = document.querySelectorAll('.sn-btn');
+
+    if (!section) return; // Not on index page
+
+    if (scTotal) scTotal.textContent = TOTAL;
+
+    let current     = 0;
+    let isAnimating = false;
+    let isMobile    = window.innerWidth <= 768;
+
+    /* ─── UI update ─── */
+    function updateUI(idx) {
+      navBtns.forEach((b, i) => b.classList.toggle('active', i === idx));
+      if (progressFill) progressFill.style.width = ((idx + 1) / TOTAL * 100) + '%';
+      if (scCurrent) scCurrent.textContent = idx + 1;
+      if (prevBtn) prevBtn.disabled = idx === 0;
+      if (nextBtn) nextBtn.disabled = idx === TOTAL - 1;
+    }
+
+    /* ─── Slide switch ─── */
+    function goTo(idx) {
+      if (isAnimating || idx < 0 || idx >= TOTAL || idx === current) return;
+      isAnimating = true;
+
+      const from = document.getElementById('sslide-' + current);
+      const to   = document.getElementById('sslide-' + idx);
+
+      if (from) { from.classList.remove('active'); from.style.display = 'none'; }
+      if (to)   {
+        to.style.display = 'grid';
+        void to.offsetWidth; // force reflow → restart animation
+        to.classList.add('active');
+      }
+
+      current = idx;
+      updateUI(current);
+      setTimeout(() => { isAnimating = false; }, 600);
+    }
+
+    /* ─────────────────────────────────────────────
+       SCROLL-JACKING (desktop only)
+       The section height = 7 × 100vh.
+       Sticky panel = 100vh pinned at top.
+       Scroll range available = 7×vh - 1×vh = 6×vh.
+       We divide that range by (TOTAL - 1) to get
+       one "step" per slide transition.
+    ───────────────────────────────────────────── */
+    function getSectionTop() {
+      return section.getBoundingClientRect().top + window.pageYOffset;
+    }
+
+    function onScroll() {
+      if (isMobile) return; // use buttons on mobile
+
+      const scrolled       = window.pageYOffset - getSectionTop();
+      const scrollRange    = section.offsetHeight - window.innerHeight; // ≈ 6 × vh
+
+      // Outside the section? Do nothing.
+      if (scrolled < 0 || scrolled > scrollRange + 50) return;
+
+      // Map scroll offset → slide index [0 … TOTAL-1]
+      const progress   = Math.max(0, Math.min(1, scrolled / scrollRange));
+      const slideIndex = Math.min(Math.round(progress * (TOTAL - 1)), TOTAL - 1);
+
+      if (slideIndex !== current) goTo(slideIndex);
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    /* ─── Resize: recalculate mobile breakpoint ─── */
+    window.addEventListener('resize', () => {
+      isMobile = window.innerWidth <= 768;
+    });
+
+    /* ─── Nav tabs (always work) ─── */
+    navBtns.forEach((btn, i) => btn.addEventListener('click', () => {
+      if (!isMobile) {
+        // Scroll page to matching position so scroll-jacking stays in sync
+        const sectionTop  = getSectionTop();
+        const scrollRange = section.offsetHeight - window.innerHeight;
+        const targetScroll = sectionTop + (i / (TOTAL - 1)) * scrollRange;
+        window.scrollTo({ top: targetScroll, behavior: 'smooth' });
+      } else {
+        goTo(i);
+      }
+    }));
+
+    /* ─── Mobile buttons ─── */
+    if (prevBtn) prevBtn.addEventListener('click', () => goTo(current - 1));
+    if (nextBtn) nextBtn.addEventListener('click', () => goTo(current + 1));
+
+    /* ─── Mobile swipe ─── */
+    let touchStartX = 0;
+    const slidesContainer = document.getElementById('storySlides');
+    if (slidesContainer) {
+      slidesContainer.addEventListener('touchstart', e => {
+        touchStartX = e.touches[0].clientX;
+      }, { passive: true });
+      slidesContainer.addEventListener('touchend', e => {
+        const diff = touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) goTo(diff > 0 ? current + 1 : current - 1);
+      }, { passive: true });
+    }
+
+    /* ─── Init ─── */
+    updateUI(0);
+  })();
+
+  /* ── 18. INIT ── */
   window.addEventListener('load', () => {
     loadActualites();
     revealOnScroll();
@@ -420,3 +609,17 @@
   });
 
 })();
+
+/* ── YouTube lazy-load (global function) ── */
+function loadYTVideo() {
+  const thumb  = document.getElementById('ssYTThumb');
+  const frame  = document.getElementById('ssYTFrame');
+  const iframe = document.getElementById('ssYTIframe');
+  if (!thumb || !frame || !iframe) return;
+
+  // Use a P3V/OMSA related video; fall back to WOAH channel
+  iframe.src = 'https://www.youtube.com/embed/PJtOZo-WEJ0?autoplay=1&rel=0&modestbranding=1';
+  thumb.style.display  = 'none';
+  frame.style.display  = 'block';
+}
+
