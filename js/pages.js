@@ -110,6 +110,30 @@
     animateProgressBars();
   });
 
+  /* ── METHODOLOGY SLIDER ── */
+  document.querySelectorAll('.m-nav-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const step = btn.dataset.step;
+      const wrap = btn.closest('.methodo-slider-wrap');
+      wrap.querySelectorAll('.m-nav-btn').forEach(b => b.classList.remove('active'));
+      wrap.querySelectorAll('.methodo-slide').forEach(s => s.classList.remove('active'));
+      btn.classList.add('active');
+      wrap.querySelector(`#mstep-${step}`)?.classList.add('active');
+    });
+  });
+
+  /* ── METHODOLOGY INTERNAL TABS ── */
+  document.querySelectorAll('.ms-tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const sub = btn.dataset.sub;
+      const slide = btn.closest('.methodo-slide');
+      slide.querySelectorAll('.ms-tab-btn').forEach(b => b.classList.remove('active'));
+      slide.querySelectorAll('.ms-tab-content').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      slide.querySelector(`.ms-tab-content[data-sub="${sub}"]`)?.classList.add('active');
+    });
+  });
+
   // Export helpers
   window.P3V = { animCounter, revealOnScroll };
 })();

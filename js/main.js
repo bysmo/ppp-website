@@ -601,7 +601,33 @@
     updateUI(0);
   })();
 
-  /* ── 18. INIT ── */
+  /* ── 18. METHODOLOGY SLIDER (Délégation) ── */
+  document.addEventListener('click', e => {
+    const btn = e.target.closest('.m-nav-btn');
+    if (!btn) return;
+    const step = btn.dataset.step;
+    const wrap = btn.closest('.methodo-slider-wrap');
+    if (!wrap) return;
+    wrap.querySelectorAll('.m-nav-btn').forEach(b => b.classList.remove('active'));
+    wrap.querySelectorAll('.methodo-slide').forEach(s => s.classList.remove('active'));
+    btn.classList.add('active');
+    wrap.querySelector(`#mstep-${step}`)?.classList.add('active');
+  });
+
+  /* ── 19. METHODOLOGY INTERNAL TABS (Délégation) ── */
+  document.addEventListener('click', e => {
+    const btn = e.target.closest('.ms-tab-btn');
+    if (!btn) return;
+    const sub = btn.dataset.sub;
+    const slide = btn.closest('.methodo-slide');
+    if (!slide) return;
+    slide.querySelectorAll('.ms-tab-btn').forEach(b => b.classList.remove('active'));
+    slide.querySelectorAll('.ms-tab-content').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    slide.querySelector(`.ms-tab-content[data-sub="${sub}"]`)?.classList.add('active');
+  });
+
+  /* ── 20. INIT ── */
   window.addEventListener('load', () => {
     loadActualites();
     revealOnScroll();

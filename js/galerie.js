@@ -16,15 +16,20 @@
   const LS_KEY  = 'p3v_galerie_media'; // même clé qu'admin.js
 
   /* ── Données de démonstration ── */
+  /* ── Données réelles du projet P3V ── */
   const DEMO_MEDIA = [
     { id:'1', titre:'Comité de Pilotage (COPIL) – Session 2024', categorie:'evenement', type:'photo', pays:'Sénégal', date:'Avril 2024', img:'images/p3v/COPIL 1.JPG', desc:'Réunion du Comité de Pilotage réunissant les partenaires institutionnels et techniques à Dakar.' },
     { id:'2', titre:'Atelier de validation des référentiels', categorie:'formation', type:'photo', pays:'Bénin', date:'Mars 2024', img:'images/p3v/DSC_3051.jpg', desc:'Travaux de groupe lors de l\'atelier national de validation des curricula de formation pour les PPV.' },
-    { id:'3', titre:'Mission de suivi terrain – Zone Est', categorie:'terrain', type:'photo', pays:'Togo', date:'Février 2024', img:'images/p3v/CCS_8259.jpg', desc:'Équipe de coordination en mission de suivi des centres de formation partenaires.' },
+    { id:'3', titre:'Mission de suivi terrain – Zone Est', categorie:'terrain', type:'photo', pays:'Togo', date:'Février 2024', img:'images/p3v/DSC_1686.JPG', desc:'Équipe de coordination en mission de suivi des centres de formation partenaires.' },
     { id:'4', titre:'Réunion institutionnelle OMSA-AFD', categorie:'evenement', type:'photo', pays:'Sénégal', date:'Janvier 2024', img:'images/p3v/CCS_8189.jpg', desc:'Échanges entre les représentants de l\'OMSA et de l\'AFD sur l\'avancement du projet.' },
     { id:'5', titre:'Formation pratique des formateurs', categorie:'formation', type:'photo', pays:'Bénin', date:'Novembre 2023', img:'images/p3v/DSC_0468.JPG', desc:'Session de renforcement des capacités pédagogiques pour les enseignants des écoles vétérinaires.' },
     { id:'6', titre:'Déploiement des équipements pédagogiques', categorie:'terrain', type:'photo', pays:'Togo', date:'Octobre 2023', img:'images/p3v/DSC_3177.JPG', desc:'Réception et installation du matériel technique dans un centre de formation professionnel.' },
     { id:'7', titre:'Atelier technique régional', categorie:'evenement', type:'photo', pays:'Sénégal', date:'Septembre 2023', img:'images/p3v/IMG Atelier (15).JPG', desc:'Rencontre technique régionale pour l\'harmonisation des outils de formation.' },
     { id:'8', titre:'Visite de terrain – Élevage communautaire', categorie:'terrain', type:'photo', pays:'Bénin', date:'Août 2023', img:'images/p3v/CCS_8305.jpg', desc:'Sensibilisation des éleveurs locaux au rôle des para-professionnels vétérinaires.' },
+    { id:'9', titre:'Examen clinique bovin', categorie:'terrain', type:'photo', pays:'Sénégal', date:'Juillet 2023', img:'images/p3v/BB4A7812.jpg', desc:'Pratique clinique sur le terrain avec les étudiants para-vétérinaires.' },
+    { id:'10', titre:'Session de travail en laboratoire', categorie:'formation', type:'photo', pays:'Togo', date:'Juin 2023', img:'images/p3v/DSC_1693.JPG', desc:'Utilisation des outils pédagogiques (lames et microscopes) fournis par le projet.' },
+    { id:'11', titre:'Atelier de capitalisation', categorie:'evenement', type:'photo', pays:'Bénin', date:'Mai 2023', img:'images/p3v/IMG Atelier (173).JPG', desc:'Partage d\'expériences et documentation des leçons apprises du projet.' },
+    { id:'12', titre:'Suivi des éleveurs nomades', categorie:'terrain', type:'photo', pays:'Sénégal', date:'Avril 2023', img:'images/p3v/BB4A8069.jpg', desc:'Échanges avec les communautés d\'éleveurs sur l\'accès aux soins de santé animale.' }
   ];
 
   /* ── Normalise un enregistrement (API ou LS) vers format interne ── */
