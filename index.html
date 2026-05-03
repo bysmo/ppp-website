@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Projet P3V – Professionnalisation des Para-Professionnels Vétérinaires</title>
+  <title>Projet P3V – Professionnalisation des Paraprofessionnels Vétérinaires</title>
   <meta name="description"
-    content="Le projet P3V professionnalise les para-professionnels au Sénégal, Bénin et Togo. Financé par l'AFD, mis en œuvre par l'OMSA/WOAH." />
+    content="Le projet P3V professionnalise les paraprofessionnels au Sénégal, Bénin et Togo. Financé par l'AFD, mis en œuvre par l'OMSA." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link
@@ -25,6 +25,84 @@
       padding: 8px;
       letter-spacing: 1px;
       text-transform: uppercase;
+    }
+
+    /* ── Styles Témoignages ── */
+    .s-testimonials {
+      background: var(--light2);
+      padding: 100px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .s-testimonials::before {
+      content: '“';
+      position: absolute;
+      top: -50px;
+      right: 5%;
+      font-size: 20rem;
+      font-family: 'Playfair Display', serif;
+      color: var(--primary);
+      opacity: 0.05;
+      line-height: 1;
+    }
+
+    .testimonial-single {
+      max-width: 850px;
+      margin: 60px auto 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .ts-card {
+      background: #fff;
+      padding: 60px 50px;
+      border-radius: var(--r-lg);
+      box-shadow: var(--shadow-xl);
+      position: relative;
+      text-align: center;
+      border: 1px solid var(--border);
+    }
+
+    .ts-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      opacity: 0.2;
+      margin-bottom: 25px;
+      display: block;
+    }
+
+    .ts-text {
+      font-size: 1.4rem;
+      color: var(--dark);
+      line-height: 1.8;
+      font-weight: 500;
+      font-style: italic;
+      margin-bottom: 35px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .ts-author {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .ts-info strong {
+      font-size: 1.1rem;
+      color: var(--primary);
+      font-weight: 800;
+    }
+
+    .ts-info span {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      display: block;
+      margin-top: 4px;
     }
   </style>
 </head>
@@ -45,7 +123,12 @@
         <img src="images/p3v/logos/far.jpg" alt="Réseau FAR" />
       </div>
       <div class="loader-title">PROJET P3V</div>
-      <div class="loader-subtitle">Professionnalisation des Para-Professionnels Vétérinaires</div>
+      <div class="loader-subtitle">
+        <p>Le projet P3V est financé par l’Agence française de développement (AFD) et mis en œuvre </p>
+        <p>par l’Organisation mondiale de la santé animale (OMSA), </p>
+        <p>en partenariat avec l'École Inter-États des Sciences et Médecine Vétérinaires (EISMV) </p>
+        <p>de Dakar et le Réseau FAR. Sénégal - Togo - Bénin</p>
+      </div>
       <div class="loader-line">
         <div class="loader-line-fill" id="loaderFill"></div>
       </div>
@@ -55,20 +138,12 @@
 
   <!-- HEADER -->
   <header id="site-header">
-    <div class="header-ribbon">
-      <div class="container">
-        Le projet P3V est financé par l’Agence française de développement (AFD) et mis en œuvre par l’Organisation
-        mondiale de la santé animale (OMSA), en partenariat avec l'École Inter-États des Sciences et Médecine
-        Vétérinaires (EISMV) de Dakar et le Réseau FAR. Sénégal - Togo - Bénin
-      </div>
-    </div>
-
     <nav id="main-nav">
       <div class="container">
         <a href="index.html" class="nav-logo">
           <div class="nl-text">
             <strong>Projet P3V</strong>
-            <span>Para-Professionnels Vétérinaires</span>
+            <span>Professionnalisation des ParaProfessionnels Vétérinaires</span>
           </div>
           <div class="header-partners">
             <img src="images/p3v/logos/omsa.jpg" alt="OMSA" />
@@ -79,17 +154,13 @@
 
         </a>
 
-        <!--ul class="nav-links" id="navLinks">
-          <li><a href="#hero">Accueil</a></li>
-          <li><a href="#justification">Le Projet</a></li>
-          <li><a href="#equipe">L'Équipe</a></li>
-          <li><a href="#ressources">Ressources</a></li>
-          <li><a href="pays.html">Pays</a></li>
-          <li><a href="galerie.html">Galerie</a></li>
-          <li><a href="actualites.html">Actualités</a></li>
-          <li><a href="#capitalisation">Capitalisation</a></li>
-          <li><a href="contact.html" class="nav-cta">Contact</a></li>
-        </ul-->
+        <ul class="nav-links" id="navLinks">
+          <li>
+            <a href="https://rr-africa.woah.org/fr/projets/p3v-professionalisation-des-para-professionnels-veterinaires-afd/outils-et-ressources/portail-mupsa/"
+              target="_blank" class="nav-cta">MUPSA
+            </a>
+          </li>
+        </ul>
 
         <button class="burger-btn" id="burgerBtn" aria-label="Menu">
           <span></span><span></span><span></span>
@@ -99,11 +170,11 @@
   </header>
 
   <!-- ══════════ CINEMATIC STORY INTRO ══════════ -->
-  <div id="storyIntro" class="si-wrap">
+  <!--div id="storyIntro" class="si-wrap">
     <div class="si-sticky" id="siSticky">
 
       <!-- Couches d'arrière-plan (une par chapitre) -->
-      <div class="si-bg-layers" id="siBgLayers">
+  <!--div class="si-bg-layers" id="siBgLayers">
         <div class="si-bg-layer active" style="background-image:url('images/p3v/CCS_8259.jpg')"></div>
         <div class="si-bg-layer" style="background-image:url('images/p3v/DSC_1686.JPG')"></div>
         <div class="si-bg-layer" style="background-image:url('images/p3v/DSC_2859.jpg')"></div>
@@ -112,13 +183,13 @@
       </div>
 
       <!-- Overlay cinématique -->
-      <div class="si-overlay"></div>
+  <!--div class="si-overlay"></div>-->
 
-      <!-- Contenu des chapitres -->
-      <div class="si-stage">
+  <!-- Contenu des chapitres -->
+  <!--div class="si-stage">-->
 
-        <!-- Chapitre 0 : Décor -->
-        <div class="si-chapter active" id="sichap-0">
+  <!-- Chapitre 0 : Décor -->
+  <!--div class="si-chapter active" id="sichap-0">
           <div class="si-chapter-inner">
             <div class="sic-tag"><i class="fas fa-map-marker-alt"></i> Quelque part dans le Sahel</div>
             <h2 class="sic-heading">Il est 5h du matin.<br><em>Les bêtes s'éveillent.</em></h2>
@@ -128,7 +199,7 @@
         </div>
 
         <!-- Chapitre 1 : Le problème -->
-        <div class="si-chapter" id="sichap-1">
+  <!--div class="si-chapter" id="sichap-1">
           <div class="si-chapter-inner">
             <div class="sic-tag sic-tag--danger"><i class="fas fa-exclamation-circle"></i> Ce matin-là, quelque chose ne
               va pas</div>
@@ -139,7 +210,7 @@
         </div>
 
         <!-- Chapitre 2 : La barrière -->
-        <div class="si-chapter" id="sichap-2">
+  <!--div class="si-chapter" id="sichap-2">
           <div class="si-chapter-inner">
             <div class="sic-tag sic-tag--alert"><i class="fas fa-road"></i> Le vétérinaire le plus proche ? 80 km.</div>
             <h2 class="sic-heading">Un seul professionnel<br><em>pour des milliers d'éleveurs.</em></h2>
@@ -149,7 +220,7 @@
         </div>
 
         <!-- Chapitre 3 : La solution arrive -->
-        <div class="si-chapter" id="sichap-3">
+  <!--div class="si-chapter" id="sichap-3">
           <div class="si-chapter-inner">
             <div class="sic-tag sic-tag--hope"><i class="fas fa-user-md"></i> Puis arrive Fatimata</div>
             <h2 class="sic-heading">Para-professionnelle<br><em>vétérinaire certifiée.</em></h2>
@@ -159,7 +230,7 @@
         </div>
 
         <!-- Chapitre 4 : L'appel -->
-        <div class="si-chapter" id="sichap-4">
+  <!--div class="si-chapter" id="sichap-4">
           <div class="si-chapter-inner">
             <div class="sic-tag sic-tag--cta"><i class="fas fa-heart"></i> La vache survivra</div>
             <h2 class="sic-heading">Mais combien d'autres<br><em>n'ont pas cette chance ?</em></h2>
@@ -172,32 +243,33 @@
           </div>
         </div>
 
-      </div><!-- /si-stage -->
+      </div>/si-stage 
+  -->
 
-      <!-- Barre de progression -->
-      <div class="si-progress-bar">
-        <div class="si-progress-fill" id="siProgressFill"></div>
-      </div>
+  <!-- Barre de progression -->
+  <div class="si-progress-bar">
+    <div class="si-progress-fill" id="siProgressFill"></div>
+  </div>
 
-      <!-- Dots de navigation -->
-      <div class="si-dots" id="siDots">
-        <div class="sid active" data-chap="0"></div>
-        <div class="sid" data-chap="1"></div>
-        <div class="sid" data-chap="2"></div>
-        <div class="sid" data-chap="3"></div>
-        <div class="sid" data-chap="4"></div>
-      </div>
+  <!-- Dots de navigation -->
+  <div class="si-dots" id="siDots">
+    <div class="sid active" data-chap="0"></div>
+    <div class="sid" data-chap="1"></div>
+    <div class="sid" data-chap="2"></div>
+    <div class="sid" data-chap="3"></div>
+    <div class="sid" data-chap="4"></div>
+  </div>
 
-      <!-- Indice de scroll (ch. 0 seulement) -->
-      <div class="si-scroll-hint" id="siScrollHint">
-        <div class="si-scroll-anim"><i class="fas fa-chevron-down"></i></div>
-        <span>Scrollez pour découvrir l'histoire</span>
-      </div>
+  <!-- Indice de scroll (ch. 0 seulement) -->
+  <div class="si-scroll-hint" id="siScrollHint">
+    <div class="si-scroll-anim"><i class="fas fa-chevron-down"></i></div>
+    <span>Scrollez pour découvrir l'histoire</span>
+  </div>
 
-      <!-- Bouton passer -->
-      <a href="#hero" class="si-skip" id="siSkip">Passer <i class="fas fa-forward"></i></a>
+  <!-- Bouton passer -->
+  <a href="#hero" class="si-skip" id="siSkip">Passer <i class="fas fa-forward"></i></a>
 
-    </div><!-- /si-sticky -->
+  </div><!-- /si-sticky -->
   </div>
   <!-- ══════════ FIN STORY INTRO ══════════ -->
 
@@ -214,11 +286,11 @@
     <div class="hero-body container">
       <div class="hero-kicker">
         <span class="kicker-dot"></span>
-        <span>Financé par l'AFD &nbsp;·&nbsp; Mis en œuvre par l'OMSA/WOAH</span>
+        <span>Financé par l'AFD &nbsp;·&nbsp; Mis en œuvre par l'OMSA</span>
       </div>
       <h1 class="hero-title">
         <span class="ht-line">Professionnaliser</span>
-        <span class="ht-line accent">les para-professionnels</span>
+        <span class="ht-line accent">les paraprofessionnels</span>
         <span class="ht-line">vétérinaires</span>
       </h1>
       <p class="hero-desc">
@@ -227,32 +299,38 @@
         animale.
       </p>
       <div class="hero-actions">
-        <a href="#justification" class="btn-hero-primary">
+        <a href="#histoire" class="btn-hero-primary">
           <span>Découvrir le projet</span>
           <i class="fas fa-arrow-right"></i>
         </a>
-        <a href="galerie.html" class="btn-hero-ghost">
+        <a href="#galerie" class="btn-hero-ghost">
           <i class="fas fa-play-circle"></i>
           <span>Voir la galerie</span>
         </a>
       </div>
       <div class="hero-flags">
         <div class="hf-item">
-          <img src="https://flagcdn.com/w40/sn.png" srcset="https://flagcdn.com/w80/sn.png 2x" width="20" alt="Sénégal"
-            class="hf-flag-img">
-          <span>Sénégal</span>
+          <a href="#pays">
+            <img src="https://flagcdn.com/w40/sn.png" srcset="https://flagcdn.com/w80/sn.png 2x" width="20"
+              alt="Sénégal" class="hf-flag-img">
+            <span>Sénégal</span>
+          </a>
         </div>
         <div class="hf-sep">·</div>
         <div class="hf-item">
-          <img src="https://flagcdn.com/w40/bj.png" srcset="https://flagcdn.com/w80/bj.png 2x" width="20" alt="Bénin"
-            class="hf-flag-img">
-          <span>Bénin</span>
+          <a href="#pays">
+            <img src="https://flagcdn.com/w40/bj.png" srcset="https://flagcdn.com/w80/bj.png 2x" width="20" alt="Bénin"
+              class="hf-flag-img">
+            <span>Bénin</span>
+          </a>
         </div>
         <div class="hf-sep">·</div>
         <div class="hf-item">
-          <img src="https://flagcdn.com/w40/tg.png" srcset="https://flagcdn.com/w80/tg.png 2x" width="20" alt="Togo"
-            class="hf-flag-img">
-          <span>Togo</span>
+          <a href="#pays">
+            <img src="https://flagcdn.com/w40/tg.png" srcset="https://flagcdn.com/w80/tg.png 2x" width="20" alt="Togo"
+              class="hf-flag-img">
+            <span>Togo</span>
+          </a>
         </div>
       </div>
     </div>
@@ -278,12 +356,7 @@
 
           </div>
           <div class="hsb-divider"></div>
-          <div class="hsb-item">
-            <div class="hsb-label">Pays d'intervention</div>
-            <div class="hsb-num">Sénégal, Togo, Bénin</div>
 
-          </div>
-          <div class="hsb-divider"></div>
           <div class="hsb-item" title="Agence française de développement">
 
             <div class="hsb-label">Bailleur de fonds</div>
@@ -297,8 +370,14 @@
           </div>
           <div class="hsb-divider"></div>
           <div class="hsb-item">
+            <div class="hsb-label">Pays d'intervention</div>
+            <div class="hsb-num">Sénégal, Togo, Bénin</div>
 
-            <div class="hsb-label">Partenaires Tech.</div>
+          </div>
+          <div class="hsb-divider"></div>
+          <div class="hsb-item">
+
+            <div class="hsb-label">Partenaires Techniques</div>
             <div class="hsb-num">EISMV, FAR</div>
           </div>
           <div class="hsb-divider"></div>
@@ -306,7 +385,7 @@
             title="Togo: INFA Tové - ISMA Kara | Sénégal: ISFAR - CNFTEIA - USSEIN | Bénin: EPAC - LAMS">
 
             <div class="hsb-label">Établissements</div>
-            <div class="hsb-num">7 Centres</div>
+            <div class="hsb-num">7</div>
           </div>
         </div>
       </div>
@@ -406,7 +485,7 @@
           <div class="story-slide active" id="sslide-0">
             <div class="ss-image-side">
               <div class="ss-img-wrap">
-                <img src="images/p3v/CCS_8189.jpg" alt="PPV et éleveuse examinant un chevreau" class="ss-img" />
+                <img src="images/p3v/CCS_8340.jpg" alt="PPV et éleveuse examinant un chevreau" class="ss-img" />
                 <div class="ss-img-caption">
                   <i class="fas fa-map-marker-alt"></i> Terrain, Afrique de l'Ouest
                 </div>
@@ -423,36 +502,36 @@
               </p>
               <div class="ss-pillars">
                 <div class="ss-pillar">
-                  <div class="ss-pillar-icon" style="background:linear-gradient(135deg,#FF6B35,#E8760A)">
+                  <!--div class="ss-pillar-icon" style="background:linear-gradient(135deg,#FF6B35,#E8760A)">
                     <i class="fas fa-drumstick-bite"></i>
-                  </div>
+                  </div-->
                   <div>
                     <strong>Nutritionnelle</strong>
                     <span>Fourniture de protéines animales</span>
                   </div>
                 </div>
                 <div class="ss-pillar">
-                  <div class="ss-pillar-icon" style="background:linear-gradient(135deg,#4CAF50,#2E7D32)">
+                  <!--div class="ss-pillar-icon" style="background:linear-gradient(135deg,#4CAF50,#2E7D32)">
                     <i class="fas fa-coins"></i>
-                  </div>
+                  </div-->
                   <div>
                     <strong>Économique</strong>
                     <span>Revenus et épargne familiale</span>
                   </div>
                 </div>
                 <div class="ss-pillar">
-                  <div class="ss-pillar-icon" style="background:linear-gradient(135deg,#00879E,#005F6E)">
+                  <!--div class="ss-pillar-icon" style="background:linear-gradient(135deg,#00879E,#005F6E)">
                     <i class="fas fa-leaf"></i>
-                  </div>
+                  </div-->
                   <div>
                     <strong>Environnementale</strong>
                     <span>Fertilité des sols &amp; ressources naturelles</span>
                   </div>
                 </div>
                 <div class="ss-pillar">
-                  <div class="ss-pillar-icon" style="background:linear-gradient(135deg,#9C27B0,#6A0080)">
+                  <!--div class="ss-pillar-icon" style="background:linear-gradient(135deg,#9C27B0,#6A0080)">
                     <i class="fas fa-users"></i>
-                  </div>
+                  </div-->
                   <div>
                     <strong>Sociale</strong>
                     <span>Pratiques culturelles &amp; dynamiques communautaires</span>
@@ -466,29 +545,13 @@
           <div class="story-slide" id="sslide-1">
             <div class="ss-image-side">
               <div class="ss-img-wrap ss-img-video">
-                <!-- YouTube embed avec thumbnail cliquable -->
-                <div class="ss-yt-thumb" id="ssYTThumb" onclick="loadYTVideo()">
-                  <img src="https://img.youtube.com/vi/PJtOZo-WEJ0/maxresdefault.jpg"
-                    alt="Vidéo : Services vétérinaires OMSA" class="ss-img"
-                    onerror="this.src='https://img.youtube.com/vi/PJtOZo-WEJ0/hqdefault.jpg'" />
-                  <div class="ss-yt-overlay">
-                    <div class="ss-yt-play">
-                      <i class="fab fa-youtube"></i>
-                    </div>
-                    <div class="ss-yt-info">
-                      <span class="ss-yt-badge">Vidéo OMSA/WOAH</span>
-                      <span class="ss-yt-link">ebo-sursy.woah.org/fr/</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="ss-yt-frame" id="ssYTFrame" style="display:none">
-                  <iframe id="ssYTIframe" src="" title="Services vétérinaires OMSA" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen>
-                  </iframe>
-                </div>
+                <!-- Vidéo locale avec contrôles -->
+                <video src="images/p3v/definition-ppv.mp4" controls poster="images/definition-ppv.jpg"
+                  style="width:100%; height:100%; object-fit:cover; background:#000;">
+                  Votre navigateur ne supporte pas la lecture de vidéos.
+                </video>
                 <div class="ss-img-caption">
-                  <i class="fab fa-youtube"></i> Voir sur OMSA/WOAH
+                  <i class="fas fa-video"></i> Vidéo OMSA : Définition des PPV
                 </div>
                 <div class="ss-number-badge">02</div>
               </div>
@@ -509,7 +572,7 @@
               <div class="ss-yt-cta">
                 <a href="https://ebo-sursy.woah.org/fr/" target="_blank" rel="noopener" class="ss-link-btn">
                   <i class="fas fa-external-link-alt"></i>
-                  Découvrir sur le site OMSA/WOAH
+                  Découvrir sur le site OMSA
                 </a>
               </div>
             </div>
@@ -520,36 +583,36 @@
             <div class="ss-image-side">
               <div class="ss-img-wrap">
                 <img src="images/p3v/BB4A8069.jpg" alt="Suivi sanitaire en zone rurale reculée" class="ss-img" />
-                <div class="ss-img-caption">
+                <!--div class="ss-img-caption">
                   <i class="fas fa-map-marker-alt"></i> Zone rurale isolée, Sahel
-                </div>
+                </div-->
                 <div class="ss-number-badge">03</div>
               </div>
             </div>
             <div class="ss-text-side">
-              <div class="ss-eyebrow">
+              <!--div class="ss-eyebrow">
                 <span class="ss-dot" style="background:#C0392B"></span>Défis structurels
-              </div>
+              </div-->
               <h3 class="ss-title">Un accès aux services vétérinaires trop limité</h3>
               <p class="ss-body">Toutefois, l'accès aux services vétérinaires est limité par plusieurs facteurs
                 structurels :</p>
               <div class="ss-challenges">
                 <div class="ss-challenge">
-                  <div class="ss-challenge-icon"><i class="fas fa-user-times"></i></div>
+                  <!--div class="ss-challenge-icon"><i class="fas fa-user-times"></i></div-->
                   <div>
                     <strong>Déficit quantitatif</strong>
                     <p>Manque de professionnels qualifiés présents sur le terrain</p>
                   </div>
                 </div>
                 <div class="ss-challenge">
-                  <div class="ss-challenge-icon"><i class="fas fa-graduation-cap"></i></div>
+                  <!--div class="ss-challenge-icon"><i class="fas fa-graduation-cap"></i></div-->
                   <div>
                     <strong>Inadéquation des formations</strong>
                     <p>Formations historiquement déconnectées des réalités du marché de l'emploi</p>
                   </div>
                 </div>
                 <div class="ss-challenge">
-                  <div class="ss-challenge-icon"><i class="fas fa-balance-scale"></i></div>
+                  <!--div class="ss-challenge-icon"><i class="fas fa-balance-scale"></i></div-->
                   <div>
                     <strong>Lacunes réglementaires</strong>
                     <p>Cadre réglementaire obsolète vis-à-vis des normes internationales</p>
@@ -563,16 +626,16 @@
           <div class="story-slide" id="sslide-3">
             <div class="ss-image-side">
               <div class="ss-img-wrap">
-                <img src="images/p3v/DSC_3051.jpg" alt="Para-professionnels vétérinaires en action" class="ss-img" />
-                <div class="ss-img-caption">
+                <img src="images/p3v/DC_8888.jpg" alt="Paraprofessionnels vétérinaires en action" class="ss-img" />
+                <!--div class="ss-img-caption">
                   <i class="fas fa-map-marker-alt"></i> Mission de terrain
-                </div>
+                </div-->
                 <div class="ss-number-badge">04</div>
               </div>
             </div>
             <div class="ss-text-side">
               <div class="ss-eyebrow">
-                <span class="ss-dot" style="background:#00879E"></span>Para-professionnels vétérinaires
+                <span class="ss-dot" style="background:#00879E"></span>Paraprofessionnels vétérinaires
               </div>
               <h3 class="ss-title">Les PPV : un rôle déterminant</h3>
               <p class="ss-body">Dans ce contexte, les PPV jouent un rôle <strong>déterminant</strong> en appui aux
@@ -607,8 +670,7 @@
           <div class="story-slide" id="sslide-4">
             <div class="ss-image-side">
               <div class="ss-img-wrap">
-                <img src="images/p3v/BB4A7812.jpg" alt="Formation des para-professionnels vétérinaires"
-                  class="ss-img" />
+                <img src="images/p3v/DC_8889.jpg" alt="Formation des paraprofessionnels vétérinaires" class="ss-img" />
                 <div class="ss-img-caption">
                   <i class="fas fa-university"></i> Centre de formation PPV
                 </div>
@@ -650,7 +712,7 @@
               <div class="ss-img-wrap">
                 <img src="images/p3v/DSC_3335.JPG" alt="Outils OMSA pour les PPV - Lignes directrices" class="ss-img" />
                 <div class="ss-img-caption">
-                  <i class="fas fa-file-pdf"></i> Publications OMSA/WOAH – Outils PPV
+                  <i class="fas fa-file-pdf"></i> Publications OMSA – Outils PPV
                 </div>
                 <div class="ss-number-badge">06</div>
               </div>
@@ -684,7 +746,7 @@
               <div class="ss-cta-final">
                 <p>Ces efforts se sont concrétisés à travers le <strong>Projet P3V</strong>, un cadre structurant pour
                   renforcer durablement le personnel vétérinaire.</p>
-                <a href="#justification" class="ss-final-btn">
+                <a href="#histoire" class="ss-final-btn">
                   <span>Découvrir le Projet P3V</span>
                   <i class="fas fa-arrow-right"></i>
                 </a>
@@ -713,7 +775,7 @@
   <!-- ══════════ FIN STORYTELLING ══════════ -->
 
   <!-- ══════════ SECTION JUSTIFICATION ══════════ -->
-  <section id="justification" class="s-projet" style="padding:100px 0; background:var(--white)">
+  <!--section id="justification" class="s-projet" style="padding:100px 0; background:var(--white)">
     <div class="container">
       <div class="projet-grid">
         <div class="projet-visual" data-reveal="left">
@@ -725,7 +787,7 @@
               <i class="fas fa-award"></i>
               <div>
                 <strong>Certifié & validé</strong>
-                <span>par l'AFD & l'OMSA/WOAH</span>
+                <span>par l'AFD & l'OMSA</span>
               </div>
             </div>
           </div>
@@ -760,10 +822,10 @@
         </div>
       </div>
     </div>
-  </section>
+  </section-->
 
   <!-- ══════════ SECTION OBJECTIFS ══════════ -->
-  <section id="objectifs" class="s-objectifs">
+  <!--section id="objectifs" class="s-objectifs">
     <div class="container">
       <div class="section-header" data-reveal="up">
         <div class="section-eyebrow">Ambitions du projet</div>
@@ -775,15 +837,15 @@
 
       <div class="objectif-grid">
         <!-- Objectif 1 -->
-        <div class="objectif-card" data-reveal="up" data-num="01">
+  <!--div class="objectif-card" data-reveal="up" data-num="01">
           <div class="oc-icon"><i class="fas fa-book-open"></i></div>
           <h3>Référentiels harmonisés</h3>
           <p>Élaborer des référentiels de compétences et curricula de formation reconnus aux niveaux national et
-            régional, intégrant les normes OMSA/WOAH.</p>
+            régional, intégrant les normes OMSA.</p>
         </div>
 
         <!-- Objectif 2 -->
-        <div class="objectif-card" data-reveal="up" data-num="02" style="transition-delay:.1s">
+  <!--div class="objectif-card" data-reveal="up" data-num="02" style="transition-delay:.1s">
           <div class="oc-icon"><i class="fas fa-university"></i></div>
           <h3>Institutions renforcées</h3>
           <p>Appuyer les institutions de formation pour leur permettre de dispenser des formations de qualité, avec les
@@ -791,7 +853,7 @@
         </div>
 
         <!-- Objectif 3 -->
-        <div class="objectif-card" data-reveal="up" data-num="03" style="transition-delay:.2s">
+  <!--div class="objectif-card" data-reveal="up" data-num="03" style="transition-delay:.2s">
           <div class="oc-icon"><i class="fas fa-gavel"></i></div>
           <h3>Reconnaissance légale</h3>
           <p>Accompagner les États dans l'adoption de cadres réglementaires reconnaissant officiellement le statut des
@@ -799,15 +861,15 @@
         </div>
 
         <!-- Objectif 4 -->
-        <div class="objectif-card" data-reveal="up" data-num="04" style="transition-delay:.3s">
+  <!--div class="objectif-card" data-reveal="up" data-num="04" style="transition-delay:.3s">
           <div class="oc-icon"><i class="fas fa-network-wired"></i></div>
           <h3>Réseau régional</h3>
-          <p>Construire un réseau régional d'acteurs de la formation vétérinaire para-professionnelle pour favoriser les
+          <p>Construire un réseau régional d'acteurs de la formation vétérinaire paraprofessionnelle pour favoriser les
             échanges et la capitalisation.</p>
         </div>
       </div>
     </div>
-  </section>
+  </section-->
 
   <!-- ══════════ COMPOSANTES ══════════ -->
   <section id="composantes" class="s-composantes">
@@ -819,21 +881,26 @@
         <div class="sh-underline center"></div>
         <p class="section-sub">Le projet P3V est structuré autour de cinq composantes complémentaires agissant sur
           l'ensemble de la chaîne de valeur de la professionnalisation vétérinaire.</p>
+        <p class="section-sub">Le projet P3V poursuit un objectif global : améliorer la santé animale et les moyens de
+          subsistance des éleveurs en Afrique de l'Ouest, à travers quatre objectifs spécifiques.</p>
       </div>
 
       <div class="comp-cards">
-        <div class="comp-card" data-reveal="up" style="transition-delay:0ms">
+        <!-- C0 : Pleine Largeur -->
+        <div class="comp-card comp-card--full" data-reveal="up" style="transition-delay:0ms">
           <div class="cc-number">C0</div>
           <div class="cc-icon-wrap" style="--cc:var(--omsa-dark)"><i class="fas fa-search"></i></div>
-          <h3>Phase de diagnostic</h3>
-          <p>Analyser la situation initiale (démographie, cadre législatif, formations) afin de définir des stratégies
-            nationales de renforcement du réseau de santé animale.</p>
-          <ul class="cc-list">
-            <li><i class="fas fa-check-circle"></i>Priorités politiques et analyse de situation</li>
-            <li><i class="fas fa-check-circle"></i>Baseline & démographie (dimension genre)</li>
-            <li><i class="fas fa-check-circle"></i>Analyse de l'offre de formation</li>
-            <li><i class="fas fa-check-circle"></i>Validation du plan d'action national</li>
-          </ul>
+          <div class="cc-content">
+            <h3>Phase de diagnostic</h3>
+            <p>Analyser la situation initiale (démographie, cadre législatif, formations) afin de définir des stratégies
+              nationales de renforcement du réseau de santé animale.</p>
+            <ul class="cc-list">
+              <li><i class="fas fa-check-circle"></i>Priorités politiques et analyse de situation</li>
+              <li><i class="fas fa-check-circle"></i>Baseline & démographie (dimension genre)</li>
+              <li><i class="fas fa-check-circle"></i>Analyse de l'offre de formation</li>
+              <li><i class="fas fa-check-circle"></i>Validation du plan d'action national</li>
+            </ul>
+          </div>
           <div class="cc-border" style="background:var(--omsa-orange)"></div>
         </div>
 
@@ -856,8 +923,8 @@
           <div class="cc-number">C2</div>
           <div class="cc-icon-wrap" style="--cc:var(--omsa-orange-mid)"><i class="fas fa-graduation-cap"></i></div>
           <h3>Acquisition des compétences</h3>
-          <p>Revue des curricula et appui à la formation de qualité (initiale et continue) via un accompagnement
-            technique et matériel.</p>
+          <p>Revue des curricula et appui à la formation de qualité dans les écoles de formation des PPV via un
+            accompagnement technique et un appui en matériel de même que la formation continue des PPV en activité.</p>
           <ul class="cc-list">
             <li><i class="fas fa-check-circle"></i>Nouveaux curricula et priorités</li>
             <li><i class="fas fa-check-circle"></i>Équipements (kits de terrain)</li>
@@ -871,8 +938,8 @@
           <div class="cc-number">C3</div>
           <div class="cc-icon-wrap" style="--cc:var(--omsa-dark)"><i class="fas fa-hand-holding-usd"></i></div>
           <h3>Environnement socio-économique</h3>
-          <p>Créer un environnement durable favorisant l’insertion professionnelle des PPV et la rentabilité de leurs
-            activités.</p>
+          <p>Créer un environnement durable favorisant l’insertion professionnelle des PPV, en évaluant la rentabilité
+            des activités et en mettant en place des dispositifs d’insertion professionnelle.</p>
           <ul class="cc-list">
             <li><i class="fas fa-check-circle"></i>Suivi coaching & enquête insertion</li>
             <li><i class="fas fa-check-circle"></i>Dispositif d'accompagnement insertion</li>
@@ -882,19 +949,87 @@
           <div class="cc-border" style="background:var(--omsa-green)"></div>
         </div>
 
-        <div class="comp-card" data-reveal="up" style="transition-delay:400ms">
+        <!-- C4 : Pleine Largeur -->
+        <div class="comp-card comp-card--full" data-reveal="up" style="transition-delay:400ms">
           <div class="cc-number">C4</div>
           <div class="cc-icon-wrap" style="--cc:var(--secondary)"><i class="fas fa-tasks"></i></div>
-          <h3>Management du projet</h3>
-          <p>Composante transversale couvrant la communication, la coordination nationale et l’évaluation globale du
-            projet.</p>
-          <ul class="cc-list">
-            <li><i class="fas fa-check-circle"></i>Coordination & Comités de pilotage</li>
-            <li><i class="fas fa-check-circle"></i>Communication sur le projet</li>
-            <li><i class="fas fa-check-circle"></i>Monitoring & apprentissage continu</li>
-            <li><i class="fas fa-check-circle"></i>Études thématiques (genre, évaluation)</li>
-          </ul>
+          <div class="cc-content">
+            <h3>Management du projet</h3>
+            <p>Une composante transversale couvrant la communication, la concertation entre les parties prenantes, les
+              coordinations nationales, la tenue des réunions du comité de pilotage et l'évaluation globale du projet.
+            </p>
+            <ul class="cc-list">
+              <li><i class="fas fa-check-circle"></i>Coordination & Comités de pilotage</li>
+              <li><i class="fas fa-check-circle"></i>Communication sur le projet</li>
+              <li><i class="fas fa-check-circle"></i>Monitoring & apprentissage continu</li>
+              <li><i class="fas fa-check-circle"></i>Études thématiques (genre, évaluation)</li>
+            </ul>
+          </div>
           <div class="cc-border" style="background:var(--omsa-dark)"></div>
+        </div>
+      </div>
+
+
+    </div>
+  </section>
+
+
+  <!-- ══════════ CHIFFRES CLÉS ══════════ -->
+  <section id="realisations" class="s-realisations">
+    <div class="container">
+      <div class="section-header" data-reveal="up">
+        <div class="section-eyebrow">Impact du projet</div>
+        <h2 class="section-heading">Chiffres Clés & <em>Réalisations</em></h2>
+        <div class="sh-underline center"></div>
+        <p class="section-sub">Des résultats concrets sur le terrain, au service des éleveurs et de la santé animale.
+        </p>
+      </div>
+
+      <div class="real-grid-modern">
+        <!-- Groupe : Renforcement des Services Vétérinaires -->
+        <div class="real-card-modern" data-reveal="up">
+          <div class="rcm-icon"><i class="fas fa-user-graduate"></i></div>
+          <div class="rcm-num"><span class="count-it" data-target="545">0</span></div>
+          <div class="rcm-sub">dont 156 femmes (28%)</div>
+          <div class="rcm-label">Formation continue</div>
+        </div>
+        <div class="real-card-modern" data-reveal="up" style="transition-delay:100ms">
+          <div class="rcm-icon"><i class="fas fa-user-tie"></i></div>
+          <div class="rcm-num"><span class="count-it" data-target="1339">0</span></div>
+          <div class="rcm-sub">dont 442 femmes (33,2%)</div>
+          <div class="rcm-label">Formation professionnelle</div>
+        </div>
+        <div class="real-card-modern" data-reveal="up" style="transition-delay:200ms">
+          <div class="rcm-icon"><i class="fas fa-users-class"></i></div>
+          <div class="rcm-num"><span class="count-it" data-target="1393">0</span></div>
+          <div class="rcm-label">Stagiaires appuyés</div>
+        </div>
+        <div class="real-card-modern" data-reveal="up" style="transition-delay:300ms">
+          <div class="rcm-icon"><i class="fas fa-clipboard-list"></i></div>
+          <div class="rcm-num"><span class="count-it" data-target="3">0</span></div>
+          <div class="rcm-label">Missions PVS</div>
+        </div>
+        <div class="real-card-modern" data-reveal="up" style="transition-delay:400ms">
+          <div class="rcm-icon"><i class="fas fa-book"></i></div>
+          <div class="rcm-num"><span class="count-it" data-target="8">0</span></div>
+          <div class="rcm-label">Curricula actualisés</div>
+        </div>
+        <div class="real-card-modern" data-reveal="up" style="transition-delay:500ms">
+          <div class="rcm-icon"><i class="fas fa-chess"></i></div>
+          <div class="rcm-num"><span class="count-it" data-target="2">0</span></div>
+          <div class="rcm-label">Stratégies nationales</div>
+        </div>
+
+        <!-- Groupe : Insertion professionnelle -->
+        <div class="real-card-modern highlight" data-reveal="up" style="transition-delay:600ms">
+          <div class="rcm-icon"><i class="fas fa-briefcase"></i></div>
+          <div class="rcm-num"><span class="count-it" data-target="2">0</span></div>
+          <div class="rcm-label">Dispositifs d'insertion et Modèles économiques</div>
+        </div>
+        <div class="real-card-modern highlight" data-reveal="up" style="transition-delay:800ms">
+          <div class="rcm-icon"><i class="fas fa-comments"></i></div>
+          <div class="rcm-num"><span class="count-it" data-target="11">0</span></div>
+          <div class="rcm-label">Cadres de concertation</div>
         </div>
       </div>
     </div>
@@ -1010,7 +1145,10 @@
                 </div>
               </div>
               <div class="ms-visual">
-                <img src="images/p3v/composante1.jpg" alt="Cadre institutionnel" />
+                <video src="images/p3v/VSF.mp4" poster="images/p3v/VSF.jpg" controls playsinline
+                  style="width:100%; height:100%; object-fit:cover; background:#000; display:block;">
+                  Votre navigateur ne supporte pas la lecture de vidéos.
+                </video>
               </div>
             </div>
           </div>
@@ -1165,67 +1303,7 @@
     </div>
   </section>
 
-  <!-- ══════════ SECTION ÉQUIPE ══════════ -->
-  <section id="equipe" class="s-team">
-    <div class="container">
-      <div class="section-header" data-reveal="up">
-        <div class="section-eyebrow">Le capital humain</div>
-        <h2 class="section-heading">Notre <em>Équipe</em></h2>
-        <div class="sh-underline center"></div>
-        <p class="section-sub">Une équipe pluridisciplinaire et engagée, coordonnée par l'OMSA, pour la réussite du
-          projet P3V.</p>
-      </div>
 
-      <div class="team-grid">
-        <!-- Dr Myriam CARPENTIER -->
-        <div class="team-card" data-reveal="up">
-          <div class="tc-img-wrap">
-            <img src="images/p3v/equipe/myriam-carpentier.jpg" alt="Dr Myriam CARPENTIER" class="tc-img"
-              onerror="this.src='images/p3v/equipe/assistante-projet.jpg'" />
-          </div>
-          <h3 class="tc-name">Dr Myriam CARPENTIER</h3>
-          <div class="tc-title">Chargée de programme OMSA</div>
-          <p class="tc-role">Responsable du développement de la stratégie sur les PPV et de la coordination des
-            activités au niveau global.</p>
-        </div>
-
-        <!-- Marie LEMEUNIER -->
-        <div class="team-card" data-reveal="up" style="transition-delay:100ms">
-          <div class="tc-img-wrap">
-            <img src="images/p3v/equipe/marie-lemeunier.jpg" alt="Marie LEMEUNIER" class="tc-img"
-              onerror="this.src='images/p3v/equipe/assistante-projet.jpg'" />
-          </div>
-          <h3 class="tc-name">Marie LEMEUNIER</h3>
-          <div class="tc-title">Responsable Mobilisation & Subventions</div>
-          <p class="tc-role">En charge du budget et des relations avec le bailleur pour assurer la viabilité financière
-            du projet.</p>
-        </div>
-
-        <!-- Dre Mariam ALHAMDOU -->
-        <div class="team-card" data-reveal="up" style="transition-delay:200ms">
-          <div class="tc-img-wrap">
-            <img src="images/p3v/equipe/mariam-alhamdou.jpg" alt="Dre Mariam ALHAMDOU" class="tc-img"
-              onerror="this.src='images/p3v/equipe/assistante-projet.jpg'" />
-          </div>
-          <h3 class="tc-name">Dr Mariam ALHAMDOU</h3>
-          <div class="tc-title">Coordinatrice Régionale OMSA</div>
-          <p class="tc-role">Responsable du suivi des activités à Bamako, de la valorisation des résultats et des
-            perspectives du projet en Afrique.</p>
-        </div>
-
-        <!-- Assistante Projet -->
-        <div class="team-card" data-reveal="up" style="transition-delay:300ms">
-          <div class="tc-img-wrap">
-            <img src="images/p3v/equipe/assistante-projet.jpg" alt="Equipe d'appui" class="tc-img" />
-          </div>
-          <h3 class="tc-name">Équipe d'Appui</h3>
-          <div class="tc-title">Assistant Technique & Projet</div>
-          <p class="tc-role">Appui en ingénierie de formation (EISMV Dakar), animation du réseau et support opérationnel
-            quotidien.</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- ══════════ SECTION RESSOURCES & OUTILS PÉDAGOGIQUES ══════════ -->
   <section id="ressources" class="s-resources">
@@ -1255,7 +1333,7 @@
         <div class="res-card" data-reveal="up" style="transition-delay:100ms">
           <h3><i class="fas fa-video"></i> Vidéos Pédagogiques</h3>
           <div class="res-content">
-            <p>Une série de supports audiovisuels couvrant les fondamentaux de la pratique vétérinaire au Sahel, de la
+            <p>Une série de supports audiovisuels couvrant les fondamentaux de la pratique vétérinaire, de la
               contention à la chirurgie.</p>
           </div>
           <div class="res-list">
@@ -1285,7 +1363,7 @@
         <!-- E-MUPSA (Highlight) -->
         <div class="res-card mupsa" data-reveal="up">
           <div class="mupsa-visual">
-            <img src="images/p3v/DSC_3051.jpg" alt="Portail E-MUPSA" />
+            <img src="images/p3v/mupsa.jpg" alt="Portail E-MUPSA" />
           </div>
           <div class="mupsa-info">
             <div class="section-eyebrow" style="color:var(--primary); padding-left:0; margin-bottom:10px">Innovation
@@ -1334,7 +1412,8 @@
           <div class="pim-country-card">
             <div class="pcc-flag"><img src="https://flagcdn.com/w80/sn.png" width="50" class="hf-flag-img" alt=""></div>
             <div class="pcc-name">Sénégal</div>
-            <div class="pcc-desc">Pionnier dans la mise en œuvre, le Sénégal dispose d'un réseau de para-vétérinaires
+            <div class="pcc-desc">Pionnier dans la mise en œuvre, le Sénégal dispose d'un réseau de paraprofessionnels
+              vétérinaires
               structuré autour de la Direction des Services Vétérinaires (DSV). Le projet y développe des curricula
               innovants et renforce les centres de formation.</div>
             <div class="pcc-stats">
@@ -1350,7 +1429,28 @@
           <div class="pd-block">
             <h4><i class="fas fa-chart-line"></i>Avancement des activités</h4>
             <div class="progress-item">
-              <div class="pi-header"><span class="pi-label">Référentiel de formation validé</span><span
+              <div class="pi-header"><span class="pi-label">Maillage de la démographie vétérinaire</span><span
+                  class="pi-pct">100%</span></div>
+              <div class="pi-bar">
+                <div class="pi-fill" style="--w:100%"></div>
+              </div>
+            </div>
+            <div class="progress-item">
+              <div class="pi-header"><span class="pi-label">Stratégie de renforcement du personnel</span><span
+                  class="pi-pct">100%</span></div>
+              <div class="pi-bar">
+                <div class="pi-fill" style="--w:100%"></div>
+              </div>
+            </div>
+            <div class="progress-item">
+              <div class="pi-header"><span class="pi-label">Evaluation de besoin en formation</span><span
+                  class="pi-pct">100%</span></div>
+              <div class="pi-bar">
+                <div class="pi-fill" style="--w:100%"></div>
+              </div>
+            </div>
+            <div class="progress-item">
+              <div class="pi-header"><span class="pi-label">Mise à jour des curricula PPV</span><span
                   class="pi-pct">100%</span></div>
               <div class="pi-bar">
                 <div class="pi-fill" style="--w:100%"></div>
@@ -1358,23 +1458,37 @@
             </div>
             <div class="progress-item">
               <div class="pi-header"><span class="pi-label">Formation des formateurs</span><span
-                  class="pi-pct">85%</span></div>
+                  class="pi-pct">100%</span></div>
               <div class="pi-bar">
-                <div class="pi-fill" style="--w:85%"></div>
+                <div class="pi-fill" style="--w:100%"></div>
               </div>
             </div>
             <div class="progress-item">
-              <div class="pi-header"><span class="pi-label">Cadre réglementaire PPV</span><span
-                  class="pi-pct">70%</span></div>
+              <div class="pi-header"><span class="pi-label">Formation des PPV</span><span class="pi-pct">100%</span>
+              </div>
+              <div class="pi-bar">
+                <div class="pi-fill" style="--w:100%"></div>
+              </div>
+            </div>
+            <div class="progress-item">
+              <div class="pi-header"><span class="pi-label">Cadre règlementaire</span><span class="pi-pct">70%</span>
+              </div>
               <div class="pi-bar">
                 <div class="pi-fill" style="--w:70%"></div>
               </div>
             </div>
             <div class="progress-item">
-              <div class="pi-header"><span class="pi-label">Certification des PPV</span><span class="pi-pct">60%</span>
-              </div>
+              <div class="pi-header"><span class="pi-label">Dispositif d’insertion professionnel</span><span
+                  class="pi-pct">60%</span></div>
               <div class="pi-bar">
                 <div class="pi-fill" style="--w:60%"></div>
+              </div>
+            </div>
+            <div class="progress-item">
+              <div class="pi-header"><span class="pi-label">Formation des femmes PPV</span><span
+                  class="pi-pct">30%</span></div>
+              <div class="pi-bar">
+                <div class="pi-fill" style="--w:30%"></div>
               </div>
             </div>
           </div>
@@ -1384,13 +1498,13 @@
               <span class="pl-tag"><i class="fas fa-shield-alt"></i>DSV Sénégal</span>
               <span class="pl-tag"><i class="fas fa-university"></i>EISMV Dakar</span>
               <span class="pl-tag"><i class="fas fa-leaf"></i>Réseau FAR</span>
-              <span class="pl-tag"><i class="fas fa-building"></i>CERP Thiès</span>
-              <span class="pl-tag"><i class="fas fa-building"></i>CERP Ziguinchor</span>
+              <!--span class="pl-tag"><i class="fas fa-building"></i>CERP Thiès</span>
+              <span class="pl-tag"><i class="fas fa-building"></i>CERP Ziguinchor</span>-->
             </div>
           </div>
-          <a href="pays.html" class="btn-outline-pill" style="margin-top:8px">
+          <!--a href="pays.html" class="btn-outline-pill" style="margin-top:8px">
             <i class="fas fa-arrow-right"></i> Voir la fiche pays complète
-          </a>
+          </a-->
         </div>
       </div>
 
@@ -1402,7 +1516,7 @@
             <div class="pcc-name">Bénin</div>
             <div class="pcc-desc">Au Bénin, le projet s'appuie sur le Ministère de l'Agriculture, de l'Élevage et de la
               Pêche (MAEP) pour développer un cadre réglementaire solide et structurer la profession d'agent vétérinaire
-              para-professionnel.</div>
+              paraprofessionnel.</div>
             <div class="pcc-stats">
               <div class="pcc-stat"><span class="pcc-stat-num">38</span><span class="pcc-stat-lbl">PPV formés</span>
               </div>
@@ -1450,12 +1564,12 @@
               <span class="pl-tag"><i class="fas fa-shield-alt"></i>MAEP Bénin</span>
               <span class="pl-tag"><i class="fas fa-university"></i>UA/FSA Abomey</span>
               <span class="pl-tag"><i class="fas fa-leaf"></i>ATDA</span>
-              <span class="pl-tag"><i class="fas fa-building"></i>CERAQ Parakou</span>
+              <!--span class="pl-tag"><i class="fas fa-building"></i>CERAQ Parakou</span-->
             </div>
           </div>
-          <a href="pays.html" class="btn-outline-pill" style="margin-top:8px">
+          <!--a href="pays.html" class="btn-outline-pill" style="margin-top:8px">
             <i class="fas fa-arrow-right"></i> Voir la fiche pays complète
-          </a>
+          </a-->
         </div>
       </div>
 
@@ -1518,79 +1632,15 @@
               <span class="pl-tag"><i class="fas fa-building"></i>CFSA Lomé</span>
             </div>
           </div>
-          <a href="pays.html" class="btn-outline-pill" style="margin-top:8px">
+          <!--a href="pays.html" class="btn-outline-pill" style="margin-top:8px">
             <i class="fas fa-arrow-right"></i> Voir la fiche pays complète
-          </a>
+          </a-->
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ══════════ CHIFFRES CLÉS ══════════ -->
-  <section id="realisations" class="s-realisations">
-    <div class="container">
-      <div class="section-header" data-reveal="up">
-        <div class="section-eyebrow">Impact du projet</div>
-        <h2 class="section-heading">Chiffres Clés & <em>Réalisations</em></h2>
-        <div class="sh-underline center"></div>
-        <p class="section-sub">Des résultats concrets sur le terrain, au service des éleveurs et de la santé animale au
-          Sahel.</p>
-      </div>
 
-      <div class="real-grid-modern">
-        <!-- Groupe : Renforcement des Services Vétérinaires -->
-        <div class="real-card-modern" data-reveal="up">
-          <div class="rcm-icon"><i class="fas fa-user-graduate"></i></div>
-          <div class="rcm-num">545</div>
-          <div class="rcm-sub">dont 156 femmes (28%)</div>
-          <div class="rcm-label">Formation continue</div>
-        </div>
-        <div class="real-card-modern" data-reveal="up" style="transition-delay:100ms">
-          <div class="rcm-icon"><i class="fas fa-user-tie"></i></div>
-          <div class="rcm-num">1339</div>
-          <div class="rcm-sub">dont 442 femmes (33,2%)</div>
-          <div class="rcm-label">Formation professionnelle</div>
-        </div>
-        <div class="real-card-modern" data-reveal="up" style="transition-delay:200ms">
-          <div class="rcm-icon"><i class="fas fa-users-class"></i></div>
-          <div class="rcm-num">1393</div>
-          <div class="rcm-label">Stagiaires appuyés</div>
-        </div>
-        <div class="real-card-modern" data-reveal="up" style="transition-delay:300ms">
-          <div class="rcm-icon"><i class="fas fa-clipboard-list"></i></div>
-          <div class="rcm-num">3</div>
-          <div class="rcm-label">Missions PVS</div>
-        </div>
-        <div class="real-card-modern" data-reveal="up" style="transition-delay:400ms">
-          <div class="rcm-icon"><i class="fas fa-book"></i></div>
-          <div class="rcm-num">8</div>
-          <div class="rcm-label">Curricula actualisés</div>
-        </div>
-        <div class="real-card-modern" data-reveal="up" style="transition-delay:500ms">
-          <div class="rcm-icon"><i class="fas fa-chess"></i></div>
-          <div class="rcm-num">2</div>
-          <div class="rcm-label">Stratégies nationales</div>
-        </div>
-
-        <!-- Groupe : Insertion professionnelle -->
-        <div class="real-card-modern highlight" data-reveal="up" style="transition-delay:600ms">
-          <div class="rcm-icon"><i class="fas fa-briefcase"></i></div>
-          <div class="rcm-num">2</div>
-          <div class="rcm-label">Dispositifs d'insertion</div>
-        </div>
-        <div class="real-card-modern highlight" data-reveal="up" style="transition-delay:700ms">
-          <div class="rcm-icon"><i class="fas fa-chart-line"></i></div>
-          <div class="rcm-num">2</div>
-          <div class="rcm-label">Modèles économiques</div>
-        </div>
-        <div class="real-card-modern highlight" data-reveal="up" style="transition-delay:800ms">
-          <div class="rcm-icon"><i class="fas fa-comments"></i></div>
-          <div class="rcm-num">11</div>
-          <div class="rcm-label">Cadres de concertation</div>
-        </div>
-      </div>
-    </div>
-  </section>
 
 
 
@@ -1656,11 +1706,116 @@
         </div>
       </div>
 
-      <!--div class="text-center mt-lg" data-reveal="up">
+      <div class="text-center mt-lg" data-reveal="up"
+        style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
         <a href="galerie.html" class="btn-primary-pill">
           <i class="fas fa-images"></i> Voir toute la galerie
         </a>
-      </div-->
+        <a href="images/p3v/Article.docx" class="btn-outline-pill" download>
+          <i class="fas fa-file-word"></i> Télécharger l'Article Scientifique
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ SECTION TÉMOIGNAGES ══════════ -->
+  <section id="temoignages" class="s-testimonials">
+    <div class="container">
+      <div class="section-header" data-reveal="up">
+        <div class="section-eyebrow">Paroles du terrain</div>
+        <h2 class="section-heading">Ce qu'ils disent du <em>Projet P3V</em></h2>
+        <div class="sh-underline center"></div>
+      </div>
+
+      <div class="testimonial-single" data-reveal="up">
+        <div class="ts-card">
+          <i class="fas fa-quote-left ts-icon"></i>
+          <p class="ts-text">
+            « Grâce au P3V, notre formation est plus pratique et mieux adaptée aux réalités du terrain, ce qui nous
+            permet d’être plus confiants et mieux outillés pour exercer efficacement nos activités. »
+          </p>
+          <div class="ts-author">
+            <div class="ts-info">
+              <strong>Témoignage d’un étudiant PPV</strong>
+              <span>Bénéficiaire du projet</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ SECTION ÉQUIPE ══════════ -->
+  <section id="equipe" class="s-team">
+    <div class="container">
+      <div class="section-header" data-reveal="up">
+        <div class="section-eyebrow">Le capital humain</div>
+        <h2 class="section-heading">Notre <em>Équipe</em></h2>
+        <div class="sh-underline center"></div>
+        <p class="section-sub">Une équipe pluridisciplinaire et engagée, coordonnée par l'OMSA, pour la réussite du
+          projet P3V.</p>
+      </div>
+
+      <div class="team-grid">
+        <!-- Dr Myriam CARPENTIER -->
+        <div class="team-card" data-reveal="up">
+          <div class="tc-img-wrap">
+            <img src="images/p3v/equipe/myriam-carpentier.jpg" alt="Dr Myriam CARPENTIER" class="tc-img"
+              onerror="this.src='images/p3v/equipe/assistante-projet.jpg'" />
+          </div>
+          <h3 class="tc-name">Dr Myriam CARPENTIER</h3>
+          <div class="tc-title">Chargée de programme OMSA</div>
+          <p class="tc-role">Responsable du développement de la stratégie sur les PPV et de la coordination des
+            activités au niveau global.</p>
+        </div>
+
+        <!-- Marie LEMEUNIER -->
+        <div class="team-card" data-reveal="up" style="transition-delay:100ms">
+          <div class="tc-img-wrap">
+            <img src="images/p3v/equipe/marie-lemeunier.jpg" alt="Marie LEMEUNIER" class="tc-img"
+              onerror="this.src='images/p3v/equipe/assistante-projet.jpg'" />
+          </div>
+          <h3 class="tc-name">Marie LEMEUNIER</h3>
+          <div class="tc-title">Responsable Mobilisation & Subventions</div>
+          <p class="tc-role">En charge du budget et des relations avec le bailleur pour assurer la viabilité financière
+            du projet.</p>
+        </div>
+
+        <!-- Dr Mariam ALHAMDOU -->
+        <div class="team-card" data-reveal="up" style="transition-delay:200ms">
+          <div class="tc-img-wrap">
+            <img src="images/p3v/equipe/mariam-alhamdou.jpg" alt="Dre Mariam ALHAMDOU" class="tc-img"
+              onerror="this.src='images/p3v/equipe/assistante-projet.jpg'" />
+          </div>
+          <h3 class="tc-name">Dr Mariam ALHAMDOU</h3>
+          <div class="tc-title">Coordinatrice Régionale OMSA</div>
+          <p class="tc-role">Responsable du suivi des activités à Bamako, de la valorisation des résultats et des
+            perspectives du projet en Afrique.</p>
+        </div>
+
+        <!-- Dr André P. BEDEKELABOU -->
+        <div class="team-card" data-reveal="up" style="transition-delay:200ms">
+          <div class="tc-img-wrap">
+            <img src="images/p3v/equipe/andre-bedekelabou.jpg" alt="Dr André P. BEDEKELABOU" class="tc-img"
+              onerror="this.src='images/p3v/equipe/assistante-projet.jpg'" />
+          </div>
+          <h3 class="tc-name">Dr André P. BEDEKELABOU</h3>
+          <div class="tc-title">Assistant technique P3V</div>
+          <p class="tc-role">Chargé de l’appui en ingénierie de formation et de l’animation du réseau des centres.</p>
+        </div>
+
+        <!-- Assistante Projet -->
+        <div class="team-card" data-reveal="up" style="transition-delay:300ms">
+          <div class="tc-img-wrap">
+            <img src="images/p3v/equipe/mariam-yabre.jpg" alt="Mariam Assana YABRE" class="tc-img"
+              onerror="this.src='images/p3v/equipe/assistante-projet.jpg'" />
+          </div>
+          <h3 class="tc-name">Mariam Assana YABRE</h3>
+          <div class="tc-title">Assistant Technique & Projet</div>
+          <p class="tc-role">Appui en ingénierie de formation (EISMV Dakar), animation du réseau et support opérationnel
+            quotidien.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1721,8 +1876,8 @@
     </div>
     <div class="partners-logos-grid">
       <div class="partner-logo-card">
-        <img src="images/logo-woah.png" alt="OMSA/WOAH" />
-        <span class="plc-name">OMSA/WOAH</span>
+        <img src="images/logo-woah.png" alt="OMSA" />
+        <span class="plc-name">OMSA</span>
       </div>
       <div class="partner-logo-card">
         <img src="images/logo-eismv.png" alt="EISMV Dakar" />
@@ -1860,15 +2015,14 @@
         <div class="footer-grid">
           <div class="fg-brand">
             <a href="index.html" class="fg-logo">
-              <div class="loader-badge" style="width:40px;height:40px;font-size:1rem;margin:0;border-radius:10px">P3V
-              </div>
               <div class="fg-logo-text">
                 <strong>Projet P3V</strong>
-                <span>Para-Professionnels Vétérinaires</span>
+                <span>Professionnalisation des paraprofessionnels Vétérinaires</span>
               </div>
             </a>
-            <p class="fg-desc">Initiative régionale de professionnalisation des para-vétérinaires au Sénégal, Bénin et
-              Togo. Financé par l'AFD, mis en œuvre par l'OMSA/WOAH et ses partenaires.</p>
+            <p class="fg-desc">Initiative régionale de professionnalisation des paraprofessionnels vétérinaires au
+              Sénégal, Bénin et
+              Togo. Financé par l'AFD, mis en œuvre par l'OMSA et ses partenaires.</p>
             <div class="footer-socials">
               <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
               <a href="#" aria-label="X"><i class="fab fa-x-twitter"></i></a>

@@ -715,7 +715,7 @@ section { padding:96px 0 }
   pointer-events:none;
 }
 .comp-cards {
-  display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+  display:grid; grid-template-columns:repeat(3, 1fr);
   gap:28px;
 }
 .comp-card {
@@ -723,6 +723,14 @@ section { padding:96px 0 }
   padding:32px 28px; position:relative; overflow:hidden;
   box-shadow:var(--shadow-s); border:1px solid var(--border);
   transition:all .4s var(--ease-out);
+  display: flex; flex-direction: column;
+}
+.comp-card--full {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+  padding: 40px;
 }
 .comp-card:hover {
   transform:translateY(-8px); box-shadow:var(--shadow-l);
@@ -740,8 +748,16 @@ section { padding:96px 0 }
   display:flex; align-items:center; justify-content:center;
   color:#fff; font-size:1.3rem; margin-bottom:18px;
   box-shadow:0 6px 20px color-mix(in srgb, var(--cc,var(--primary)) 40%, transparent);
-  transition:transform .3s;
+  transition:transform .3s; flex-shrink: 0;
 }
+.comp-card--full .cc-icon-wrap {
+  width: 80px; height: 80px; font-size: 2rem; margin-bottom: 0;
+}
+.comp-card--full .cc-content { flex: 1; }
+.comp-card--full .cc-list {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px 32px; margin-top: 15px;
+}
+
 .comp-card:hover .cc-icon-wrap { transform:scale(1.1) rotate(-3deg) }
 .comp-card h3 { font-size:1.05rem; font-weight:800; color:var(--dark); margin-bottom:10px }
 .comp-card p { font-size:.85rem; color:var(--muted); line-height:1.7; margin-bottom:16px }
@@ -754,6 +770,25 @@ section { padding:96px 0 }
 .cc-border {
   position:absolute; bottom:0; left:0; right:0;
   height:4px;
+}
+
+/* Footer text for Composantes */
+.comp-footer-text {
+  margin-top: 40px;
+  padding: 30px;
+  background: var(--light2);
+  border-radius: var(--r-md);
+  border-left: 5px solid var(--primary);
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--dark);
+  box-shadow: var(--shadow-s);
+}
+
+@media (max-width: 992px) {
+  .comp-cards { grid-template-columns: 1fr; }
+  .comp-card--full { flex-direction: column; align-items: flex-start; gap: 20px; padding: 32px 28px; }
+  .comp-card--full .cc-list { grid-template-columns: 1fr; }
 }
 
 /* ──────────────────────────────────────────────────
@@ -782,14 +817,39 @@ section { padding:96px 0 }
 
 .pays-info-map { position:relative }
 .pim-country-card {
-  background:var(--grad-orange);
-  border-radius:var(--r-lg); padding:36px; color:#fff;
-  position:relative; overflow:hidden;
+  background: url('../images/p3v/pays-p3v.png') center center / cover no-repeat;
+  border-radius: var(--r-lg);
+  padding: 40px 36px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-l);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
+
+.pim-country-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0, 31, 74, 0.92) 0%, rgba(0, 31, 74, 0.7) 100%);
+  z-index: 0;
+}
+
+.pim-country-card > * {
+  position: relative;
+  z-index: 1;
+}
+
 .pim-country-card::before {
-  content:''; position:absolute; top:-40px; right:-40px;
-  width:200px; height:200px; border-radius:50%;
-  background:rgba(255,255,255,.06);
+  content: '';
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  z-index: 1;
 }
 .pcc-flag { font-size:3.5rem; margin-bottom:14px }
 .pcc-name { font-size:1.8rem; font-weight:900; margin-bottom:8px }

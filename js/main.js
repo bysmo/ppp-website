@@ -266,13 +266,15 @@
       if (rect.top < wH * 0.9) {
         el.classList.add('visible');
 
-        // Trigger count-it inside
-        el.querySelectorAll('.count-it').forEach(c => {
-          if (!c.dataset.done) {
-            c.dataset.done = 'true';
-            animateCounter(c, parseInt(c.dataset.target), 1800);
-          }
-        });
+        // Trigger count-it inside (only if scrolled)
+        if (window.pageYOffset > 50) {
+          el.querySelectorAll('.count-it').forEach(c => {
+            if (!c.dataset.done) {
+              c.dataset.done = 'true';
+              animateCounter(c, parseInt(c.dataset.target), 1800);
+            }
+          });
+        }
       }
     });
 
@@ -280,6 +282,19 @@
     document.querySelectorAll('.tl-item').forEach(el => {
       const rect = el.getBoundingClientRect();
       if (rect.top < wH * 0.88) el.classList.add('visible');
+    });
+  }
+
+  // Hover trigger for key figures
+  const realSection = document.getElementById('realisations');
+  if (realSection) {
+    realSection.addEventListener('mouseenter', () => {
+      realSection.querySelectorAll('.count-it').forEach(c => {
+        if (!c.dataset.done) {
+          c.dataset.done = 'true';
+          animateCounter(c, parseInt(c.dataset.target), 1800);
+        }
+      });
     });
   }
 
