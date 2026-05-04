@@ -1208,7 +1208,7 @@ section { padding:96px 0 }
 .s-references { background: var(--white); padding-bottom: 100px; }
 .ref-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 30px;
   margin-top: 40px;
 }
@@ -1559,6 +1559,7 @@ footer {
 
   section{ padding:64px 0 }
   .real-grid{ grid-template-columns:1fr }
+  .ref-grid{ grid-template-columns:1fr }
   .pays-panel.active{ grid-template-columns:1fr; gap:28px }
   .footer-grid{ grid-template-columns:1fr; gap:28px }
   .hero-stats-bar .hsb-inner{ flex-wrap:wrap }
