@@ -47,62 +47,104 @@
       line-height: 1;
     }
 
-    .testimonial-single {
-      max-width: 850px;
-      margin: 60px auto 0;
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 30px;
+      margin-top: 60px;
       position: relative;
       z-index: 2;
     }
 
     .ts-card {
       background: #fff;
-      padding: 60px 50px;
+      padding: 40px;
       border-radius: var(--r-lg);
-      box-shadow: var(--shadow-xl);
+      box-shadow: var(--shadow-l);
       position: relative;
-      text-align: center;
+      display: flex;
+      flex-direction: column;
       border: 1px solid var(--border);
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .ts-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-xl);
+      border-color: var(--primary);
     }
 
     .ts-icon {
-      font-size: 2.5rem;
+      font-size: 2rem;
       color: var(--primary);
       opacity: 0.2;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
       display: block;
     }
 
     .ts-text {
-      font-size: 1.4rem;
+      font-size: 1.15rem;
       color: var(--dark);
-      line-height: 1.8;
+      line-height: 1.7;
       font-weight: 500;
       font-style: italic;
-      margin-bottom: 35px;
+      margin-bottom: 25px;
       font-family: 'Playfair Display', serif;
+      flex: 1;
     }
 
     .ts-author {
       display: flex;
-      flex-direction: column;
       align-items: center;
-      gap: 5px;
+      gap: 15px;
+      margin-top: auto;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
     }
 
     .ts-info strong {
-      font-size: 1.1rem;
+      font-size: 1rem;
       color: var(--primary);
       font-weight: 800;
+      display: block;
     }
 
     .ts-info span {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       color: var(--muted);
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 1.5px;
+      letter-spacing: 1px;
       display: block;
-      margin-top: 4px;
+      margin-top: 2px;
+    }
+
+    .ts-card-wide {
+      grid-column: span 2;
+    }
+
+    @media (max-width: 1024px) {
+      .testimonial-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
+
+      .ts-card-wide {
+        grid-column: span 1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .testimonial-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .ts-card {
+        padding: 30px;
+      }
+
+      .ts-text {
+        font-size: 1.05rem;
+      }
     }
   </style>
 </head>
@@ -510,8 +552,10 @@
               <ul style="color: #fff; line-height: 1.6; margin-top: 20px; padding-left: 20px;">
                 <li style="margin-bottom: 10px;"><strong>Nutritionnelle :</strong> Fourniture de protéines animales</li>
                 <li style="margin-bottom: 10px;"><strong>Économique :</strong> Revenus et épargne familiale</li>
-                <li style="margin-bottom: 10px;"><strong>Environnementale :</strong> Fertilité des sols &amp; ressources naturelles</li>
-                <li style="margin-bottom: 10px;"><strong>Sociale :</strong> Pratiques culturelles &amp; dynamiques communautaires</li>
+                <li style="margin-bottom: 10px;"><strong>Environnementale :</strong> Fertilité des sols &amp; ressources
+                  naturelles</li>
+                <li style="margin-bottom: 10px;"><strong>Sociale :</strong> Pratiques culturelles &amp; dynamiques
+                  communautaires</li>
               </ul>
             </div>
           </div>
@@ -571,9 +615,12 @@
               <p class="ss-body">Toutefois, l'accès aux services vétérinaires est limité par plusieurs facteurs
                 structurels :</p>
               <ul style="color: #fff; line-height: 1.6; margin-top: 20px; padding-left: 20px;">
-                <li style="margin-bottom: 10px;"><strong>Déficit quantitatif :</strong> Manque de professionnels qualifiés présents sur le terrain</li>
-                <li style="margin-bottom: 10px;"><strong>Inadéquation des formations :</strong> Formations historiquement déconnectées des réalités du marché de l'emploi</li>
-                <li style="margin-bottom: 10px;"><strong>Lacunes réglementaires :</strong> Cadre réglementaire obsolète vis-à-vis des normes internationales</li>
+                <li style="margin-bottom: 10px;"><strong>Déficit quantitatif :</strong> Manque de professionnels
+                  qualifiés présents sur le terrain</li>
+                <li style="margin-bottom: 10px;"><strong>Inadéquation des formations :</strong> Formations
+                  historiquement déconnectées des réalités du marché de l'emploi</li>
+                <li style="margin-bottom: 10px;"><strong>Lacunes réglementaires :</strong> Cadre réglementaire obsolète
+                  vis-à-vis des normes internationales</li>
               </ul>
             </div>
           </div>
@@ -597,9 +644,12 @@
               <p class="ss-body">Dans ce contexte, les PPV jouent un rôle <strong>déterminant</strong> en appui aux
                 vétérinaires :</p>
               <ul style="color: #fff; line-height: 1.6; margin-top: 20px; padding-left: 20px;">
-                <li style="margin-bottom: 10px;"><strong>Surveillance et contrôle des maladies :</strong> Première ligne de détection et d'alerte épidémiologique</li>
-                <li style="margin-bottom: 10px;"><strong>Sécurité sanitaire des aliments :</strong> Contrôle et inspection dans les abattoirs et marchés</li>
-                <li style="margin-bottom: 10px;"><strong>Accès aux soins en zones reculées :</strong> Présence là où les vétérinaires ne peuvent pas aller</li>
+                <li style="margin-bottom: 10px;"><strong>Surveillance et contrôle des maladies :</strong> Première ligne
+                  de détection et d'alerte épidémiologique</li>
+                <li style="margin-bottom: 10px;"><strong>Sécurité sanitaire des aliments :</strong> Contrôle et
+                  inspection dans les abattoirs et marchés</li>
+                <li style="margin-bottom: 10px;"><strong>Accès aux soins en zones reculées :</strong> Présence là où les
+                  vétérinaires ne peuvent pas aller</li>
               </ul>
             </div>
           </div>
@@ -1459,31 +1509,66 @@
           <div class="pd-block">
             <h4><i class="fas fa-chart-line"></i>Avancement des activités</h4>
             <div class="progress-item">
-              <div class="pi-header"><span class="pi-label">Référentiel de formation validé</span><span
-                  class="pi-pct">90%</span></div>
+              <div class="pi-header"><span class="pi-label">Maillage de la démographie vétérinaire</span><span
+                  class="pi-pct">10%</span></div>
               <div class="pi-bar">
-                <div class="pi-fill" style="--w:90%"></div>
+                <div class="pi-fill" style="--w:10%"></div>
+              </div>
+            </div>
+            <div class="progress-item">
+              <div class="pi-header"><span class="pi-label">Stratégie de renforcement du personnel</span><span
+                  class="pi-pct">0%</span></div>
+              <div class="pi-bar">
+                <div class="pi-fill" style="--w:0%"></div>
+              </div>
+            </div>
+            <div class="progress-item">
+              <div class="pi-header"><span class="pi-label">Évaluation des besoins en formation</span><span
+                  class="pi-pct">100%</span></div>
+              <div class="pi-bar">
+                <div class="pi-fill" style="--w:100%"></div>
+              </div>
+            </div>
+            <div class="progress-item">
+              <div class="pi-header"><span class="pi-label">Mise à jour des curricula PPV</span><span
+                  class="pi-pct">60%</span></div>
+              <div class="pi-bar">
+                <div class="pi-fill" style="--w:60%"></div>
               </div>
             </div>
             <div class="progress-item">
               <div class="pi-header"><span class="pi-label">Formation des formateurs</span><span
-                  class="pi-pct">75%</span></div>
+                  class="pi-pct">100%</span></div>
               <div class="pi-bar">
-                <div class="pi-fill" style="--w:75%"></div>
+                <div class="pi-fill" style="--w:100%"></div>
               </div>
             </div>
             <div class="progress-item">
-              <div class="pi-header"><span class="pi-label">Cadre réglementaire PPV</span><span
-                  class="pi-pct">55%</span></div>
+              <div class="pi-header"><span class="pi-label">Formation des PPV</span><span class="pi-pct">100%</span>
+              </div>
               <div class="pi-bar">
-                <div class="pi-fill" style="--w:55%"></div>
+                <div class="pi-fill" style="--w:100%"></div>
               </div>
             </div>
             <div class="progress-item">
-              <div class="pi-header"><span class="pi-label">Certification des PPV</span><span class="pi-pct">50%</span>
+              <div class="pi-header"><span class="pi-label">Cadre réglementaire</span><span class="pi-pct">10%</span>
               </div>
               <div class="pi-bar">
-                <div class="pi-fill" style="--w:50%"></div>
+                <div class="pi-fill" style="--w:10%"></div>
+              </div>
+            </div>
+            <div class="progress-item">
+              <div class="pi-header"><span class="pi-label">Dispositif d’insertion professionnelle</span><span
+                  class="pi-pct">0%</span></div>
+              <div class="pi-bar">
+                <div class="pi-fill" style="--w:0%"></div>
+              </div>
+            </div>
+            <div class="progress-item">
+              <div class="pi-header"><span class="pi-label">Formation des femmes PPV</span><span
+                  class="pi-pct">10%</span></div>
+              <div class="pi-bar">
+                <div class="pi-fill" style="--w:10%"></div>
               </div>
             </div>
           </div>
@@ -1524,31 +1609,66 @@
           <div class="pd-block">
             <h4><i class="fas fa-chart-line"></i>Avancement des activités</h4>
             <div class="progress-item">
-              <div class="pi-header"><span class="pi-label">Référentiel de formation validé</span><span
-                  class="pi-pct">88%</span></div>
+              <div class="pi-header"><span class="pi-label">Maillage de la démographie vétérinaire</span><span
+                  class="pi-pct">100%</span></div>
               <div class="pi-bar">
-                <div class="pi-fill" style="--w:88%"></div>
+                <div class="pi-fill" style="--w:100%"></div>
+              </div>
+            </div>
+            <div class="progress-item">
+              <div class="pi-header"><span class="pi-label">Stratégie de renforcement du personnel</span><span
+                  class="pi-pct">100%</span></div>
+              <div class="pi-bar">
+                <div class="pi-fill" style="--w:100%"></div>
+              </div>
+            </div>
+            <div class="progress-item">
+              <div class="pi-header"><span class="pi-label">Évaluation des besoins en formation</span><span
+                  class="pi-pct">100%</span></div>
+              <div class="pi-bar">
+                <div class="pi-fill" style="--w:100%"></div>
+              </div>
+            </div>
+            <div class="progress-item">
+              <div class="pi-header"><span class="pi-label">Mise à jour des curricula PPV</span><span
+                  class="pi-pct">100%</span></div>
+              <div class="pi-bar">
+                <div class="pi-fill" style="--w:100%"></div>
               </div>
             </div>
             <div class="progress-item">
               <div class="pi-header"><span class="pi-label">Formation des formateurs</span><span
-                  class="pi-pct">72%</span></div>
+                  class="pi-pct">100%</span></div>
               <div class="pi-bar">
-                <div class="pi-fill" style="--w:72%"></div>
+                <div class="pi-fill" style="--w:100%"></div>
               </div>
             </div>
             <div class="progress-item">
-              <div class="pi-header"><span class="pi-label">Cadre réglementaire PPV</span><span
+              <div class="pi-header"><span class="pi-label">Formation des PPV</span><span class="pi-pct">100%</span>
+              </div>
+              <div class="pi-bar">
+                <div class="pi-fill" style="--w:100%"></div>
+              </div>
+            </div>
+            <div class="progress-item">
+              <div class="pi-header"><span class="pi-label">Cadre réglementaire</span><span class="pi-pct">90%</span>
+              </div>
+              <div class="pi-bar">
+                <div class="pi-fill" style="--w:90%"></div>
+              </div>
+            </div>
+            <div class="progress-item">
+              <div class="pi-header"><span class="pi-label">Dispositif d’insertion professionnelle</span><span
                   class="pi-pct">60%</span></div>
               <div class="pi-bar">
                 <div class="pi-fill" style="--w:60%"></div>
               </div>
             </div>
             <div class="progress-item">
-              <div class="pi-header"><span class="pi-label">Certification des PPV</span><span class="pi-pct">48%</span>
-              </div>
+              <div class="pi-header"><span class="pi-label">Formation des femmes PPV</span><span
+                  class="pi-pct">20%</span></div>
               <div class="pi-bar">
-                <div class="pi-fill" style="--w:48%"></div>
+                <div class="pi-fill" style="--w:20%"></div>
               </div>
             </div>
           </div>
@@ -1806,7 +1926,8 @@
         <div class="sh-underline center"></div>
       </div>
 
-      <div class="testimonial-single" data-reveal="up">
+      <div class="testimonial-grid" data-reveal="up">
+        <!-- Témoignage 1 -->
         <div class="ts-card">
           <i class="fas fa-quote-left ts-icon"></i>
           <p class="ts-text">
@@ -1817,6 +1938,69 @@
             <div class="ts-info">
               <strong>Témoignage d’un étudiant PPV</strong>
               <span>Bénéficiaire du projet</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Témoignage 2 -->
+        <div class="ts-card">
+          <i class="fas fa-quote-left ts-icon"></i>
+          <p class="ts-text">
+            « La formation m'a permis d'être plus efficace sur le terrain, ainsi mes clients ont vraiment apprécié mes
+            prestations et me réfèrent à d'autres clients. »
+          </p>
+          <div class="ts-author">
+            <div class="ts-info">
+              <strong>Témoignage d’un PPV</strong>
+              <span>Professionnel de santé animale</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Témoignage 3 -->
+        <div class="ts-card">
+          <i class="fas fa-quote-left ts-icon"></i>
+          <p class="ts-text">
+            « Cette formation m'a permis de changer d'emploi et d'intervenir dans une nouvelle structure en tant que
+            technicien chargé de l'élevage. »
+          </p>
+          <div class="ts-author">
+            <div class="ts-info">
+              <strong>Témoignage d’un PPV</strong>
+              <span>Insertion professionnelle</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Témoignage 4 -->
+        <div class="ts-card">
+          <i class="fas fa-quote-left ts-icon"></i>
+          <p class="ts-text">
+            « Les équipements, les travaux pratiques associés aux cours théoriques, les stages et les sorties de terrain
+            étaient vraiment agréables et instructifs. »
+          </p>
+          <div class="ts-author">
+            <div class="ts-info">
+              <strong>Étudiant PPV</strong>
+              <span>Formation technique</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Témoignage 5 -->
+        <div class="ts-card ts-card-wide">
+          <i class="fas fa-quote-left ts-icon"></i>
+          <p class="ts-text">
+            « Moi, personnellement, j’étais contente. Je remercie l’équipe du projet d’avoir vraiment pensé à nous : ils
+            ont pu réunir les PPV et les médecins vétérinaires, on avait un accès libre pour choisir, on a pu contacter
+            les hôtes en amont pour vérifier si c’était possible et si on y ferait bien ce qu’on voulait. Une fois
+            là‑bas, ils ne nous ont rien caché, ils nous ont tout expliqué ; ça m’a beaucoup aidé à comprendre les
+            réalités du Nord et j’ai acquis pas mal de connaissances. »
+          </p>
+          <div class="ts-author">
+            <div class="ts-info">
+              <strong>Étudiante EPAC</strong>
+              <span>Université d'Abomey-Calavi</span>
             </div>
           </div>
         </div>
@@ -2195,7 +2379,11 @@
     <div class="modal-box" style="width: 800px; max-width: 90%; background: #000; padding: 0;">
       <button class="modal-close" id="videoModalClose" style="z-index: 10;"><i class="fas fa-times"></i></button>
       <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;">
-        <iframe id="videoModalIframe" src="" style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe id="videoModalIframe" src=""
+          style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;" title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
     </div>
   </div>
@@ -2213,14 +2401,14 @@
           e.preventDefault();
           let videoId = '';
           const url = new URL(link.href);
-          
+
           if (link.href.includes('youtube.com/watch')) {
             videoId = url.searchParams.get('v');
           } else if (link.href.includes('youtu.be/')) {
             videoId = url.pathname.substring(1);
           }
 
-          if(videoId) {
+          if (videoId) {
             // Utilisation de youtube-nocookie et ajout d'un paramètre origin pour tenter de contourner les restrictions file://
             videoIframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&enablejsapi=1&origin=https://www.youtube.com`;
             videoModal.classList.add('open');
@@ -2236,7 +2424,7 @@
       closeBtn.addEventListener('click', closeVideoModal);
 
       videoModal.addEventListener('click', (e) => {
-        if(e.target === videoModal) {
+        if (e.target === videoModal) {
           closeVideoModal();
         }
       });
