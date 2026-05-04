@@ -174,38 +174,8 @@
     });
   });
 
-  /* ── 5. HERO SLIDER ── */
-  const slides = document.querySelectorAll('.hbs-slide');
-  const bullets = document.querySelectorAll('.hb');
-  let currentSlide = 0;
-  let slideInterval;
-
-  function goToSlide(index) {
-    slides[currentSlide]?.classList.remove('active');
-    bullets[currentSlide]?.classList.remove('active');
-    currentSlide = index;
-    slides[currentSlide]?.classList.add('active');
-    bullets[currentSlide]?.classList.add('active');
-  }
-
-  function nextSlide() {
-    goToSlide((currentSlide + 1) % slides.length);
-  }
-
-  function startSlider() {
-    slideInterval = setInterval(nextSlide, 6000);
-  }
-
-  if (slides.length > 0) {
-    startSlider();
-    bullets.forEach(b => {
-      b.addEventListener('click', () => {
-        clearInterval(slideInterval);
-        goToSlide(parseInt(b.dataset.slide));
-        startSlider();
-      });
-    });
-  }
+  /* ── 5. HERO SLIDER (Désactivé - Remplacé par Vidéo) ── */
+  // La logique du slider a été retirée au profit d'une vidéo YouTube en arrière-plan.
 
   /* ── 6. HERO PARTICULES ── */
   function createParticles() {

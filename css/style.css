@@ -229,20 +229,38 @@ body:has(a:hover) .cursor { transform:translate(-50%,-50%) scale(2.5); }
   flex-direction:column; overflow:hidden;
   padding-top:100px; /* header height */
 }
-.hero-bg-slider { position:absolute; inset:0; z-index:0 }
-.hbs-slide {
-  position:absolute; inset:0;
-  background-size:cover; background-position:center;
-  opacity:0; transition:opacity 1.4s var(--ease-out);
-  transform:scale(1.05);
-  animation:none;
+.hero-video-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
 }
-.hbs-slide.active {
-  opacity:1;
-  animation:heroZoom 8s var(--ease-out) forwards;
+.hero-video-background iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 56.25vw; /* 16:9 Aspect Ratio */
+  min-height: 100vh;
+  min-width: 177.77vh; /* 16:9 Aspect Ratio */
+  transform: translate(-50%, -50%);
+  filter: brightness(0.8) contrast(1.1);
+}
+@media (max-aspect-ratio: 16/9) {
+  .hero-video-background iframe {
+    width: 177.78vh;
+    height: 100vh;
+  }
+}
+@media (min-aspect-ratio: 16/9) {
+  .hero-video-background iframe {
+    width: 100vw;
+    height: 56.25vw;
+  }
 }
 @keyframes heroZoom {
-  from{ transform:scale(1.08) } to{ transform:scale(1) }
+  from{ transform:scale(1.08) translate(-50%, -50%) } to{ transform:scale(1) translate(-50%, -50%) }
 }
 .hero-overlay-gradient {
   position:absolute; inset:0; z-index:1;
