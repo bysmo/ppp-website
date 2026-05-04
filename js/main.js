@@ -516,7 +516,7 @@
 
     let current     = 0;
     let isAnimating = false;
-    let isMobile    = window.innerWidth <= 768;
+    let isMobile    = window.innerWidth <= 1100;
 
     /* ─── UI update ─── */
     function updateUI(idx) {
@@ -536,8 +536,17 @@
       const to   = document.getElementById('sslide-' + idx);
 
       if (from) { from.classList.remove('active'); from.style.display = 'none'; }
-      if (to)   {
-        to.style.display = 'grid';
+      if (to) {
+        // On mobile: vertical stack (flex column). On desktop: 2-col grid.
+        if (isMobile) {
+          to.style.display = 'flex';
+          to.style.flexDirection = 'column';
+          to.style.gridTemplateColumns = '';
+        } else {
+          to.style.display = 'grid';
+          to.style.flexDirection = '';
+          to.style.gridTemplateColumns = '';
+        }
         void to.offsetWidth; // force reflow → restart animation
         to.classList.add('active');
       }
@@ -579,7 +588,7 @@
 
     /* ─── Resize: recalculate mobile breakpoint ─── */
     window.addEventListener('resize', () => {
-      isMobile = window.innerWidth <= 768;
+      isMobile = window.innerWidth <= 1100;
     });
 
     /* ─── Nav tabs (always work) ─── */
