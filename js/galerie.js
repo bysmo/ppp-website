@@ -18,7 +18,22 @@
   /* ── Données de démonstration ── */
   /* ── Données réelles du projet P3V ── */
   const DEMO_MEDIA = [
+  const FORMATION_LIST = [
+    "_DSC7961.JPG", "_DSC7964.JPG", "_DSC7968.JPG", "_DSC7970.JPG", "_DSC7975.JPG", "_DSC7978.JPG", "_DSC7982.JPG", "_DSC7984.JPG", "_DSC7986.JPG", "_DSC7988.JPG", "_DSC7990.JPG", "_DSC7993.JPG", "_DSC7998.JPG", "_DSC8001.JPG", "_DSC8022.JPG", "_DSC8033.JPG", "_DSC8038.JPG", "_DSC8151.JPG", "_DSC8159.JPG", "_DSC8160.JPG", "_DSC8179.JPG", "_DSC8187.JPG", "_DSC8197.JPG", "_DSC8204.JPG", "_DSC8208.JPG", "_DSC8214.JPG", "_DSC8217.JPG", "_DSC8227.JPG", "_DSC8233.JPG", "_DSC8235.JPG", "_DSC8241.JPG", "_DSC8242.JPG", "_DSC8259.JPG", "_DSC8265.JPG", "_DSC8267.JPG", "_DSC8282.JPG", "_DSC8288.JPG", "_DSC8291.JPG", "_DSC8296.JPG", "_DSC8298.JPG", "_DSC8300.JPG", "_DSC8319.JPG", "_DSC8325.JPG", "_DSC8327.JPG", "_DSC8333.JPG", "_DSC8335.JPG", "_DSC8337.JPG", "_DSC8339.JPG", "_DSC8341.JPG", "_DSC8343.JPG", "_DSC8347.JPG", "_DSC8348.JPG", "_DSC8401.JPG", "_DSC8411.JPG", "_DSC8414.JPG", "_DSC8419.JPG", "_DSC8420.JPG", "_DSC8422.JPG", "_DSC8426.JPG", "_DSC8432.JPG", "_DSC8434.JPG", "_DSC8436.JPG", "_DSC8438.JPG", "_DSC8444.JPG", "_DSC8450.JPG", "_DSC8459.JPG", "_DSC8463.JPG", "_DSC8466.JPG", "_DSC8468.JPG", "_DSC8470.JPG", "_DSC8476.JPG", "_DSC8479.JPG", "_DSC8485.JPG", "_DSC8494.JPG", "_DSC8497.JPG", "_DSC8498.JPG", "_DSC8504.JPG", "_DSC8506.JPG", "_DSC8512.JPG", "_DSC8513.JPG", "_DSC8515.JPG", "_DSC8517.JPG", "_DSC8521.JPG", "_DSC8523.JPG", "_DSC8524.JPG", "_DSC8525.JPG", "_DSC8529.JPG", "_DSC8555.JPG", "_DSC8558.JPG", "_DSC8560.JPG", "_DSC8571.JPG", "_DSC8572.JPG", "_DSC8575.JPG", "_DSC8578.JPG", "_DSC8581.JPG", "DSC_0078.JPG", "DSC_0080.JPG", "DSC_0082.JPG", "DSC_0084.JPG", "DSC_0086.JPG", "DSC_0088.JPG", "DSC_0089.JPG", "DSC_0091.JPG", "DSC_0094.JPG", "DSC_0095.JPG", "DSC_0300.JPG", "DSC_0320.JPG"
+  ];
+
+  const DEMO_MEDIA = [
     { id:'1', titre:'Comité de Pilotage (COPIL) – Session 2024', categorie:'evenement', type:'photo', pays:'Sénégal', date:'Avril 2024', img:'images/p3v/COPIL 1.JPG', desc:'Réunion du Comité de Pilotage réunissant les partenaires institutionnels et techniques à Dakar.' },
+    ...FORMATION_LIST.map((img, i) => ({
+      id: `f${i}`,
+      titre: `Formation P3V - Session technique`,
+      categorie: 'formation',
+      type: 'photo',
+      pays: 'Régional',
+      date: '2024',
+      img: `images/p3v/formation/${img}`,
+      desc: 'Session de formation pratique des para-professionnels vétérinaires.'
+    })),
     { id:'2', titre:'Atelier de validation des référentiels', categorie:'formation', type:'photo', pays:'Bénin', date:'Mars 2024', img:'images/p3v/DSC_3051.jpg', desc:'Travaux de groupe lors de l\'atelier national de validation des curricula de formation pour les PPV.' },
     { id:'3', titre:'Mission de suivi terrain – Zone Est', categorie:'terrain', type:'photo', pays:'Togo', date:'Février 2024', img:'images/p3v/DSC_1686.JPG', desc:'Équipe de coordination en mission de suivi des centres de formation partenaires.' },
     { id:'4', titre:'Réunion institutionnelle OMSA-AFD', categorie:'evenement', type:'photo', pays:'Sénégal', date:'Janvier 2024', img:'images/p3v/CCS_8189.jpg', desc:'Échanges entre les représentants de l\'OMSA et de l\'AFD sur l\'avancement du projet.' },
@@ -30,6 +45,7 @@
     { id:'10', titre:'Session de travail en laboratoire', categorie:'formation', type:'photo', pays:'Togo', date:'Juin 2023', img:'images/p3v/DSC_1693.JPG', desc:'Utilisation des outils pédagogiques (lames et microscopes) fournis par le projet.' },
     { id:'11', titre:'Atelier de capitalisation', categorie:'evenement', type:'photo', pays:'Bénin', date:'Mai 2023', img:'images/p3v/IMG Atelier (173).JPG', desc:'Partage d\'expériences et documentation des leçons apprises du projet.' },
     { id:'12', titre:'Suivi des éleveurs nomades', categorie:'terrain', type:'photo', pays:'Sénégal', date:'Avril 2023', img:'images/p3v/BB4A8069.jpg', desc:'Échanges avec les communautés d\'éleveurs sur l\'accès aux soins de santé animale.' }
+  ];
   ];
 
   /* ── Normalise un enregistrement (API ou LS) vers format interne ── */
