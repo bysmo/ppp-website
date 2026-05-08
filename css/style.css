@@ -1221,6 +1221,58 @@ section { padding:96px 0 }
 }
 .galerie-empty i { font-size:3rem; display:block; margin-bottom:16px; color:var(--border) }
 
+/* Chargeur de photos supplémentaires */
+.extra-item {
+  display: none !important;
+}
+
+.extra-item.show {
+  display: block !important;
+}
+
+.galerie-more-wrap {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 10px 0;
+  height: auto !important;
+  aspect-ratio: auto !important;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.btn-galerie-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  background: transparent;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  border-radius: 99px;
+  font-weight: 700;
+  font-size: .82rem;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.btn-galerie-more:hover {
+  background: var(--primary);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-m);
+}
+
+.btn-galerie-more i {
+  transition: transform .3s;
+}
+
+.btn-galerie-more:hover i {
+  transform: translateY(3px);
+}
+
 /* ──────────────────────────────────────────────────
    RÉFÉRENCES SCIENTIFIQUES
 ────────────────────────────────────────────────── */

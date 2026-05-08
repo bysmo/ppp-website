@@ -1712,6 +1712,12 @@
         <p class="section-sub">Découvrez les activités du projet P3V à travers nos photos et vidéos de terrain.</p>
       </div>
 
+      <style>
+        .hidden-formation {
+          display: none !important;
+        }
+      </style>
+
       <div class="galerie-filters" data-reveal="up" style="transition-delay:.1s">
         <button class="gf-btn active" data-filter="all">Tout</button>
         <button class="gf-btn" data-filter="formation">Formation</button>
@@ -1753,12 +1759,12 @@
         </div>
       </div>
 
-      <div class="text-center mt-lg" data-reveal="up"
+      <!--div class="text-center mt-lg" data-reveal="up"
         style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
         <a href="galerie.html" class="btn-primary-pill">
           <i class="fas fa-images"></i> Voir toute la galerie
         </a>
-      </div>
+      </div-->
     </div>
   </section>
 
@@ -2395,9 +2401,16 @@
       const grid = document.getElementById('galerieGrid');
       if (!grid) return;
 
-      formationFiles.forEach(file => {
+      formationFiles.forEach((file, index) => {
         const item = document.createElement('div');
-        item.className = 'galerie-item';
+        // On affiche les 5 premières normalement, les autres ont la classe hidden-formation
+        if (index >= 5) {
+          item.className = 'galerie-item hidden-formation';
+          item.style.display = 'none'; // Double sécurité
+        } else {
+          item.className = 'galerie-item';
+        }
+
         item.setAttribute('data-cat', 'formation');
         item.innerHTML = `
           <img src="images/p3v/formation/${file}" alt="Formation P3V" class="gi-img" loading="lazy" />
@@ -2410,6 +2423,32 @@
         `;
         grid.appendChild(item);
       });
+
+      // Ajout du bouton "Charger plus" s'il y a plus de 5 photos
+      if (formationFiles.length > 5) {
+        const moreWrap = document.createElement('div');
+        moreWrap.className = 'galerie-more-wrap galerie-item';
+        moreWrap.setAttribute('data-cat', 'formation');
+        moreWrap.style.cursor = 'default';
+        moreWrap.innerHTML = `
+          <button class="btn-galerie-more" id="btnMoreFormation" style="cursor: pointer;">
+            <i class="fas fa-plus"></i>
+            <span>Voir plus de photos</span>
+          </button>
+        `;
+        grid.appendChild(moreWrap);
+
+        document.getElementById('btnMoreFormation').addEventListener('click', function (e) {
+          e.stopPropagation();
+          const extras = document.querySelectorAll('.hidden-formation');
+          extras.forEach(el => {
+            el.classList.remove('hidden-formation');
+            el.style.display = '';
+          });
+          moreWrap.style.setProperty('display', 'none', 'important');
+          moreWrap.classList.remove('galerie-item');
+        });
+      }
     })();
   </script>
   <script src="js/main.js"></script>
