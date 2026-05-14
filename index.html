@@ -167,17 +167,20 @@
       font-size: 1.1rem;
       cursor: pointer;
       transition: background 0.3s, transform 0.2s, border-color 0.3s;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     }
+
     #heroSoundBtn:hover {
       background: rgba(255, 255, 255, 0.28);
       border-color: rgba(255, 255, 255, 0.7);
       transform: scale(1.12);
     }
+
     #heroSoundBtn.sound-on {
       background: rgba(255, 167, 0, 0.3);
       border-color: rgba(255, 167, 0, 0.7);
     }
+
     @media (max-width: 768px) {
       #heroSoundBtn {
         bottom: 90px;
@@ -373,8 +376,7 @@
   <!-- ══════════ HERO ══════════ -->
   <section id="hero">
     <div class="hero-video-background">
-      <iframe
-        id="heroYTPlayer"
+      <iframe id="heroYTPlayer"
         src="https://www.youtube-nocookie.com/embed/afVwzf8DUN8?autoplay=1&mute=1&loop=1&playlist=afVwzf8DUN8&controls=0&showinfo=0&rel=0&modestbranding=1&start=56&disablekb=1&enablejsapi=1&iv_load_policy=3"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -1557,330 +1559,145 @@
           approche aux réalités locales tout en promouvant une harmonisation régionale.</p>
       </div>
 
-      <div class="pays-tabs" data-reveal="up" style="transition-delay:.1s">
-        <button class="pays-tab-btn active" data-pays="senegal">🇸🇳 Sénégal</button>
-        <button class="pays-tab-btn" data-pays="benin">🇧🇯 Bénin</button>
-        <button class="pays-tab-btn" data-pays="togo">🇹🇬 Togo</button>
-      </div>
+      <!-- ── Liste des Pays (Affichage au Scroll) ── -->
+      <div class="pays-rows">
 
-      <!-- Sénégal -->
-      <div class="pays-panel active" id="panel-senegal" data-reveal="up">
-        <div class="pays-info-map">
-          <div class="pim-country-card">
-            <div class="pcc-flag"><img src="https://flagcdn.com/w80/sn.png" width="50" class="hf-flag-img" alt=""></div>
-            <div class="pcc-name">Sénégal</div>
-            <div class="pcc-desc">Pionnier dans la mise en œuvre, le Sénégal dispose d'un réseau de paraprofessionnels
-              vétérinaires
-              structuré autour de la Direction des Services Vétérinaires (DSV). Le projet y développe des curricula
-              innovants et renforce les centres de formation.</div>
-            <div class="pcc-stats">
-              <div class="pcc-stat"><span class="pcc-stat-num">230</span><span class="pcc-stat-lbl">PPV formés</span>
+        <!-- ── Sénégal ── -->
+        <div class="pays-row">
+          <div class="pp-left" data-reveal="left">
+            <div class="pp-map-card" style="--flag-url:url('https://flagcdn.com/w320/sn.png')">
+              <div class="pp-map-overlay"></div>
+              <div class="pp-map-content">
+                <img src="https://flagcdn.com/w80/sn.png" alt="Sénégal" class="pp-flag">
+                <div class="pp-country-name">Sénégal</div>
+                <div class="pp-country-desc">Pionnier dans la mise en œuvre, le Sénégal dispose d'un réseau de
+                  paraprofessionnels vétérinaires structuré autour de la Direction des Services Vétérinaires (DSV).
+                </div>
               </div>
-              <div class="pcc-stat"><span class="pcc-stat-num">3</span><span class="pcc-stat-lbl">Établissements
-                  partenaires</span></div>
-              <div class="pcc-stat"><span class="pcc-stat-num">475</span><span class="pcc-stat-lbl">Stagiaires</span>
+            </div>
+          </div>
+          <div class="pp-right" data-reveal="right">
+            <div class="pp-stats-header">
+              <span class="pp-stats-eyebrow"><i class="fas fa-chart-bar"></i> Résultats Sénégal</span>
+              <h3 class="pp-stats-title">Performance & Impact</h3>
+            </div>
+            <div class="pp-kpis">
+              <div class="pp-kpi"><span class="pp-kpi-num">230</span><span class="pp-kpi-lbl">PPV formés</span></div>
+              <div class="pp-kpi"><span class="pp-kpi-num">3</span><span class="pp-kpi-lbl">Établissements</span></div>
+              <div class="pp-kpi"><span class="pp-kpi-num">475</span><span class="pp-kpi-lbl">Stagiaires</span></div>
+            </div>
+            <div class="pp-activities">
+              <ul class="pp-act-list">
+                <li><i class="fas fa-check-circle"></i> <strong>Formations</strong> — <span
+                    class="pp-num-inline">100%</span> terminées</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Curricula</strong> — <span
+                    class="pp-num-inline">100%</span> mis à jour</li>
+                <li><i class="fas fa-circle-half-stroke"></i> <strong>Cadre légal</strong> — Avancé à <span
+                    class="pp-num-inline">70%</span></li>
+              </ul>
+            </div>
+            <div class="pp-partners">
+              <div class="pp-tags">
+                <span class="pp-tag">MASAE : Ministère de l'Agriculture, de la Souveraineté Alimentaire et de
+                  l'Élevage</span>
+                <span class="pp-tag">FARSEN : Réseau International Formation Agricole & Rurale au Sénégal</span>
+                <span class="pp-tag">ANTES : Association Nationale des Assistants des Services Vétérinaires</span>
+                <span class="pp-tag">ODVS : Ordre des Docteurs Vétérinaires du Sénégal</span>
               </div>
             </div>
           </div>
         </div>
-        <div class="pays-details">
-          <div class="pd-block">
-            <h4><i class="fas fa-chart-line"></i>Avancement des activités</h4>
-            <div class="progress-item">
-              <div class="pi-header"><span class="pi-label">Maillage de la démographie vétérinaire</span><span
-                  class="pi-pct">100%</span></div>
-              <div class="pi-bar">
-                <div class="pi-fill" style="--w:100%"></div>
-              </div>
-            </div>
-            <div class="progress-item">
-              <div class="pi-header"><span class="pi-label">Stratégie de renforcement du personnel</span><span
-                  class="pi-pct">100%</span></div>
-              <div class="pi-bar">
-                <div class="pi-fill" style="--w:100%"></div>
-              </div>
-            </div>
-            <div class="progress-item">
-              <div class="pi-header"><span class="pi-label">Evaluation de besoin en formation</span><span
-                  class="pi-pct">100%</span></div>
-              <div class="pi-bar">
-                <div class="pi-fill" style="--w:100%"></div>
-              </div>
-            </div>
-            <div class="progress-item">
-              <div class="pi-header"><span class="pi-label">Mise à jour des curricula PPV</span><span
-                  class="pi-pct">100%</span></div>
-              <div class="pi-bar">
-                <div class="pi-fill" style="--w:100%"></div>
-              </div>
-            </div>
-            <div class="progress-item">
-              <div class="pi-header"><span class="pi-label">Formation des formateurs</span><span
-                  class="pi-pct">100%</span></div>
-              <div class="pi-bar">
-                <div class="pi-fill" style="--w:100%"></div>
-              </div>
-            </div>
-            <div class="progress-item">
-              <div class="pi-header"><span class="pi-label">Formation des PPV</span><span class="pi-pct">100%</span>
-              </div>
-              <div class="pi-bar">
-                <div class="pi-fill" style="--w:100%"></div>
-              </div>
-            </div>
-            <div class="progress-item">
-              <div class="pi-header"><span class="pi-label">Cadre règlementaire</span><span class="pi-pct">70%</span>
-              </div>
-              <div class="pi-bar">
-                <div class="pi-fill" style="--w:70%"></div>
-              </div>
-            </div>
-            <div class="progress-item">
-              <div class="pi-header"><span class="pi-label">Dispositif d’insertion professionnel</span><span
-                  class="pi-pct">60%</span></div>
-              <div class="pi-bar">
-                <div class="pi-fill" style="--w:60%"></div>
-              </div>
-            </div>
-            <div class="progress-item">
-              <div class="pi-header"><span class="pi-label">Formation des femmes PPV</span><span
-                  class="pi-pct">30%</span></div>
-              <div class="pi-bar">
-                <div class="pi-fill" style="--w:30%"></div>
-              </div>
-            </div>
-          </div>
-          <div class="pd-block">
-            <h4><i class="fas fa-handshake"></i>Partenaires nationaux</h4>
-            <div class="partenaires-list">
-              <span class="pl-tag"><i class="fas fa-shield-alt"></i>MASAE : Ministère de l'Agriculture, de la
-                Souveraineté Alimentaire et de l'Élevage </span>
-              <span class="pl-tag"><i class="fas fa-leaf"></i>FARSEN : Réseau International Formation Agricole &
-                Rurale au Sénégal</span>
-              <span class="pl-tag"><i class="fas fa-users"></i>ANTES : Association Nationale des Assistants des
-                Services Vétérinaires</span>
-              <span class="pl-tag"><i class="fas fa-user-md"></i>ODVS : Ordre des Docteurs Vétérinaires du
-                Sénégal</span>
-            </div>
-          </div>
-          <!--a href="pays.html" class="btn-outline-pill" style="margin-top:8px">
-            <i class="fas fa-arrow-right"></i> Voir la fiche pays complète
-          </a-->
-        </div>
-      </div>
 
-      <!-- Bénin -->
-      <div class="pays-panel" id="panel-benin">
-        <div class="pays-info-map">
-          <div class="pim-country-card">
-            <div class="pcc-flag"><img src="https://flagcdn.com/w80/bj.png" width="50" class="hf-flag-img" alt=""></div>
-            <div class="pcc-name">Bénin</div>
-            <div class="pcc-desc">Au Bénin, le projet s'appuie sur le Ministère de l'Agriculture, de l'Élevage et de la
-              Pêche (MAEP) pour développer un cadre réglementaire solide et structurer la profession d'agent vétérinaire
-              paraprofessionnel.</div>
-            <div class="pcc-stats">
-              <div class="pcc-stat"><span class="pcc-stat-num">75</span><span class="pcc-stat-lbl">PPV formés</span>
+        <!-- ── Bénin ── -->
+        <div class="pays-row">
+          <div class="pp-left" data-reveal="left">
+            <div class="pp-map-card" style="--flag-url:url('https://flagcdn.com/w320/bj.png')">
+              <div class="pp-map-overlay"></div>
+              <div class="pp-map-content">
+                <img src="https://flagcdn.com/w80/bj.png" alt="Bénin" class="pp-flag">
+                <div class="pp-country-name">Bénin</div>
+                <div class="pp-country-desc">Au Bénin, le projet s'appuie sur le Ministère de l'Agriculture (MAEP) pour
+                  structurer la profession d'agent vétérinaire paraprofessionnel.</div>
               </div>
-              <div class="pcc-stat"><span class="pcc-stat-num">2</span><span class="pcc-stat-lbl">Établissements
-                  partenaires</span></div>
-              <div class="pcc-stat"><span class="pcc-stat-num">294</span><span class="pcc-stat-lbl">Stagiaires</span>
+            </div>
+          </div>
+          <div class="pp-right" data-reveal="right">
+            <div class="pp-stats-header">
+              <span class="pp-stats-eyebrow"><i class="fas fa-chart-bar"></i> Résultats Bénin</span>
+              <h3 class="pp-stats-title">Performance & Impact</h3>
+            </div>
+            <div class="pp-kpis">
+              <div class="pp-kpi"><span class="pp-kpi-num">75</span><span class="pp-kpi-lbl">PPV formés</span></div>
+              <div class="pp-kpi"><span class="pp-kpi-num">2</span><span class="pp-kpi-lbl">Établissements</span></div>
+              <div class="pp-kpi"><span class="pp-kpi-num">294</span><span class="pp-kpi-lbl">Stagiaires</span></div>
+            </div>
+            <div class="pp-activities">
+              <ul class="pp-act-list">
+                <li><i class="fas fa-check-circle"></i> <strong>Formations</strong> — <span
+                    class="pp-num-inline">100%</span> terminées</li>
+                <li><i class="fas fa-circle-half-stroke"></i> <strong>Curricula</strong> — Avancé à <span
+                    class="pp-num-inline">60%</span></li>
+                <li><i class="fas fa-hourglass-half"></i> <strong>Maillage</strong> — Initié (<span
+                    class="pp-num-inline">10%</span>)</li>
+              </ul>
+            </div>
+            <div class="pp-partners">
+              <div class="pp-tags">
+                <span class="pp-tag">MAEP : Ministère de l'Agriculture, de l'Élevage et de la Pêche</span>
+                <span class="pp-tag">EPAC : École Polytechnique d'Abomey-Calavi</span>
+                <span class="pp-tag">LAM'S : Lycée Agricole Mèdji de Sékou</span>
+                <span class="pp-tag">ADENAPE : Association Nationale des Paraprofessionnels Vétérinaires du Bénin</span>
               </div>
             </div>
           </div>
         </div>
-        <div class="pays-details">
-          <div class="pd-block">
-            <h4><i class="fas fa-chart-line"></i>Avancement des activités</h4>
-            <div class="progress-item">
-              <div class="pi-header"><span class="pi-label">Maillage de la démographie vétérinaire</span><span
-                  class="pi-pct">10%</span></div>
-              <div class="pi-bar">
-                <div class="pi-fill" style="--w:10%"></div>
-              </div>
-            </div>
-            <div class="progress-item">
-              <div class="pi-header"><span class="pi-label">Stratégie de renforcement du personnel</span><span
-                  class="pi-pct">0%</span></div>
-              <div class="pi-bar">
-                <div class="pi-fill" style="--w:0%"></div>
-              </div>
-            </div>
-            <div class="progress-item">
-              <div class="pi-header"><span class="pi-label">Évaluation des besoins en formation</span><span
-                  class="pi-pct">100%</span></div>
-              <div class="pi-bar">
-                <div class="pi-fill" style="--w:100%"></div>
-              </div>
-            </div>
-            <div class="progress-item">
-              <div class="pi-header"><span class="pi-label">Mise à jour des curricula PPV</span><span
-                  class="pi-pct">60%</span></div>
-              <div class="pi-bar">
-                <div class="pi-fill" style="--w:60%"></div>
-              </div>
-            </div>
-            <div class="progress-item">
-              <div class="pi-header"><span class="pi-label">Formation des formateurs</span><span
-                  class="pi-pct">100%</span></div>
-              <div class="pi-bar">
-                <div class="pi-fill" style="--w:100%"></div>
-              </div>
-            </div>
-            <div class="progress-item">
-              <div class="pi-header"><span class="pi-label">Formation des PPV</span><span class="pi-pct">100%</span>
-              </div>
-              <div class="pi-bar">
-                <div class="pi-fill" style="--w:100%"></div>
-              </div>
-            </div>
-            <div class="progress-item">
-              <div class="pi-header"><span class="pi-label">Cadre réglementaire</span><span class="pi-pct">10%</span>
-              </div>
-              <div class="pi-bar">
-                <div class="pi-fill" style="--w:10%"></div>
-              </div>
-            </div>
-            <div class="progress-item">
-              <div class="pi-header"><span class="pi-label">Dispositif d’insertion professionnelle</span><span
-                  class="pi-pct">0%</span></div>
-              <div class="pi-bar">
-                <div class="pi-fill" style="--w:0%"></div>
-              </div>
-            </div>
-            <div class="progress-item">
-              <div class="pi-header"><span class="pi-label">Formation des femmes PPV</span><span
-                  class="pi-pct">10%</span></div>
-              <div class="pi-bar">
-                <div class="pi-fill" style="--w:10%"></div>
-              </div>
-            </div>
-          </div>
-          <div class="pd-block">
-            <h4><i class="fas fa-handshake"></i>Partenaires nationaux</h4>
-            <div class="partenaires-list">
-              <span class="pl-tag"><i class="fas fa-shield-alt"></i>MAEP : Ministère de l'Agriculture, de l'Elevage et
-                de la Pêche du Bénin</span>
-              <span class="pl-tag"><i class="fas fa-university"></i>EPAC : École Polytechnique Abomey-Calavi</span>
-              <span class="pl-tag"><i class="fas fa-flask"></i>LAM'S : Lycée agricole Mèdji de Sékou (LAMS),Bénin</span>
-              <span class="pl-tag"><i class="fas fa-university"></i>Faculté d’Agronomie de l’Université de
-                Parakou</span>
-              <span class="pl-tag"><i class="fas fa-users"></i>ADENAPE : Association Nationale des Paraprofessionnels
-                Vétérinaires du Bénin</span>
-            </div>
-          </div>
-          <!--a href="pays.html" class="btn-outline-pill" style="margin-top:8px">
-            <i class="fas fa-arrow-right"></i> Voir la fiche pays complète
-          </a-->
-        </div>
-      </div>
 
-      <!-- Togo -->
-      <div class="pays-panel" id="panel-togo">
-        <div class="pays-info-map">
-          <div class="pim-country-card">
-            <div class="pcc-flag"><img src="https://flagcdn.com/w80/tg.png" width="50" class="hf-flag-img" alt=""></div>
-            <div class="pcc-name">Togo</div>
-            <div class="pcc-desc">Au Togo, le projet collabore étroitement avec la Direction Générale des Services
-              Vétérinaires (DGSV) et le Ministère de l'Agriculture, de l'Élevage et du Développement Rural pour
-              formaliser le statut des PPV.</div>
-            <div class="pcc-stats">
-              <div class="pcc-stat"><span class="pcc-stat-num">255</span><span class="pcc-stat-lbl">PPV formés</span>
+        <!-- ── Togo ── -->
+        <div class="pays-row">
+          <div class="pp-left" data-reveal="left">
+            <div class="pp-map-card" style="--flag-url:url('https://flagcdn.com/w320/tg.png')">
+              <div class="pp-map-overlay"></div>
+              <div class="pp-map-content">
+                <img src="https://flagcdn.com/w80/tg.png" alt="Togo" class="pp-flag">
+                <div class="pp-country-name">Togo</div>
+                <div class="pp-country-desc">Au Togo, le projet collabore avec la DGSV pour formaliser le statut des PPV
+                  et renforcer l'insertion professionnelle.</div>
               </div>
-              <div class="pcc-stat"><span class="pcc-stat-num">2</span><span class="pcc-stat-lbl">Établissements
-                  partenaires</span></div>
-              <div class="pcc-stat"><span class="pcc-stat-num">327</span><span class="pcc-stat-lbl">Stagiaires</span>
+            </div>
+          </div>
+          <div class="pp-right" data-reveal="right">
+            <div class="pp-stats-header">
+              <span class="pp-stats-eyebrow"><i class="fas fa-chart-bar"></i> Résultats Togo</span>
+              <h3 class="pp-stats-title">Performance & Impact</h3>
+            </div>
+            <div class="pp-kpis">
+              <div class="pp-kpi"><span class="pp-kpi-num">255</span><span class="pp-kpi-lbl">PPV formés</span></div>
+              <div class="pp-kpi"><span class="pp-kpi-num">2</span><span class="pp-kpi-lbl">Établissements</span></div>
+              <div class="pp-kpi"><span class="pp-kpi-num">327</span><span class="pp-kpi-lbl">Stagiaires</span></div>
+            </div>
+            <div class="pp-activities">
+              <ul class="pp-act-list">
+                <li><i class="fas fa-check-circle"></i> <strong>Formations</strong> — <span
+                    class="pp-num-inline">100%</span> terminées</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Curricula</strong> — <span
+                    class="pp-num-inline">100%</span> mis à jour</li>
+                <li><i class="fas fa-circle-half-stroke"></i> <strong>Cadre légal</strong> — <span
+                    class="pp-num-inline">90%</span> atteint</li>
+              </ul>
+            </div>
+            <div class="pp-partners">
+              <div class="pp-tags">
+                <span class="pp-tag">MAPRASA : Ministère de l'Agriculture, de la Pêche, des Ressources Animales et de la
+                  Souveraineté Alimentaire</span>
+                <span class="pp-tag">INFA Tové : Institut National de Formation Agricole</span>
+                <span class="pp-tag">ISMA Kara : Institut Supérieur des Métiers Agricoles</span>
+                <span class="pp-tag">ONMVT : Ordre National des Médecins Vétérinaires du Togo</span>
+                <span class="pp-tag">GVPR : Groupement des Vétérinaires Privés en clientèle Rurale</span>
               </div>
             </div>
           </div>
         </div>
-        <div class="pays-details">
-          <div class="pd-block">
-            <h4><i class="fas fa-chart-line"></i>Avancement des activités</h4>
-            <div class="progress-item">
-              <div class="pi-header"><span class="pi-label">Maillage de la démographie vétérinaire</span><span
-                  class="pi-pct">100%</span></div>
-              <div class="pi-bar">
-                <div class="pi-fill" style="--w:100%"></div>
-              </div>
-            </div>
-            <div class="progress-item">
-              <div class="pi-header"><span class="pi-label">Stratégie de renforcement du personnel</span><span
-                  class="pi-pct">100%</span></div>
-              <div class="pi-bar">
-                <div class="pi-fill" style="--w:100%"></div>
-              </div>
-            </div>
-            <div class="progress-item">
-              <div class="pi-header"><span class="pi-label">Évaluation des besoins en formation</span><span
-                  class="pi-pct">100%</span></div>
-              <div class="pi-bar">
-                <div class="pi-fill" style="--w:100%"></div>
-              </div>
-            </div>
-            <div class="progress-item">
-              <div class="pi-header"><span class="pi-label">Mise à jour des curricula PPV</span><span
-                  class="pi-pct">100%</span></div>
-              <div class="pi-bar">
-                <div class="pi-fill" style="--w:100%"></div>
-              </div>
-            </div>
-            <div class="progress-item">
-              <div class="pi-header"><span class="pi-label">Formation des formateurs</span><span
-                  class="pi-pct">100%</span></div>
-              <div class="pi-bar">
-                <div class="pi-fill" style="--w:100%"></div>
-              </div>
-            </div>
-            <div class="progress-item">
-              <div class="pi-header"><span class="pi-label">Formation des PPV</span><span class="pi-pct">100%</span>
-              </div>
-              <div class="pi-bar">
-                <div class="pi-fill" style="--w:100%"></div>
-              </div>
-            </div>
-            <div class="progress-item">
-              <div class="pi-header"><span class="pi-label">Cadre réglementaire</span><span class="pi-pct">90%</span>
-              </div>
-              <div class="pi-bar">
-                <div class="pi-fill" style="--w:90%"></div>
-              </div>
-            </div>
-            <div class="progress-item">
-              <div class="pi-header"><span class="pi-label">Dispositif d’insertion professionnelle</span><span
-                  class="pi-pct">60%</span></div>
-              <div class="pi-bar">
-                <div class="pi-fill" style="--w:60%"></div>
-              </div>
-            </div>
-            <div class="progress-item">
-              <div class="pi-header"><span class="pi-label">Formation des femmes PPV</span><span
-                  class="pi-pct">20%</span></div>
-              <div class="pi-bar">
-                <div class="pi-fill" style="--w:20%"></div>
-              </div>
-            </div>
-          </div>
-          <div class="pd-block">
-            <h4><i class="fas fa-handshake"></i>Partenaires nationaux</h4>
-            <div class="partenaires-list">
-              <span class="pl-tag"><i class="fas fa-shield-alt"></i>MAPRASA : Ministère de l'Agriculture, de la Pêche,
-                des Ressources Animales et de la Souveraineté Alimentaire</span>
-              <span class="pl-tag"><i class="fas fa-university"></i>L'Institut National de Formation Agricole (INFA) de
-                Tové</span>
-              <span class="pl-tag"><i class="fas fa-university"></i>Institut Supérieur des Métiers Agricoles (ISMA) de
-                Kara</span>
-              <span class="pl-tag"><i class="fas fa-user-md"></i>ONMVT : Ordre National des Médecins Vétérinaires du
-                Togo</span>
-              <span class="pl-tag"><i class="fas fa-cow"></i>Réseau International Formation Agricole & Rurale au
-                Togo</span>
-              <span class="pl-tag"><i class="fas fa-building"></i>Groupement des Vétérinaires Privés en clientèle
-                Rurale (GVPR)</span>
-            </div>
-          </div>
-          <!--a href="pays.html" class="btn-outline-pill" style="margin-top:8px">
-            <i class="fas fa-arrow-right"></i> Voir la fiche pays complète
-          </a-->
-        </div>
+
       </div>
     </div>
   </section>
@@ -2729,7 +2546,7 @@
         });
       };
 
-      var soundBtn  = document.getElementById('heroSoundBtn');
+      var soundBtn = document.getElementById('heroSoundBtn');
       var soundIcon = document.getElementById('heroSoundIcon');
 
       soundBtn.addEventListener('click', function () {

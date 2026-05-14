@@ -286,26 +286,9 @@
     });
   }
 
-  /* ── 10. TABS PAYS ── */
-  document.querySelectorAll('.pays-tab-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const pays = btn.dataset.pays;
-
-      // Boutons
-      document.querySelectorAll('.pays-tab-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      // Panels
-      document.querySelectorAll('.pays-panel').forEach(p => p.classList.remove('active'));
-      const panel = document.getElementById('panel-' + pays);
-      if (panel) {
-        panel.classList.add('active');
-        // Reset et relancer les barres
-        barsDone = false;
-        setTimeout(animateProgressBars, 100);
-      }
-    });
-  });
+  /* ── 10. SCROLL REVEAL (PAYS) ── */
+  // La logique est gérée par revealOnScroll() qui détecte les éléments [data-reveal]
+  // incluant les nouveaux .pp-left et .pp-right directionnels.
 
   /* ── 11. FILTRES GALERIE ── */
   const galerieItems = document.querySelectorAll('.galerie-item');
