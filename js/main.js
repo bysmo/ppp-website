@@ -129,12 +129,15 @@
 
   window.addEventListener('scroll', () => {
     const current = window.pageYOffset;
+    
+    /* 
     if (current > 80 && current > lastScroll) {
       header && header.classList.add('nav-hidden');
     } else {
       header && header.classList.remove('nav-hidden');
     }
     lastScroll = current;
+    */
 
     // Back to top
     const btn = document.getElementById('backToTop');
@@ -164,6 +167,7 @@
   burgerBtn?.addEventListener('click', () => {
     burgerBtn.classList.toggle('open');
     navLinks?.classList.toggle('open');
+    document.body.classList.toggle('no-scroll');
   });
 
   // Close on link click
@@ -171,6 +175,7 @@
     a.addEventListener('click', () => {
       burgerBtn?.classList.remove('open');
       navLinks.classList.remove('open');
+      document.body.classList.remove('no-scroll');
     });
   });
 
@@ -526,35 +531,17 @@
       setTimeout(() => { isAnimating = false; }, 600);
     }
 
-    /* ─────────────────────────────────────────────
-       SCROLL-JACKING (desktop only)
-       The section height = 7 × 100vh.
-       Sticky panel = 100vh pinned at top.
-       Scroll range available = 7×vh - 1×vh = 6×vh.
-       We divide that range by (TOTAL - 1) to get
-       one "step" per slide transition.
-    ───────────────────────────────────────────── */
-    function getSectionTop() {
-      return section.getBoundingClientRect().top + window.pageYOffset;
+    /* ─── Auto-play ─── */
+    let autoPlayTimer = setInterval(() => {
+      goTo((current + 1) % TOTAL);
+    }, 5000);
+
+    function resetAutoPlay() {
+      clearInterval(autoPlayTimer);
+      autoPlayTimer = setInterval(() => {
+        goTo((current + 1) % TOTAL);
+      }, 5000);
     }
-
-    function onScroll() {
-      if (isMobile) return; // use buttons on mobile
-
-      const scrolled       = window.pageYOffset - getSectionTop();
-      const scrollRange    = section.offsetHeight - window.innerHeight; // ≈ 6 × vh
-
-      // Outside the section? Do nothing.
-      if (scrolled < 0 || scrolled > scrollRange + 50) return;
-
-      // Map scroll offset → slide index [0 … TOTAL-1]
-      const progress   = Math.max(0, Math.min(1, scrolled / scrollRange));
-      const slideIndex = Math.min(Math.round(progress * (TOTAL - 1)), TOTAL - 1);
-
-      if (slideIndex !== current) goTo(slideIndex);
-    }
-
-    window.addEventListener('scroll', onScroll, { passive: true });
 
     /* ─── Resize: recalculate mobile breakpoint ─── */
     window.addEventListener('resize', () => {
@@ -563,20 +550,13 @@
 
     /* ─── Nav tabs (always work) ─── */
     navBtns.forEach((btn, i) => btn.addEventListener('click', () => {
-      if (!isMobile) {
-        // Scroll page to matching position so scroll-jacking stays in sync
-        const sectionTop  = getSectionTop();
-        const scrollRange = section.offsetHeight - window.innerHeight;
-        const targetScroll = sectionTop + (i / (TOTAL - 1)) * scrollRange;
-        window.scrollTo({ top: targetScroll, behavior: 'smooth' });
-      } else {
-        goTo(i);
-      }
+      goTo(i);
+      resetAutoPlay();
     }));
 
     /* ─── Mobile buttons ─── */
-    if (prevBtn) prevBtn.addEventListener('click', () => goTo(current - 1));
-    if (nextBtn) nextBtn.addEventListener('click', () => goTo(current + 1));
+    if (prevBtn) prevBtn.addEventListener('click', () => { goTo(current - 1); resetAutoPlay(); });
+    if (nextBtn) nextBtn.addEventListener('click', () => { goTo(current + 1); resetAutoPlay(); });
 
     /* ─── Mobile swipe ─── */
     let touchStartX = 0;
@@ -587,7 +567,10 @@
       }, { passive: true });
       slidesContainer.addEventListener('touchend', e => {
         const diff = touchStartX - e.changedTouches[0].clientX;
-        if (Math.abs(diff) > 50) goTo(diff > 0 ? current + 1 : current - 1);
+        if (Math.abs(diff) > 50) {
+          goTo(diff > 0 ? current + 1 : current - 1);
+          resetAutoPlay();
+        }
       }, { passive: true });
     }
 

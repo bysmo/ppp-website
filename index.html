@@ -187,16 +187,23 @@
             <strong>Projet P3V</strong>
             <span>Professionnalisation des ParaProfessionnels Vétérinaires</span>
           </div>
-          <div class="header-partners">
-            <img src="images/p3v/logos/omsa.jpg" alt="OMSA" />
-            <img src="images/p3v/logos/afd.jpg" alt="AFD" />
-            <img src="images/p3v/logos/eismv.jpg" alt="EISMV" />
-            <img src="images/p3v/logos/far.jpg" alt="Réseau FAR" />
-          </div>
-
         </a>
 
+        <div class="header-partners">
+          <img src="images/p3v/logos/omsa.jpg" alt="OMSA" />
+          <img src="images/p3v/logos/afd.jpg" alt="AFD" />
+          <img src="images/p3v/logos/eismv.jpg" alt="EISMV" />
+          <img src="images/p3v/logos/far.jpg" alt="Réseau FAR" />
+        </div>
+
         <ul class="nav-links" id="navLinks">
+          <li><a href="#histoire">Contexte</a></li>
+          <li><a href="#composantes">Composantes</a></li>
+          <li><a href="#realisations">Chiffres clés</a></li>
+          <li><a href="#pays">Pays</a></li>
+          <li><a href="#galerie">Galerie</a></li>
+          <li><a href="#equipe">Équipe</a></li>
+          <li><a href="#ressources">Ressources</a></li>
           <li>
             <a href="https://rr-africa.woah.org/fr/projets/p3v-professionalisation-des-para-professionnels-veterinaires-afd/outils-et-ressources/portail-mupsa/"
               target="_blank" class="nav-cta">MUPSA
@@ -205,7 +212,14 @@
         </ul>
 
         <button class="burger-btn" id="burgerBtn" aria-label="Menu">
-          <span></span><span></span><span></span>
+          <div class="burger-bars">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="burger-arcs">
+            <span class="arc arc-1"></span>
+            <span class="arc arc-2"></span>
+            <span class="arc arc-3"></span>
+          </div>
         </button>
       </div>
     </nav>
@@ -379,6 +393,11 @@
       </div>
     </div>
 
+    <a href="#partenaires-ribbon" class="hero-scroll-arrow">
+      <span>Découvrir</span>
+      <div class="scroll-arrow-anim"><i class="fas fa-chevron-down"></i></div>
+    </a>
+
     <div class="hero-stats-bar">
       <div class="container">
         <div class="hsb-inner">
@@ -428,11 +447,6 @@
         </div>
       </div>
     </div>
-
-    <a href="#partenaires-ribbon" class="hero-scroll-arrow">
-      <span>Découvrir</span>
-      <div class="scroll-arrow-anim"><i class="fas fa-chevron-down"></i></div>
-    </a>
   </section>
 
   <!-- ══════════ BANDEAU LOGOS PARTENAIRES DÉFILANTS ══════════ -->
@@ -449,13 +463,19 @@
         <div class="prt-logo"><img src="images/p3v/logos/brooke.png" alt="BROOKE" /></div>
         <div class="prt-logo"><img src="images/p3v/logos/vsf.jpg" alt="VSF Suisse Togo" /></div>
         <div class="prt-logo"><img src="images/p3v/logos/praps.png" alt="PRAPS" /></div>
-        <div class="prt-logo"><span class="prt-logo-text">ODVS Sénégal</span></div>
+        <div class="prt-logo"><span class="prt-logo-text"><i class="fas fa-user-md"></i> ODVS : Ordre des Docteurs
+            Vétérinaires du Sénégal</span></div>
         <div class="prt-logo"><span class="prt-logo-text">ONMVT Togo</span></div>
         <div class="prt-logo"><span class="prt-logo-text">ONMVB Bénin</span></div>
         <div class="prt-logo"><span class="prt-logo-text">MAEP Bénin</span></div>
         <div class="prt-logo"><span class="prt-logo-text">MAPRASA Togo</span></div>
-        <div class="prt-logo"><span class="prt-logo-text">MEPA Sénégal</span></div>
-        <div class="prt-logo"><span class="prt-logo-text">Association des PPV</span></div>
+        <div class="prt-logo"><span class="prt-logo-text"><i class="fas fa-shield-alt"></i> MASAE : Ministère de
+            l'Agriculture, de la Souveraineté Alimentaire et de l'Élevage</span></div>
+        <div class="prt-logo"><span class="prt-logo-text"><i class="fas fa-leaf"></i> FARSEN : Réseau des Acteurs de la
+            Formation Agricole et Rurale au Sénégal</span></div>
+        <div class="prt-logo"><span class="prt-logo-text"><i class="fas fa-university"></i> ANTES : Association
+            Nationale des Techniciens de l'Elevage du Sénégal</span></div>
+        <div class="prt-logo"><span class="prt-logo-text"><i class="fas fa-users"></i> Association des PPV</span></div>
 
         <!-- DUPLICATA POUR BOUCLE INFINIE -->
         <div class="prt-logo"><img src="images/p3v/logos/omsa.jpg" alt="OMSA" /></div>
@@ -483,7 +503,7 @@
 
       <div class="section-header" data-reveal="up">
         <div class="section-eyebrow">Introduction</div>
-        <h2 class="section-heading"><span style="color: #fff;">Objectifs</span> <em>Stratégiques</em></h2>
+        <h2 class="section-heading"><span style="color: #fff;">Contexte</span> <em>et justification</em></h2>
         <div class="sh-underline center"></div>
         <p class="section-sub">Pourquoi soutenir la reconnaissance et l'integration des PPV? </p>
       </div>
@@ -686,7 +706,8 @@
           <div class="story-slide" id="sslide-5">
             <div class="ss-image-side">
               <div class="ss-img-wrap">
-                <img src="images/p3v/DSC_3335.JPG" alt="Outils OMSA pour les PPV - Lignes directrices" class="ss-img" />
+                <img src="images/p3v/DSC_3335.JPG" alt="Outils OMSA pour les PPV - Lignes directrices"
+                  class="ss-img ss-img-group" />
                 <div class="ss-img-caption">
                   <i class="fas fa-file-pdf"></i> Publications OMSA – Outils PPV
                 </div>
@@ -744,6 +765,7 @@
             <i class="fas fa-arrow-right"></i>
           </button>
         </div>
+        <a href="#objectifs" class="story-skip-btn">Passer à la suite <i class="fas fa-forward"></i></a>
       </div>
 
     </div><!-- /histoire-sticky -->
@@ -859,6 +881,8 @@
           l'ensemble de la chaîne de valeur de la professionnalisation vétérinaire.</p>
         <p class="section-sub">Le projet P3V poursuit un objectif global : améliorer la santé animale et les moyens de
           subsistance des éleveurs en Afrique de l'Ouest, à travers quatre objectifs spécifiques.</p>
+        <p>Pour atteindre ces objectifs, le projet a défini trois objectifs spécifiques correspondant aux composantes
+          techniques du projet.</p>
       </div>
 
       <div class="comp-cards">
@@ -867,7 +891,7 @@
           <div class="cc-number">C0</div>
           <div class="cc-icon-wrap" style="--cc:var(--omsa-dark)"><i class="fas fa-search"></i></div>
           <div class="cc-content">
-            <h3>Phase de diagnostic</h3>
+            <h3>Phase diagnostic</h3>
             <p>Analyser la situation initiale (démographie, cadre législatif, formations) afin de définir des stratégies
               nationales de renforcement du réseau de santé animale.</p>
             <ul class="cc-list">
@@ -883,7 +907,7 @@
         <div class="comp-card" data-reveal="up" style="transition-delay:100ms">
           <div class="cc-number">C1</div>
           <div class="cc-icon-wrap" style="--cc:var(--primary)"><i class="fas fa-balance-scale"></i></div>
-          <h3>Environnement institutionnel</h3>
+          <h3>Développement d’un environnement institutionnel favorable</h3>
           <p>Mise en place un cadre juridique et réglementaire favorable intégrant les PPV, appuyé par des mécanismes de
             contrôle et de concertation interprofessionnelle.</p>
           <ul class="cc-list">
@@ -913,7 +937,7 @@
         <div class="comp-card" data-reveal="up" style="transition-delay:300ms">
           <div class="cc-number">C3</div>
           <div class="cc-icon-wrap" style="--cc:var(--omsa-dark)"><i class="fas fa-hand-holding-usd"></i></div>
-          <h3>Environnement socio-économique</h3>
+          <h3>Développement d’un environnement socio-économique durable</h3>
           <p>Créer un environnement durable favorisant l’insertion professionnelle des PPV, en évaluant la rentabilité
             des activités et en mettant en place des dispositifs d’insertion professionnelle.</p>
           <ul class="cc-list">
@@ -930,7 +954,7 @@
           <div class="cc-number">C4</div>
           <div class="cc-icon-wrap" style="--cc:var(--secondary)"><i class="fas fa-tasks"></i></div>
           <div class="cc-content">
-            <h3>Management du projet</h3>
+            <h3>Gouvernance du projet</h3>
             <p>Une composante transversale couvrant la communication, la concertation entre les parties prenantes, les
               coordinations nationales, la tenue des réunions du comité de pilotage et l'évaluation globale du projet.
             </p>
@@ -976,7 +1000,7 @@
           <div class="rcm-label">Formation professionnelle</div>
         </div>
         <div class="real-card-modern" data-reveal="up" style="transition-delay:200ms">
-          <div class="rcm-icon"><i class="fas fa-users-class"></i></div>
+          <div class="rcm-icon"><i class="fas fa-users"></i></div>
           <div class="rcm-num"><span class="count-it" data-target="1393">0</span></div>
           <div class="rcm-label">Stagiaires appuyés</div>
         </div>
@@ -997,12 +1021,12 @@
         </div>
 
         <!-- Groupe : Insertion professionnelle -->
-        <div class="real-card-modern highlight" data-reveal="up" style="transition-delay:600ms">
+        <div class="real-card-modern" data-reveal="up" style="transition-delay:600ms">
           <div class="rcm-icon"><i class="fas fa-briefcase"></i></div>
           <div class="rcm-num"><span class="count-it" data-target="2">0</span></div>
           <div class="rcm-label">Dispositifs d'insertion et Modèles économiques</div>
         </div>
-        <div class="real-card-modern highlight" data-reveal="up" style="transition-delay:800ms">
+        <div class="real-card-modern" data-reveal="up" style="transition-delay:800ms">
           <div class="rcm-icon"><i class="fas fa-comments"></i></div>
           <div class="rcm-num"><span class="count-it" data-target="11">0</span></div>
           <div class="rcm-label">Cadres de concertation</div>
@@ -1025,10 +1049,10 @@
       <div class="methodo-slider-wrap" data-reveal="up">
         <!-- Navigation des étapes -->
         <div class="methodo-nav">
-          <button class="m-nav-btn active" data-step="1"><span>ÉTAPE 01</span> Diagnostic</button>
+          <button class="m-nav-btn active" data-step="1"><span>ÉTAPE 01</span> Phase diagnostic</button>
           <button class="m-nav-btn" data-step="2"><span>ÉTAPE 02</span> Institutionnel</button>
           <button class="m-nav-btn" data-step="3"><span>ÉTAPE 03</span> Compétences</button>
-          <button class="m-nav-btn" data-step="4"><span>ÉTAPE 04</span> Socio-éco</button>
+          <button class="m-nav-btn" data-step="4"><span>ÉTAPE 04</span> Socio-économique</button>
           <button class="m-nav-btn" data-step="5"><span>ÉTAPE 05</span> Gouvernance</button>
         </div>
 
@@ -1039,7 +1063,7 @@
           <div class="methodo-slide active" id="mstep-1">
             <div class="ms-inner">
               <div class="ms-content">
-                <div class="ms-tag">Composante 0 : Phase de diagnostic</div>
+                <div class="ms-tag">Composante 0 : Phase diagnostic</div>
                 <h3>Analyse approfondie de la situation initiale</h3>
                 <p>Analyser la situation initiale (démographie, cadre législatif, formations) afin de définir des
                   stratégies nationales de renforcement du réseau de santé animale.</p>
@@ -1087,7 +1111,7 @@
           <div class="methodo-slide" id="mstep-2">
             <div class="ms-inner">
               <div class="ms-content">
-                <div class="ms-tag">Composante 1 : Environnement Institutionnel</div>
+                <div class="ms-tag">Composante 1 : Développement d’un environnement institutionnel favorable</div>
                 <h3>Cadre juridique et réglementaire</h3>
                 <p>Améliorer l'intégration des PPV dans le réseau formel en clarifiant leurs statuts, rôles et
                   responsabilités.</p>
@@ -1133,7 +1157,7 @@
           <div class="methodo-slide" id="mstep-3">
             <div class="ms-inner">
               <div class="ms-content">
-                <div class="ms-tag">Composante 2 : Compétences et Curricula</div>
+                <div class="ms-tag">Composante 2 : Acquisition des compétences</div>
                 <h3>Révision des normes de formation</h3>
                 <p>Garantir que la formation des PPV réponde aux normes internationales et aux besoins pratiques des
                   éleveurs.</p>
@@ -1168,7 +1192,7 @@
           <div class="methodo-slide" id="mstep-4">
             <div class="ms-inner">
               <div class="ms-content">
-                <div class="ms-tag">Composante 3 : Environnement Socio-économique</div>
+                <div class="ms-tag">Composante 3 : Développement d’un environnement socio-économique durable</div>
                 <h3>Accompagnement à l'insertion</h3>
                 <p>S'assurer que les PPV formés puissent s'insérer durablement et de manière rentable sur le marché du
                   travail, particulièrement en milieu rural.</p>
@@ -1209,8 +1233,8 @@
           <div class="methodo-slide" id="mstep-5">
             <div class="ms-inner">
               <div class="ms-content">
-                <div class="ms-tag">Composante 4 : Gouvernance et Management</div>
-                <h3>Pilotage et Suivi-Évaluation</h3>
+                <div class="ms-tag">Composante 4 : Gouvernance du projet</div>
+                <h3>Gouvernance du projet</h3>
                 <p>Gestion stratégique, coordination technique et monitoring continu des impacts du projet.</p>
 
                 <div class="ms-tabs">
@@ -2052,7 +2076,7 @@
         <div class="team-card" data-reveal="up" style="transition-delay:200ms">
           <div class="tc-img-wrap">
             <img src="images/p3v/equipe/mariam-alhamdou.jpg" alt="Dre Mariam ALHAMDOU" class="tc-img"
-              onerror="this.src='images/p3v/equipe/assistante-projet.jpg'" />
+              style="object-position: 25% top;" onerror="this.src='images/p3v/equipe/assistante-projet.jpg'" />
           </div>
           <h3 class="tc-name">Dr Mariam ALHAMDOU</h3>
           <div class="tc-title">Coordinatrice Régionale OMSA</div>
@@ -2076,11 +2100,11 @@
         <div class="team-card" data-reveal="up" style="transition-delay:300ms">
           <div class="tc-img-wrap">
             <img src="images/p3v/equipe/mariam-yabre.jpg" alt="Mariam Assana YABRE" class="tc-img"
-              onerror="this.src='images/p3v/equipe/assistante-projet.jpg'" />
+              style="object-position: center top;" onerror="this.src='images/p3v/equipe/assistante-projet.jpg'" />
           </div>
           <h3 class="tc-name">Mariam Assana YABRE</h3>
           <div class="tc-title">Assistante Projet</div>
-          <p class="tc-role">En appui opérationnel à l’équipe.</p>
+          <p class="tc-role">Chargée d'appui dans la mise en œuvre et le suivi du projet P3V</p>
         </div>
       </div>
     </div>
@@ -2288,63 +2312,85 @@
               </div>
             </a>
             <p class="fg-desc">Initiative régionale de professionnalisation des paraprofessionnels vétérinaires au
-              Sénégal, Bénin et
-              Togo. Financé par l'AFD, mis en œuvre par l'OMSA et ses partenaires.</p>
-            <!--div class="footer-socials">
-              <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-              <a href="#" aria-label="X"><i class="fab fa-x-twitter"></i></a>
-              <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-            </div-->
+              Sénégal, Bénin et Togo. Mis en œuvre par l'OMSA et ses partenaires.</p>
+            <div class="footer-socials">
+              <a href="https://www.facebook.com/share/1CQNwJFtfX/?mibextid=wwXIfr" target="_blank"
+                aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://x.com/woah?s=11" target="_blank" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+              <a href="https://www.linkedin.com/company/worldanimalhealth/" target="_blank" aria-label="LinkedIn"><i
+                  class="fab fa-linkedin-in"></i></a>
+              <a href="https://www.woah.org" target="_blank" aria-label="Web"><i class="fas fa-globe"></i></a>
+            </div>
             <div class="footer-funder">
               <i class="fas fa-info-circle"></i>
               <span>Financé par :</span> <span>Agence Française de Développement (AFD)</span>
             </div>
           </div>
 
-          <!--div class="footer-col">
-            <h5>Navigation</h5>
+          <div class="footer-col">
+            <h5>OMSA / WOAH</h5>
             <div class="footer-links">
-              <a href="index.html">Accueil</a>
-              <a href="index.html#justification">Le Projet</a>
-              <a href="#equipe">L'Équipe</a>
-              <a href="#ressources">Ressources</a>
-              <a href="#capitalisation">Capitalisation</a>
-              <a href="pays.html">Pays d'intervention</a>
-              <a href="galerie.html">Galerie</a>
-              <a href="actualites.html">Actualités</a>
-              <a href="contact.html">Contact</a>
+              <a href="https://www.woah.org" target="_blank">Site mondial (woah.org)</a>
+              <a href="https://rr-africa.woah.org" target="_blank">Afrique (rr-africa.woah.org)</a>
+              <a href="https://www.woah.org/fr/ce-que-nous-faisons/programmes-mondiaux/pvs-pathway/" target="_blank">Le
+                processus PVS</a>
+              <a href="#equipe">L'équipe du projet</a>
             </div>
-          </div-->
+          </div>
 
-          <!--div class="footer-col">
-            <h5>Le Projet</h5>
+          <div class="footer-col footer-leads-col">
+            <div class="leads-eyebrow">CONTACTEZ-NOUS</div>
+            <h5>Responsables du projet</h5>
+            <div class="leads-list">
+              <div class="lead-item">
+                <i class="far fa-envelope"></i>
+                <div>
+                  <strong>Mariam Alhamdou</strong>
+                  <span>Coordinatrice Technique Régionale</span>
+                </div>
+              </div>
+              <div class="lead-item">
+                <i class="far fa-envelope"></i>
+                <div>
+                  <strong>Marie Lemeunier</strong>
+                  <span>Responsable de la mobilisation des ressources</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h5>Informations</h5>
             <div class="footer-links">
-              <a href="projet.html#objectifs">Objectifs</a>
-              <a href="projet.html#composantes">Composantes</a>
-              <a href="projet.html#methodologie">Méthodologie</a>
-              <a href="projet.html#resultats">Résultats</a>
-              <a href="index.html#partenaires">Partenaires</a>
+              <a href="#ressources">Ressources & Outils</a>
+              <a href="#galerie">Galerie Photos</a>
+              <a href="#">Mentions Légales</a>
+              <a href="#">Crédits Photos</a>
             </div>
-          </div-->
-
-          <!--div class="footer-col">
-            <h5>Contact</h5>
-            <div class="footer-contact-list">
-              <div class="fcl-row"><i class="fas fa-envelope"></i><span>contact@projetp3v.org</span></div>
-              <div class="fcl-row"><i class="fas fa-map-marker-alt"></i><span>EISMV Dakar, Sénégal</span></div>
+            <div class="footer-contact-list mt-md">
+              <div class="fcl-row">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>12, rue de Prony, 75017 Paris, France</span>
+              </div>
             </div>
-            <h5 style="margin-top:20px">Partenaires</h5>
-            <div class="footer-partners-logos">
-              <span class="fpl-logo">OMSA</span>
-              <span class="fpl-logo">AFD</span>
-              <span class="fpl-logo">EISMV</span>
-              <span class="fpl-logo">FAR</span>
-              <span class="fpl-logo">CILSS</span>
-            </div>
-          </div-->
+          </div>
         </div>
+        <h5>Contact</h5>
+        <div class="footer-contact-list">
+          <div class="fcl-row"><i class="fas fa-envelope"></i><span>contact@projetp3v.org</span></div>
+          <div class="fcl-row"><i class="fas fa-map-marker-alt"></i><span>EISMV Dakar, Sénégal</span></div>
+        </div>
+        <h5 style="margin-top:20px">Partenaires</h5>
+        <div class="footer-partners-logos">
+          <span class="fpl-logo">OMSA</span>
+          <span class="fpl-logo">AFD</span>
+          <span class="fpl-logo">EISMV</span>
+          <span class="fpl-logo">FAR</span>
+          <span class="fpl-logo">CILSS</span>
+        </div>
+        </div-->
       </div>
+    </div>
     </div>
     <!--div class="footer-bottom">
       <div class="container">
