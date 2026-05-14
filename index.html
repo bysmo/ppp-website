@@ -146,6 +146,47 @@
         font-size: 1.05rem;
       }
     }
+
+    /* ── Bouton son hero ── */
+    #heroSoundBtn {
+      position: absolute;
+      bottom: 110px;
+      left: 30px;
+      z-index: 20;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1.5px solid rgba(255, 255, 255, 0.35);
+      color: #fff;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s, border-color 0.3s;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    #heroSoundBtn:hover {
+      background: rgba(255, 255, 255, 0.28);
+      border-color: rgba(255, 255, 255, 0.7);
+      transform: scale(1.12);
+    }
+    #heroSoundBtn.sound-on {
+      background: rgba(255, 167, 0, 0.3);
+      border-color: rgba(255, 167, 0, 0.7);
+    }
+    @media (max-width: 768px) {
+      #heroSoundBtn {
+        bottom: 90px;
+        left: 16px;
+        width: 42px;
+        height: 42px;
+        font-size: 1rem;
+      }
+    }
   </style>
 </head>
 
@@ -333,11 +374,17 @@
   <section id="hero">
     <div class="hero-video-background">
       <iframe
+        id="heroYTPlayer"
         src="https://www.youtube-nocookie.com/embed/afVwzf8DUN8?autoplay=1&mute=1&loop=1&playlist=afVwzf8DUN8&controls=0&showinfo=0&rel=0&modestbranding=1&start=56&disablekb=1&enablejsapi=1&iv_load_policy=3"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen></iframe>
     </div>
+
+    <!-- Bouton son -->
+    <button id="heroSoundBtn" aria-label="Activer le son" title="Activer / Couper le son">
+      <i class="fas fa-volume-mute" id="heroSoundIcon"></i>
+    </button>
     <div class="hero-overlay-gradient"></div>
     <div class="hero-particles" id="heroParticles"></div>
 
@@ -1718,7 +1765,7 @@
               <span class="pl-tag"><i class="fas fa-university"></i>Faculté d’Agronomie de l’Université de
                 Parakou</span>
               <span class="pl-tag"><i class="fas fa-users"></i>ADENAPE : Association Nationale des Paraprofessionnels
-                Vétérinaires du Benin</span>
+                Vétérinaires du Bénin</span>
             </div>
           </div>
           <!--a href="pays.html" class="btn-outline-pill" style="margin-top:8px">
@@ -2655,6 +2702,57 @@
         }
       });
     });
+
+    /* ────────────────────────────────────────────
+       BOUTON SON – Vidéo Hero YouTube
+    ──────────────────────────────────────────── */
+    (function () {
+      var isMuted = true;
+      var ytPlayer = null;
+      var apiReady = false;
+
+      // Charger l'API YouTube IFrame Player
+      var tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      window.onYouTubeIframeAPIReady = function () {
+        apiReady = true;
+        ytPlayer = new YT.Player('heroYTPlayer', {
+          events: {
+            'onReady': function (e) {
+              // La vidéo est déjà en lecture (autoplay) — on s'assure qu'elle est muette
+              e.target.mute();
+            }
+          }
+        });
+      };
+
+      var soundBtn  = document.getElementById('heroSoundBtn');
+      var soundIcon = document.getElementById('heroSoundIcon');
+
+      soundBtn.addEventListener('click', function () {
+        if (!ytPlayer || !apiReady) return;
+
+        if (isMuted) {
+          ytPlayer.unMute();
+          ytPlayer.setVolume(80);
+          isMuted = false;
+          soundIcon.className = 'fas fa-volume-up';
+          soundBtn.classList.add('sound-on');
+          soundBtn.setAttribute('aria-label', 'Couper le son');
+          soundBtn.setAttribute('title', 'Couper le son');
+        } else {
+          ytPlayer.mute();
+          isMuted = true;
+          soundIcon.className = 'fas fa-volume-mute';
+          soundBtn.classList.remove('sound-on');
+          soundBtn.setAttribute('aria-label', 'Activer le son');
+          soundBtn.setAttribute('title', 'Activer le son');
+        }
+      });
+    })();
   </script>
 </body>
 
