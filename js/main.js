@@ -3,22 +3,22 @@
    Animations, Hero Slider, Scroll Reveal, Compteurs, etc.
    ========================================================= */
 
-(function() {
+(function () {
   'use strict';
 
   /* ── 0. CINEMATIC STORY INTRO ── */
   (function initStoryIntro() {
-    const wrap        = document.getElementById('storyIntro');
+    const wrap = document.getElementById('storyIntro');
     if (!wrap) return;
 
-    const TOTAL       = 5;
-    const bgLayers    = document.querySelectorAll('.si-bg-layer');
-    const chapters    = document.querySelectorAll('.si-chapter');
-    const dots        = document.querySelectorAll('.sid');
-    const progressFl  = document.getElementById('siProgressFill');
-    const scrollHint  = document.getElementById('siScrollHint');
-    let   current     = 0;
-    let   isMobile    = window.innerWidth <= 768;
+    const TOTAL = 5;
+    const bgLayers = document.querySelectorAll('.si-bg-layer');
+    const chapters = document.querySelectorAll('.si-chapter');
+    const dots = document.querySelectorAll('.sid');
+    const progressFl = document.getElementById('siProgressFill');
+    const scrollHint = document.getElementById('siScrollHint');
+    let current = 0;
+    let isMobile = window.innerWidth <= 768;
 
     /* — switch chapter — */
     function goChapter(idx) {
@@ -40,8 +40,8 @@
     /* — scroll handler — */
     function onScroll() {
       if (isMobile) return;
-      const wrapTop    = wrap.getBoundingClientRect().top + window.pageYOffset;
-      const scrolled   = window.pageYOffset - wrapTop;
+      const wrapTop = wrap.getBoundingClientRect().top + window.pageYOffset;
+      const scrolled = window.pageYOffset - wrapTop;
       const scrollRange = wrap.offsetHeight - window.innerHeight;
 
       // header mode
@@ -51,7 +51,7 @@
       if (scrolled < 0 || scrolled > scrollRange + 50) return;
 
       const progress = Math.max(0, Math.min(1, scrolled / scrollRange));
-      const idx      = Math.min(Math.round(progress * (TOTAL - 1)), TOTAL - 1);
+      const idx = Math.min(Math.round(progress * (TOTAL - 1)), TOTAL - 1);
 
       if (progressFl) progressFl.style.width = (progress * 100) + '%';
       if (idx !== current) goChapter(idx);
@@ -62,7 +62,7 @@
 
     /* — dot clicks — */
     dots.forEach((d, i) => d.addEventListener('click', () => {
-      const wrapTop    = wrap.getBoundingClientRect().top + window.pageYOffset;
+      const wrapTop = wrap.getBoundingClientRect().top + window.pageYOffset;
       const scrollRange = wrap.offsetHeight - window.innerHeight;
       window.scrollTo({ top: wrapTop + (i / (TOTAL - 1)) * scrollRange, behavior: 'smooth' });
     }));
@@ -119,8 +119,8 @@
   animateFollower();
 
   document.querySelectorAll('a,button').forEach(el => {
-    el.addEventListener('mouseenter', () => { if(cursor) cursor.style.transform = 'translate(-50%,-50%) scale(2.5)'; });
-    el.addEventListener('mouseleave', () => { if(cursor) cursor.style.transform = 'translate(-50%,-50%) scale(1)'; });
+    el.addEventListener('mouseenter', () => { if (cursor) cursor.style.transform = 'translate(-50%,-50%) scale(2.5)'; });
+    el.addEventListener('mouseleave', () => { if (cursor) cursor.style.transform = 'translate(-50%,-50%) scale(1)'; });
   });
 
   /* ── 3. HEADER SCROLL ── */
@@ -129,7 +129,7 @@
 
   window.addEventListener('scroll', () => {
     const current = window.pageYOffset;
-    
+
     /* 
     if (current > 80 && current > lastScroll) {
       header && header.classList.add('nav-hidden');
@@ -238,7 +238,11 @@
     const wH = window.innerHeight;
     document.querySelectorAll('[data-reveal]').forEach(el => {
       const rect = el.getBoundingClientRect();
-      if (rect.top < wH * 0.9) {
+      
+      // Threshold for showing (when element enters)
+      const isVisible = rect.top < wH * 0.80 && rect.bottom > 0;
+      
+      if (isVisible) {
         el.classList.add('visible');
 
         // Trigger count-it inside (only if scrolled)
@@ -250,13 +254,24 @@
             }
           });
         }
+      } else {
+        // Remove 'visible' if element is completely out of view (above or below)
+        if (rect.top > wH || rect.bottom < 0) {
+          el.classList.remove('visible');
+          // Reset counters so they re-animate too
+          el.querySelectorAll('.count-it').forEach(c => {
+            c.dataset.done = '';
+            c.textContent = '0';
+          });
+        }
       }
     });
 
     // Timeline
     document.querySelectorAll('.tl-item').forEach(el => {
       const rect = el.getBoundingClientRect();
-      if (rect.top < wH * 0.88) el.classList.add('visible');
+      if (rect.top < wH * 0.88 && rect.bottom > 0) el.classList.add('visible');
+      else if (rect.top > wH || rect.bottom < 0) el.classList.remove('visible');
     });
   }
 
@@ -459,22 +474,22 @@
 
   /* ── 17. STORY SLIDER — scroll-driven (scrollytelling) ── */
   (function initStorySlider() {
-    const TOTAL        = 6;
-    const section      = document.getElementById('histoire');
+    const TOTAL = 6;
+    const section = document.getElementById('histoire');
     const progressFill = document.getElementById('storyProgressFill');
-    const prevBtn      = document.getElementById('storyPrev');
-    const nextBtn      = document.getElementById('storyNext');
-    const scCurrent    = document.getElementById('scCurrent');
-    const scTotal      = document.getElementById('scTotal');
-    const navBtns      = document.querySelectorAll('.sn-btn');
+    const prevBtn = document.getElementById('storyPrev');
+    const nextBtn = document.getElementById('storyNext');
+    const scCurrent = document.getElementById('scCurrent');
+    const scTotal = document.getElementById('scTotal');
+    const navBtns = document.querySelectorAll('.sn-btn');
 
     if (!section) return; // Not on index page
 
     if (scTotal) scTotal.textContent = TOTAL;
 
-    let current     = 0;
+    let current = 0;
     let isAnimating = false;
-    let isMobile    = window.innerWidth <= 1100;
+    let isMobile = window.innerWidth <= 1100;
 
     /* ─── UI update ─── */
     function updateUI(idx) {
@@ -491,7 +506,7 @@
       isAnimating = true;
 
       const from = document.getElementById('sslide-' + current);
-      const to   = document.getElementById('sslide-' + idx);
+      const to = document.getElementById('sslide-' + idx);
 
       if (from) { from.classList.remove('active'); from.style.display = 'none'; }
       if (to) {
@@ -598,14 +613,14 @@
 
 /* ── YouTube lazy-load (global function) ── */
 function loadYTVideo() {
-  const thumb  = document.getElementById('ssYTThumb');
-  const frame  = document.getElementById('ssYTFrame');
+  const thumb = document.getElementById('ssYTThumb');
+  const frame = document.getElementById('ssYTFrame');
   const iframe = document.getElementById('ssYTIframe');
   if (!thumb || !frame || !iframe) return;
 
   // Use a P3V/OMSA related video; fall back to WOAH channel
   iframe.src = 'https://www.youtube.com/embed/PJtOZo-WEJ0?autoplay=1&rel=0&modestbranding=1';
-  thumb.style.display  = 'none';
-  frame.style.display  = 'block';
+  thumb.style.display = 'none';
+  frame.style.display = 'block';
 }
 
