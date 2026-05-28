@@ -529,18 +529,6 @@
       setTimeout(() => { isAnimating = false; }, 600);
     }
 
-    /* ─── Auto-play ─── */
-    let autoPlayTimer = setInterval(() => {
-      goTo((current + 1) % TOTAL);
-    }, 5000);
-
-    function resetAutoPlay() {
-      clearInterval(autoPlayTimer);
-      autoPlayTimer = setInterval(() => {
-        goTo((current + 1) % TOTAL);
-      }, 5000);
-    }
-
     /* ─── Resize: recalculate mobile breakpoint ─── */
     window.addEventListener('resize', () => {
       isMobile = window.innerWidth <= 1100;
@@ -549,12 +537,22 @@
     /* ─── Nav tabs (always work) ─── */
     navBtns.forEach((btn, i) => btn.addEventListener('click', () => {
       goTo(i);
-      resetAutoPlay();
     }));
 
     /* ─── Mobile buttons ─── */
-    if (prevBtn) prevBtn.addEventListener('click', () => { goTo(current - 1); resetAutoPlay(); });
-    if (nextBtn) nextBtn.addEventListener('click', () => { goTo(current + 1); resetAutoPlay(); });
+    if (prevBtn) prevBtn.addEventListener('click', () => { goTo(current - 1); });
+    if (nextBtn) nextBtn.addEventListener('click', () => { goTo(current + 1); });
+
+    /* ─── Skip button (transition between tabs / slides) ─── */
+    const skipBtn = section.querySelector('.story-skip-btn');
+    if (skipBtn) {
+      skipBtn.addEventListener('click', (e) => {
+        if (current < TOTAL - 1) {
+          e.preventDefault();
+          goTo(current + 1);
+        }
+      });
+    }
 
     /* ─── Mobile swipe ─── */
     let touchStartX = 0;
@@ -567,7 +565,6 @@
         const diff = touchStartX - e.changedTouches[0].clientX;
         if (Math.abs(diff) > 50) {
           goTo(diff > 0 ? current + 1 : current - 1);
-          resetAutoPlay();
         }
       }, { passive: true });
     }
